@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News – Evidenced</title>
+  <meta name="description" content="Neue Studien und Updates aus der Welt der Supplements.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="navbar-brand">Evidenced</a>
+      <div class="navbar-links">
+        <a href="/">Start</a>
+        <a href="/supplements.html">Supplements</a>
+        <a href="/stacks.html">Stacks</a>
+        <a href="/weak-evidence.html">Hype-Check</a>
+        <a href="/news.html" class="active">News</a>
+      </div>
+      <button class="pillbox-toggle" onclick="togglePillBox()">
+        💊 <span id="pillbox-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Neues aus der Wissenschaft</h1>
+      <p class="section-subtitle">
+        Hier findest du aktuelle Studien und Updates zu Supplements.
+        <strong>Quellen sind immer verlinkt – damit du selbst nachprüfen kannst.</strong>
+      </p>
+      <div id="news-grid" class="news-grid"></div>
+    </div>
+  </section>
+
+  <!-- Pillenbox-Drawer -->
+  <div id="pillbox-drawer" class="pillbox-drawer">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button onclick="togglePillBox()" class="pillbox-close">×</button>
+    </div>
+    <div id="pillbox-items" class="pillbox-items"></div>
+    <div class="pillbox-footer">
+      <div class="pillbox-total">
+        <span>Tageskosten:</span>
+        <strong id="pillbox-total-price">0,00 €</strong>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
