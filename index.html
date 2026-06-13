@@ -24,8 +24,10 @@
       <a href="#" class="logo" id="logo">Evidenced</a>
       <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
         <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-          <path d="M9 10c0-1.1.9-2 2-2s2 .9 2 2"></path>
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
         </svg>
         <span class="pillbox-count" id="pillboxCount">0</span>
       </button>
@@ -43,35 +45,47 @@
         </svg>
       </button>
     </div>
-    <nav class="sidebar-nav">
+    
+    <!-- Tabs -->
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <!-- Supplements Tab -->
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
       <div class="nav-section">
         <h3 class="nav-title">Die Basics</h3>
         <ul class="nav-list">
-          <li><a href="#basics" class="nav-link" data-section="basics">Omega-3</a></li>
-          <li><a href="#basics" class="nav-link" data-section="basics">Vitamin D3 + K2</a></li>
-          <li><a href="#basics" class="nav-link" data-section="basics">Magnesium</a></li>
-          <li><a href="#basics" class="nav-link" data-section="basics">Zink</a></li>
-          <li><a href="#basics" class="nav-link" data-section="basics">Kreatin</a></li>
-          <li><a href="#basics" class="nav-link" data-section="basics">Protein</a></li>
-          <li><a href="#basics" class="nav-link" data-section="basics">Multivitamin</a></li>
-        </ul>
-      </div>
-      <div class="nav-section">
-        <h3 class="nav-title">Ziel-Stacks</h3>
-        <ul class="nav-list">
-          <li><a href="#stacks" class="nav-link" data-section="stacks">Diät & Abnehmen</a></li>
-          <li><a href="#stacks" class="nav-link" data-section="stacks">Schlaf & Erholung</a></li>
-          <li><a href="#stacks" class="nav-link" data-section="stacks">Veganer & Vegetarier</a></li>
-          <li><a href="#stacks" class="nav-link" data-section="stacks">50+ / Healthy Aging</a></li>
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
         </ul>
       </div>
       <div class="nav-section">
         <h3 class="nav-title">Hype-Check</h3>
         <ul class="nav-list">
-          <li><a href="#hype-check" class="nav-link" data-section="hype-check">Ashwagandha</a></li>
-          <li><a href="#hype-check" class="nav-link" data-section="hype-check">BCAAs / EAAs</a></li>
-          <li><a href="#hype-check" class="nav-link" data-section="hype-check">Fatburner</a></li>
-          <li><a href="#hype-check" class="nav-link" data-section="hype-check">Testo-Booster</a></li>
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <!-- Stacks Tab -->
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
         </ul>
       </div>
     </nav>
@@ -148,60 +162,40 @@
       <div class="container">
         <h2 class="section-title">Wähle deinen Weg</h2>
         <div class="cards">
-          <div class="card" data-section="basics">
+          <div class="card" data-tab="supplements">
             <div class="card-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5"></path>
-                <path d="M2 12l10 5 10-5"></path>
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
               </svg>
             </div>
             <h3>Die Basics</h3>
             <p>Die wichtigsten Supplements mit nachgewiesener Evidenz für deine Gesundheit.</p>
           </div>
-          <div class="card" data-section="stacks">
+          <div class="card" data-tab="stacks">
             <div class="card-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
               </svg>
             </div>
             <h3>Ziel-Stacks</h3>
             <p>Kombinationen aus Supplements, die perfekt auf deine Ziele abgestimmt sind.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Basics Section -->
-    <section class="section basics" id="basics">
-      <div class="container">
-        <h2 class="section-title">Die Basics</h2>
-        <div class="supplement-grid" id="basicsGrid">
-          <!-- Dynamically populated by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Stacks Section -->
-    <section class="section stacks" id="stacks">
-      <div class="container">
-        <h2 class="section-title">Ziel-Stacks</h2>
-        <div class="stack-grid" id="stacksGrid">
-          <!-- Dynamically populated by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Hype-Check Section -->
-    <section class="section hype-check" id="hype-check">
-      <div class="container">
-        <h2 class="section-title">⚠️ Hype-Check</h2>
-        <p class="section-subtitle">Diese Supplements werden oft beworben – aber die wissenschaftliche Evidenz ist schwach oder nicht vorhanden.</p>
-        <div class="supplement-grid" id="hypeCheckGrid">
-          <!-- Dynamically populated by JS -->
+          <div class="card" data-tab="supplements" data-section="hype-check">
+            <div class="card-icon warning">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <h3>Hype-Check</h3>
+            <p>Diese Supplements werden oft beworben – aber die wissenschaftliche Evidenz ist schwach.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -211,10 +205,36 @@
       <div class="container">
         <h2 class="section-title">Neues aus der Wissenschaft</h2>
         <div class="news-grid" id="newsGrid">
-          <!-- Dynamically populated by JS -->
+          <article class="news-card">
+            <div class="news-date">15. Juni 2024</div>
+            <h3 class="news-title">Neue Meta-Analyse bestätigt: Omega-3 senkt Herzinfarkt-Risiko</h3>
+            <p class="news-summary">Eine aktuelle Meta-Analyse mit über 130.000 Teilnehmern zeigt, dass die Einnahme von Omega-3-Fettsäuren das Risiko für Herzinfarkte um 8% senken kann.</p>
+          </article>
+          <article class="news-card">
+            <div class="news-date">10. Juni 2024</div>
+            <h3 class="news-title">Vitamin D und COVID-19: Neue Erkenntnisse</h3>
+            <p class="news-summary">Eine aktuelle Studie untersucht den Zusammenhang zwischen Vitamin D-Spiegel und dem Schweregrad von COVID-19-Infektionen.</p>
+          </article>
+          <article class="news-card">
+            <div class="news-date">5. Juni 2024</div>
+            <h3 class="news-title">Kreatin: Nicht nur für Sportler</h3>
+            <p class="news-summary">Neue Forschung zeigt, dass Kreatin auch für ältere Erwachsene Vorteile bietet, insbesondere für die kognitive Funktion.</p>
+          </article>
+          <article class="news-card">
+            <div class="news-date">1. Juni 2024</div>
+            <h3 class="news-title">Magnesium und Schlaf: Was sagt die Wissenschaft?</h3>
+            <p class="news-summary">Ein systematischer Review analysiert die aktuellen Erkenntnisse über die Wirkung von Magnesium auf die Schlafqualität.</p>
+          </article>
         </div>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">Evidenced – Wissenschaftlich geprüfte Supplements</p>
+      </div>
+    </footer>
   </main>
 
   <script src="js/data.js"></script>
