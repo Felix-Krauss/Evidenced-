@@ -199,13 +199,21 @@ function initPillbox() {
   closePillbox.addEventListener('click', closePillboxPanel);
 }
 
+=======
 function closePillboxPanel() {
   pillboxPanel.classList.remove('open');
   overlay.classList.remove('active');
   document.body.style.overflow = '';
 }
 
-// ===== Overlay Click Handler =====
+// Open pillbox from text link in step 2
+window.openPillboxFromText = function() {
+  pillboxPanel.classList.add('open');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+// ===== Overlay Click Handler ==========
 // Single handler for both sidebar and pillbox
 overlay.addEventListener('click', () => {
   if (sidebar.classList.contains('open')) {
