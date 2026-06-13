@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="#F5F1E8" rx="8"/>
+  <polygon points="50,20 60,40 40,40" fill="#D87C63" opacity="0.8"/>
+  <rect x="40" y="45" width="20" height="20" fill="#8B6F47" opacity="0.8" rx="2"/>
+  <line x1="30" y1="70" x2="70" y2="70" stroke="#6B8E6B" stroke-width="3" opacity="0.8"/>
+  <text x="50" y="85" text-anchor="middle" font-family="Inter" font-size="9" fill="#3A3A3A">Fatburner</text>
+</svg>

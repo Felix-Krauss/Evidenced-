@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidenced – Wissenschaftlich geprüfte Supplements</title>
+  <meta name="description" content="Sachliche Aufklärung über Supplements. Kein Hype, nur Evidenz.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="navbar-brand">Evidenced</a>
+      <div class="navbar-links">
+        <a href="/">Start</a>
+        <a href="/supplements.html">Supplements</a>
+        <a href="/stacks.html">Stacks</a>
+        <a href="/weak-evidence.html">Hype-Check</a>
+        <a href="/news.html">News</a>
+      </div>
+      <button class="pillbox-toggle" onclick="togglePillBox()">
+        💊 <span id="pillbox-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero-Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <h1>Supplements, die wirklich wirken.</h1>
+      <p>
+        Kein Marketing. Kein Hype. Nur <strong>wissenschaftlich belegte Fakten</strong>.
+        Hier findest du, was wirklich funktioniert – und was du dir sparen kannst.
+      </p>
+      <div class="hero-actions">
+        <a href="/supplements.html" class="btn btn-primary">Supplements entdecken</a>
+        <a href="#how-it-works" class="btn btn-secondary">Wie es funktioniert</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- News-Bereich -->
+  <section class="news-section">
+    <div class="container">
+      <h2 class="section-title">Neues aus der Wissenschaft</h2>
+      <div id="news-grid" class="news-grid"></div>
+    </div>
+  </section>
+
+  <!-- Wie es funktioniert -->
+  <section id="how-it-works" class="section">
+    <div class="container">
+      <h2 class="section-title">Wie Evidenced funktioniert</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">🔬</div>
+          <h3>Wissenschaft prüfen</h3>
+          <p>Wir durchforsten <strong>Meta-Analysen und systematische Reviews</strong> – keine Einzelstudien, kein Hersteller-Marketing.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">💊</div>
+          <h3>Pillenbox füllen</h3>
+          <p>Wähle die Supplements, die zu dir passen. Die <strong>Tageskosten</strong> werden automatisch berechnet.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">📊</div>
+          <h3>Informiert entscheiden</h3>
+          <p>Erfahre, was <strong>realistisch</strong> möglich ist – und was nicht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beliebte Supplements -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Beliebte Supplements</h2>
+      <div id="featured-supplements" class="supplement-grid"></div>
+      <div class="section-link">
+        <a href="/supplements.html">Alle Supplements ansehen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillenbox-Drawer -->
+  <div id="pillbox-drawer" class="pillbox-drawer">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button onclick="togglePillBox()" class="pillbox-close">×</button>
+    </div>
+    <div id="pillbox-items" class="pillbox-items"></div>
+    <div class="pillbox-footer">
+      <div class="pillbox-total">
+        <span>Tageskosten:</span>
+        <strong id="pillbox-total-price">0,00 €</strong>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
