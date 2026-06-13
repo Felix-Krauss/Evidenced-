@@ -62,9 +62,6 @@ function initSidebar() {
   // Close sidebar
   closeSidebar.addEventListener('click', closeSidebarPanel);
   
-  // Close on overlay click
-  overlay.addEventListener('click', closeSidebarPanel);
-
   // Close on escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -131,7 +128,7 @@ function initCardActions() {
       // If it's the hype-check card, scroll to the hype-check section in the sidebar
       if (section === 'hype-check') {
         setTimeout(() => {
-          const hypeCheckSection = document.querySelector('.nav-section:has(.nav-title:contains("Hype-Check"))');
+          const hypeCheckSection = document.querySelector('.nav-section:has(.nav-title)');
           if (hypeCheckSection) {
             hypeCheckSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
@@ -162,13 +159,6 @@ function initPillbox() {
 
   // Close pillbox
   closePillbox.addEventListener('click', closePillboxPanel);
-  
-  // Close on overlay click
-  overlay.addEventListener('click', () => {
-    if (pillboxPanel.classList.contains('open')) {
-      closePillboxPanel();
-    }
-  });
 }
 
 function closePillboxPanel() {
@@ -176,6 +166,17 @@ function closePillboxPanel() {
   overlay.classList.remove('active');
   document.body.style.overflow = '';
 }
+
+// ===== Overlay Click Handler =====
+// Single handler for both sidebar and pillbox
+overlay.addEventListener('click', () => {
+  if (sidebar.classList.contains('open')) {
+    closeSidebarPanel();
+  }
+  if (pillboxPanel.classList.contains('open')) {
+    closePillboxPanel();
+  }
+});
 
 // ===== Pillbox Management =====
 function addToPillbox(supplement) {
@@ -272,7 +273,7 @@ function showNotification(message) {
   }, 2000);
 }
 
-// ===== Smooth Scroll for Anchor Links ===== 
+// ===== Smooth Scroll for Anchor Links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
@@ -288,7 +289,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ===== CSS for Notification (injected dynamically) ===== 
+// ===== CSS for Notification (injected dynamically) =====
 const notificationStyles = document.createElement('style');
 notificationStyles.textContent = `
   .notification {
