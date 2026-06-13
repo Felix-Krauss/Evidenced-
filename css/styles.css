@@ -849,14 +849,18 @@ main {
 }
 
 .sidebar.open {
+  transform: translateX(0);
   animation: slideInLeft var(--transition-base);
 }
 
 .pillbox-panel.open {
+  transform: translateX(0);
   animation: slideInRight var(--transition-base);
 }
 
 .overlay.active {
+  opacity: 1;
+  visibility: visible;
   animation: fadeIn var(--transition-base);
 }
 
