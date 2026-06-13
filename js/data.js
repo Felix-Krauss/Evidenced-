@@ -10,7 +10,7 @@ const supplements = [
     amazonLink: "",
     category: ["basics", "herzgesundheit"],
     tags: ["fischöl", "epa", "dha", "entzündung"],
-    image: "/assets/icons/omega-3.svg",
+    image: assets/icons/omega-3.svg",
     dosage: "1–2 g EPA/DHA pro Tag",
     notes: "Wichtig: Hohe Dosen (> 3 g/Tag) können Blutungen begünstigen. Bei Blutverdünnern (z. B. Marcumar) vorher mit Arzt abklären.",
     studies: [
@@ -36,7 +36,7 @@ const supplements = [
     amazonLink: "",
     category: ["basics"],
     tags: ["vitamin-d", "k2", "mangel", "knochen", "immunsystem"],
-    image: "/assets/icons/vitamin-d.svg",
+    image: assets/icons/vitamin-d.svg",
     dosage: "1000–4000 IE D3 + 100–200 µg K2 pro Tag",
     notes: "Bluttest empfohlen: Zielwert für Vitamin D3 ist 30–50 ng/ml (75–125 nmol/l). K2 in Form von MK-7 hat eine längere Halbwertszeit als MK-4.",
     studies: [
@@ -62,7 +62,7 @@ const supplements = [
     amazonLink: "",
     category: ["basics"],
     tags: ["magnesium", "muskeln", "schlaf", "nerven", "stress"],
-    image: "/assets/icons/magnesium.svg",
+    image: assets/icons/magnesium.svg",
     dosage: "300–400 mg pro Tag (abends einnehmen)",
     notes: "Magnesiumcitrat oder -bisglycinat haben die beste Bioverfügbarkeit. Magnesiumoxid wird schlecht aufgenommen und kann abführend wirken.",
     studies: [
@@ -88,7 +88,7 @@ const supplements = [
     amazonLink: "",
     category: ["basics"],
     tags: ["zink", "immunsystem", "wundheilung", "vegan"],
-    image: "/assets/icons/zink.svg",
+    image: assets/icons/zink.svg",
     dosage: "15–30 mg pro Tag",
     notes: "Nicht dauerhaft hochdosiert einnehmen (max. 40 mg/Tag). Hohe Dosen können zu Übelkeit und Erbrechen führen. Bei langfristiger Einnahme Kupfer supplementieren (1–2 mg/Tag).",
     studies: [
@@ -114,7 +114,7 @@ const supplements = [
     amazonLink: "",
     category: ["basics", "leistung"],
     tags: ["kreatin", "kraft", "muskelaufbau", "ausdauer"],
-    image: "/assets/icons/kreatin.svg",
+    image: assets/icons/kreatin.svg",
     dosage: "3–5 g pro Tag (Ladephase nicht nötig)",
     notes: "Wirkung tritt nach 2–4 Wochen ein. Keine Nebenwirkungen bekannt. Kreatin-Monohydrat ist die beste und günstigste Form. Kreatin erhöht das Körpergewicht um 1–2 kg durch Wassereinlagerung in den Muskeln.",
     studies: [
@@ -140,7 +140,7 @@ const supplements = [
     amazonLink: "",
     category: ["basics"],
     tags: ["whey", "vegan", "protein", "muskelaufbau", "sättigung"],
-    image: "/assets/icons/protein.svg",
+    image: assets/icons/protein.svg",
     dosage: "20–40 g pro Portion (nach dem Training oder als Mahlzeitenersatz)",
     notes: "Whey für schnelle Aufnahme (z. B. nach dem Training), Casein oder Vegan-Protein für langanhaltende Sättigung (z. B. vor dem Schlafengehen). Achte auf ein Produkt mit hohem Proteingehalt (> 80%) und wenig Zusatzstoffen.",
     studies: [
@@ -166,7 +166,7 @@ const supplements = [
     amazonLink: "",
     category: ["basics"],
     tags: ["multivitamin", "nährstoffe", "mangel"],
-    image: "/assets/icons/multivitamin.svg",
+    image: assets/icons/multivitamin.svg",
     dosage: "1 Tablette pro Tag (zu einer Mahlzeit)",
     notes: "Achte auf ein Produkt mit aktiven Formen der Vitamine (z. B. B12 als Methylcobalamin, Folsäure als 5-MTHF). Vermeide Produkte mit extrem hohen Dosen (z. B. > 1000% des Tagesbedarfs).",
     studies: [
@@ -187,7 +187,7 @@ const supplements = [
     amazonLink: "",
     category: ["hype-check"],
     tags: ["adaptogen", "stress", "ayurveda"],
-    image: "/assets/icons/ashwagandha.svg",
+    image: assets/icons/ashwagandha.svg",
     dosage: "300–600 mg Extrakt (standardisiert auf 5% Withanolide) pro Tag",
     notes: "Kein Ersatz für bewiesene Therapien bei Angststörungen oder Depressionen. Kann bei manchen Menschen zu Müdigkeit oder Magenbeschwerden führen.",
     studies: [
@@ -213,7 +213,7 @@ const supplements = [
     amazonLink: "",
     category: ["hype-check"],
     tags: ["bcaa", "eaa", "aminosäuren", "muskelaufbau"],
-    image: "/assets/icons/bcaa.svg",
+    image: assets/icons/bcaa.svg",
     dosage: "5–10 g pro Portion",
     notes: "Besser: Hochwertiges Proteinpulver (Whey/Vegan) mit allen essenziellen Aminosäuren. BCAAs sind in jedem Protein enthalten – eine separate Supplementation ist meist unnötig.",
     studies: [
@@ -234,7 +234,7 @@ const supplements = [
     amazonLink: "",
     category: ["hype-check"],
     tags: ["fatburner", "carnitin", "abnehmen", "stoffwechsel"],
-    image: "/assets/icons/fatburner.svg",
+    image: assets/icons/fatburner.svg",
     dosage: "2–3 g L-Carnitin pro Tag (falls überhaupt)",
     notes: "Kein Ersatz für eine kalorienkontrollierte Ernährung und Bewegung. Die meisten Fatburner enthalten Koffein – Vorsicht bei Empfindlichkeit oder Schlafstörungen.",
     studies: [
@@ -260,7 +260,7 @@ const supplements = [
     amazonLink: "",
     category: ["hype-check"],
     tags: ["testosteron", "maca", "tribulus", "libido"],
-    image: "/assets/icons/testo-booster.svg",
+    image: assets/icons/testo-booster.svg",
     dosage: "Nach Herstellerangaben (meist 1–2 Kapseln pro Tag)",
     notes: "Kein Ersatz für eine medizinische Behandlung bei Testosteronmangel. Bei Verdacht auf Testosteronmangel: Bluttest beim Arzt machen.",
     studies: [
@@ -287,7 +287,7 @@ const stacks = [
     supplements: ["high-protein", "omega-3", "magnesium"],
     pricePerDay: 1.55,
     category: "abnehmen",
-    image: "/assets/icons/stack-diaet.svg",
+    image: assets/icons/stack-diaet.svg",
     tools: ["bmi-rechner", "kcal-rechner"],
     notes: "Wichtig: Ein Kaloriendefizit ist der entscheidende Faktor für Fettabbau. Supplements können unterstützen, ersetzen aber keine gesunde Ernährung. Protein hilft, die Muskelmasse zu erhalten und sättigt. Omega-3 reduziert Entzündungen, die durch ein Kaloriendefizit entstehen können. Magnesium unterstützt die Muskelentspannung und den Schlaf."
   },
@@ -298,7 +298,7 @@ const stacks = [
     supplements: ["magnesium", "zink", "vitamin-d3-k2"],
     pricePerDay: 0.37,
     category: "schlaf",
-    image: "/assets/icons/stack-schlaf.svg",
+    image: assets/icons/stack-schlaf.svg",
     tools: [],
     notes: "Magnesium und Zink am Abend einnehmen, um die Schlafqualität zu verbessern. Vitamin D3+K2 morgens einnehmen, da es den Cortisolspiegel erhöhen kann. Achte auf eine regelmäßige Schlafenszeit und eine dunkle, kühle Umgebung."
   },
@@ -309,7 +309,7 @@ const stacks = [
     supplements: ["high-protein", "omega-3", "vitamin-d3-k2", "zink"],
     pricePerDay: 1.52,
     category: "vegan",
-    image: "/assets/icons/stack-vegan.svg",
+    image: assets/icons/stack-vegan.svg",
     tools: [],
     notes: "Besonders wichtig: Vitamin B12 (nicht in dieser Liste, da separat zu supplementieren!), Eisen und Jod. Veganer sollten zusätzlich auf eine ausreichende Zufuhr von Vitamin B12 (Cyanocobalamin oder Methylcobalamin), Eisen (am besten mit Vitamin C kombinieren) und Jod (z. B. durch Algen oder jodiertes Salz) achten."
   },
@@ -320,7 +320,7 @@ const stacks = [
     supplements: ["omega-3", "vitamin-d3-k2", "magnesium", "kreatin"],
     pricePerDay: 0.80,
     category: "aging",
-    image: "/assets/icons/stack-aging.svg",
+    image: assets/icons/stack-aging.svg",
     tools: [],
     notes: "Kreatin unterstützt die Muskelmasse und kognitive Funktion im Alter. Omega-3 schützt vor Entzündungen und Herz-Kreislauf-Erkrankungen. Vitamin D3+K2 beugt Osteoporose vor. Magnesium unterstützt die Muskel- und Nervenfunktion."
   }
