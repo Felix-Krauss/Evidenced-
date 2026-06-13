@@ -34,15 +34,8 @@ function initNavbar() {
     
     if (currentScroll <= 0) {
       navbar.classList.remove('shrunk');
-      return;
-    }
-
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      // Scrolling down
-      navbar.classList.add('shrunk');
     } else {
-      // Scrolling up
-      navbar.classList.remove('shrunk');
+      navbar.classList.add('shrunk');
     }
     
     lastScroll = currentScroll;

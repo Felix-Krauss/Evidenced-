@@ -209,7 +209,7 @@ a:hover {
   background: var(--navbar-bg);
   backdrop-filter: none;
   z-index: 100;
-  transition: all var(--transition-base);
+  transition: all 300ms ease;
   padding: 0 var(--space-xl);
   display: flex;
   align-items: center;
@@ -266,6 +266,12 @@ a:hover {
 .menu-icon {
   width: 24px;
   height: 24px;
+  transition: all 300ms ease;
+}
+
+.navbar.shrunk .menu-icon {
+  width: 20px;
+  height: 20px;
 }
 
 /* Pillbox Toggle */
@@ -289,6 +295,12 @@ a:hover {
 .pillbox-icon {
   width: 24px;
   height: 24px;
+  transition: all 300ms ease;
+}
+
+.navbar.shrunk .pillbox-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .pillbox-count {
