@@ -798,6 +798,36 @@ main {
   color: var(--accent-light);
 }
 
+/* Hero Button Fill Effect */
+.btn-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms ease;
+  z-index: -1;
+}
+
+.btn-hero:hover::before {
+  transform: scaleX(1);
+  transform-origin: right center;
+}
+
+.btn-hero:hover .btn-text,
+.btn-hero:hover .btn-arrow {
+  color: var(--bg-primary);
+}
+
 .step-content {
   flex: 1;
 }
