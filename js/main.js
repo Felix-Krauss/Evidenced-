@@ -26,7 +26,52 @@ document.addEventListener('DOMContentLoaded', () => {
   updatePillboxUI();
 });
 
+function initNavbar() {
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      navbar.classList.remove('shrunk');
+      return;
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      // Scrolling down
+      navbar.classList.add('shrunk');
+    } else {
+      // Scrolling up
+      navbar.classList.remove('shrunk');
+    }
+    
+    lastScroll = currentScroll;
+  });
+}
+=======
 // ===== Navbar =====
+function initNavbar() {
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      navbar.classList.remove('shrunk');
+      return;
+    }
+
+    if (currentScroll > 0) {
+      // Any scroll position > 0: add blur effect
+      navbar.classList.add('shrunk');
+    } else {
+      // At top: remove blur effect
+      navbar.classList.remove('shrunk');
+    }
+    
+    lastScroll = currentScroll;
+  });
+}=====
 function initNavbar() {
   let lastScroll = 0;
 
