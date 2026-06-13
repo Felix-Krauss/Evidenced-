@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitamin D3 + K2 – Was die Studien wirklich sagen | Evidenced</title>
+  <meta name="description" content="Vitamin D3 und K2: Wissenschaftlich belegte Wirkung auf Immunsystem, Knochengesundheit und Calciumstoffwechsel. Preis-Leistungs-Vergleich und Empfehlungen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/supplement.css">
+</head>
+<body class="supplement-page">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
+    <div class="pillbox-footer">
+      <div class="total-row">
+        <span>Tageskosten:</span>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="supplement-page">
+    <div class="supplement-container">
+      <div class="supplement-header">
+        <h1 class="supplement-title">Vitamin D3 + K2 – Was die Studien wirklich sagen</h1>
+        
+        <div class="badge-row">
+          <span class="badge badge-basics">Basics</span>
+          <span class="badge badge-strong">Starke Evidenz</span>
+          <span class="badge badge-category">Immunsystem</span>
+          <span class="badge badge-category">Knochen</span>
+          <span class="badge badge-category">Stoffwechsel</span>
+        </div>
+      </div>
+
+      <span class="section-label">Preis-Leistung</span>
+      <div class="supplement-card price-performance">
+        <div class="traffic-light-row">
+          <div class="traffic-light traffic-light-green"></div>
+          <span class="traffic-light-label">Sehr gut</span>
+          <span class="traffic-light-description">— günstig & extrem wirksam</span>
+        </div>
+        <p class="info-text" style="font-size: var(--font-size-sm); margin-top: var(--space-sm);">Hochdosierte D3+K2-Kombis kosten 0,10–0,30 € pro Tag. Einer der günstigsten und am besten erforschten Supplements. K2 (MK-7) ist die bioaktive Form mit längerer Halbwertszeit.</p>
+        <div class="price-grid">
+          <div class="price-box">
+            <div class="price-label">Günstigste Option</div>
+            <div class="price-value">~0,08 €/Tag</div>
+          </div>
+          <div class="price-box">
+            <div class="price-label">Premium Qualität</div>
+            <div class="price-value">~0,25 €/Tag</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">Was wir wissen</span>
+      <div class="supplement-card">
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Vitamin D3 – Immunmodulation</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Vitamin D3 (Cholecalciferol) moduliert das Immunsystem durch Bindung an den Vitamin-D-Rezeptor (VDR) auf Immunzellen. Ein optimaler Spiegel (40–60 ng/ml) reduziert das Risiko für Atemwegsinfektionen und Autoimmunerkrankungen.
+            <div class="study-snippet"><strong>Meta-Analyse (BMJ 2017):</strong> Vitamin D Supplementierung reduziert das Risiko für akute Atemwegsinfektionen um 12% (bei starkem Mangel bis zu 50%).<a href="https://pubmed.ncbi.nlm.nih.gov/28202725/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Knochengesundheit & Frakturrisiko</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Vitamin D3 verbessert die Calciumaufnahme im Darm und unterstützt die Mineralisierung der Knochen. K2 (Menaquinon) aktiviert Osteocalcin, das Calcium in die Knochenmatrix einbaut und gleichzeitig die Verkalkung von Weichgewebe verhindert.
+            <div class="study-snippet"><strong>Meta-Analyse (NEJM 2012):</strong> Vitamin D3 + Calcium reduziert das Risiko für Hüftfrakturen um 16% und andere Frakturen um 8% bei älteren Erwachsenen.<a href="https://pubmed.ncbi.nlm.nih.gov/22217315/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Stimmungsaufhellung & Depression</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Vitamin D3-Rezeptoren finden sich in hohen Konzentrationen im Gehirn, insbesondere im limbischen System. Ein Mangel korreliert mit einem erhöhten Risiko für Depressionen und saisonale affektive Störungen (Winterdepression).
+            <div class="study-snippet"><strong>Meta-Analyse (BMC Psychiatry 2013):</strong> Vitamin D Supplementierung zeigt moderate Effekte bei der Verbesserung depressiver Symptome.<a href="https://pubmed.ncbi.nlm.nih.gov/23566125/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Muskelfunktion & Kraft</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Vitamin D3-Rezeptoren sind auf Muskelzellen exprimiert. Ein optimaler Vitamin-D-Spiegel verbessert die Muskelproteinsynthese, die neuromuskuläre Funktion und reduziert das Sturzrisiko bei älteren Erwachsenen.
+            <div class="study-snippet"><strong>Studie (JCSM 2015):</strong> Vitamin D Supplementierung verbessert die Muskelkraft bei älteren Erwachsenen mit Mangel um 10–20%.<a href="https://pubmed.ncbi.nlm.nih.gov/25581956/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>K2 – Kardiovaskuläre Gesundheit</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Vitamin K2 (insbesondere MK-7) aktiviert Matrix-Gla-Protein (MGP), das die Verkalkung von Blutgefäßen und Herzklappen verhindert. Dies ist besonders relevant bei hoher Vitamin-D-Zufuhr, da D3 die Calciumaufnahme erhöht.
+            <div class="study-snippet"><strong>Rotterdam-Studie (2004):</strong> Hohe K2-Zufuhr korreliert mit einem um 50% reduzierten Risiko für arterielle Verkalkung und kardiovaskuläre Mortalität.<a href="https://pubmed.ncbi.nlm.nih.gov/15039023/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-hint">Klick auf jeden Punkt für Studiendetails · Punkte = Stärke der Evidenz</div>
+      </div>
+
+      <span class="section-label">Was wichtig ist</span>
+      <div class="supplement-card info-section">
+        <h2 class="info-title">D3 + K2 – Das perfekte Duo</h2>
+        <p class="info-text">Vitamin D3 erhöht die Calciumaufnahme im Darm. Vitamin K2 sorgt dafür, dass das Calcium auch tatsächlich in die Knochen eingebaut wird und nicht in den Arterien abgelagert wird. Beide zusammen sind synergistisch wirksam.</p>
+        
+        <h2 class="info-title">Optimale Dosierung</h2>
+        <p class="info-text">Für die meisten Menschen: <strong>2000–5000 IE Vitamin D3 täglich</strong> (je nach Ausgangsspiegel). Vitamin K2 (MK-7): <strong>100–200 µg täglich</strong>. Bei sehr hohem D3-Bedarf (z.B. bei starkem Mangel) kann die K2-Dosis auf 200–400 µg erhöht werden.</p>
+        
+        <h2 class="info-title">Blutspiegel checken</h2>
+        <p class="info-text">Ein Vitamin-D-Test (25(OH)D) gibt Aufschluss über den aktuellen Status. Optimal: 40–60 ng/ml (100–150 nmol/l). Werte unter 20 ng/ml gelten als Mangel. In Deutschland haben ca. 60% der Bevölkerung einen suboptimalen Vitamin-D-Spiegel.</p>
+      </div>
+
+      <hr class="divider">
+
+      <span class="section-label">Meine Preis-Leistungs-Empfehlungen</span>
+      <div class="products-section">
+        <div id="supp-products"></div>
+      </div>
+
+      <span class="section-label">Wie und wann</span>
+      <div class="how-to-box">
+        <div class="how-to-title"><span>⏱️</span> Einnahme-Details</div>
+        <p class="how-to-text">Vitamin D3 ist fettlöslich – am besten zu einer fetthaltigen Mahlzeit einnehmen. K2 (MK-7) hat eine lange Halbwertszeit, daher reicht eine einmalige tägliche Einnahme. Morgens oder abends spielt keine Rolle.</p>
+      </div>
+
+      <span class="section-label">Nerd-Tiefe</span>
+      <div class="nerd-box">
+        Vitamin D3 wird in der Haut unter UVB-Strahlung aus 7-Dehydrocholesterol synthetisiert. Bei ausreichender Sonneneinstrahlung (UV-Index > 3, 15–20 Minuten mittags, 40% der Körperoberfläche unbedeckt) kann der Körper ca. 10.000–20.000 IE pro Tag produzieren. In nordeuropäischen Breitengraden reicht die UVB-Strahlung von Oktober bis März nicht aus, um ausreichend Vitamin D zu synthetisieren. Vitamin K2 (Menaquinon) wird von Bakterien in fermentierten Lebensmitteln (z.B. Natto) produziert und hat eine deutlich längere Halbwertszeit als K1 (Phyllochinon), das hauptsächlich in grünem Gemüse vorkommt.
+      </div>
+
+      <span class="section-label">Studiengrundlage</span>
+      <div class="supplement-card studies-list">
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Vitamin D & Atemwegsinfektionen Meta-Analyse (BMJ 2017)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/28202725/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Vitamin D + Calcium & Frakturrisiko (NEJM 2012)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/22217315/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Vitamin D & Depression Meta-Analyse (BMC Psychiatry 2013)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/23566125/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Vitamin D & Muskelkraft (JCSM 2015)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/25581956/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Vitamin K2 & kardiovaskuläre Gesundheit (Rotterdam-Studie 2004)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/15039023/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Product data for Vitamin D3 + K2
+    const vitaminD3K2Products = [
+      {
+        name: "Nature Made Vitamin D3 + K2",
+        d3: 2000, k2: 100, caps: 1, price: 14.99, servings: 120,
+        type: "Kapseln",
+        rec: "best",
+        recLabel: "Beste Preis-Leistung",
+        comment: "Günstigste Option mit guter Bioverfügbarkeit. 2000 IE D3 + 100 µg K2 pro Kapsel.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_NATUREMADE?tag=evidenced-21"
+      },
+      {
+        name: "Sports & Health Vitamin D3 + K2 Tropfen",
+        d3: 1000, k2: 100, caps: 1, price: 19.99, servings: 365,
+        type: "Tropfen (MCT-Öl)",
+        rec: "mid",
+        recLabel: "Flexible Dosierung",
+        comment: "Flüssige Form für individuelle Dosierung. 1 Tropfen = 1000 IE D3 + 100 µg K2.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_SPORTSHEALTH?tag=evidenced-21"
+      },
+      {
+        name: "MyProtein Vitamin D3 + K2 Vegan",
+        d3: 2500, k2: 200, caps: 1, price: 22.99, servings: 90,
+        type: "Vegan (D3 aus Flechten)",
+        rec: "vegan",
+        recLabel: "Vegane Option",
+        comment: "Pflanzliches D3 aus Flechten + K2 (MK-7). Ideal für Veganer.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_MYPROTEIN?tag=evidenced-21"
+      }
+    ];
+
+    let activeProduct = 0;
+
+    function renderProducts() {
+      const p = vitaminD3K2Products[activeProduct];
+      const pricePerNum = (p.price / p.servings);
+      const pricePer = pricePerNum.toFixed(2).replace('.', ',') + " €";
+      const recClass = p.rec === 'best' ? 'rec-best' : p.rec === 'vegan' ? 'rec-vegan' : 'rec-mid';
+      
+      let nav = '<div class="product-nav">';
+      vitaminD3K2Products.forEach((_, i) => {
+        nav += `<button class="product-nav-button ${i===activeProduct?'active':''}" onclick="setProduct(${i})">${i+1}</button>`;
+      });
+      nav += '</div>';
+      
+      document.getElementById('supp-products').innerHTML = nav + `
+      <div class="product-card">
+        <div class="product-header">
+          <div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-badges">
+              <span class="product-type">${p.type}</span>
+              <span class="recommendation-badge ${recClass}">${p.recLabel}</span>
+            </div>
+          </div>
+        </div>
+        <p class="product-comment">${p.comment}</p>
+        <div class="product-specs">
+          <div class="spec-box">
+            <div class="spec-label">Vitamin D3 / Portion</div>
+            <div class="spec-value">${p.d3} IE</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Vitamin K2 / Portion</div>
+            <div class="spec-value">${p.k2} µg</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Kosten / Portion</div>
+            <div class="spec-value">${pricePer}</div>
+          </div>
+        </div>
+        <div class="product-details">${p.servings} Portionen gesamt · ${p.caps} Kapsel(n)/Tropfen pro Portion</div>
+        
+        <div class="action-buttons">
+          <button onclick="addToPillboxFromPage('${p.name}', ${pricePerNum}, '${p.link}')" class="btn-pillbox">+ In die Pillenbox</button>
+          <a href="${p.link}" target="_blank" rel="sponsored" class="btn-amazon">Amazon →</a>
+        </div>
+      </div>`;
+    }
+
+    function setProduct(i) {
+      activeProduct = i;
+      renderProducts();
+    }
+
+    function addToPillboxFromPage(name, dailyPrice, link) {
+      // Check if already in pillbox
+      const existingIndex = pillbox.findIndex(item => item.name === name);
+      
+      if (existingIndex >= 0) {
+        pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+      } else {
+        pillbox.push({
+          id: name.toLowerCase().replace(/\s+/g, '-'),
+          name: name,
+          price: (dailyPrice).toFixed(2).replace('.', ',') + ' €',
+          dailyPrice: dailyPrice,
+          icon: 'assets/icons/vitamin-d.svg',
+          quantity: 1,
+          link: link
+        });
+      }
+      
+      savePillbox();
+      updatePillboxUI();
+      showNotification(`${name} zur Pillenbox hinzugefügt`);
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zink – Was die Studien wirklich sagen | Evidenced</title>
+  <meta name="description" content="Zink: Wissenschaftlich belegte Wirkung auf Immunsystem, Wundheilung und Testosteronproduktion. Preis-Leistungs-Vergleich und Empfehlungen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/supplement.css">
+</head>
+<body class="supplement-page">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
+    <div class="pillbox-footer">
+      <div class="total-row">
+        <span>Tageskosten:</span>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="supplement-page">
+    <div class="supplement-container">
+      <div class="supplement-header">
+        <h1 class="supplement-title">Zink – Was die Studien wirklich sagen</h1>
+        
+        <div class="badge-row">
+          <span class="badge badge-basics">Basics</span>
+          <span class="badge badge-strong">Starke Evidenz</span>
+          <span class="badge badge-category">Immunsystem</span>
+          <span class="badge badge-category">Haut & Haare</span>
+          <span class="badge badge-category">Testosteron</span>
+        </div>
+      </div>
+
+      <span class="section-label">Preis-Leistung</span>
+      <div class="supplement-card price-performance">
+        <div class="traffic-light-row">
+          <div class="traffic-light traffic-light-green"></div>
+          <span class="traffic-light-label">Sehr gut</span>
+          <span class="traffic-light-description">— günstig & extrem wirksam</span>
+        </div>
+        <p class="info-text" style="font-size: var(--font-size-sm); margin-top: var(--space-sm);">Zinkpräparate sind sehr preiswert. Hochwertiges Zinkbisglycinat oder -citrat kostet 0,05–0,20 € pro Tag. Zinkoxid ist günstiger, aber schlechter bioverfügbar. Achte auf die elementare Zinkmenge, nicht auf die Verbindung.</p>
+        <div class="price-grid">
+          <div class="price-box">
+            <div class="price-label">Günstigste Option</div>
+            <div class="price-value">~0,05 €/Tag</div>
+          </div>
+          <div class="price-box">
+            <div class="price-label">Premium Qualität</div>
+            <div class="price-value">~0,15 €/Tag</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">Was wir wissen</span>
+      <div class="supplement-card">
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Immunfunktion stärken</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Zink ist essentiell für die Funktion des Immunsystems. Es wird für die Entwicklung und Funktion von Immunzellen (T-Zellen, B-Zellen, NK-Zellen) benötigt. Ein Zinkmangel führt zu einer schweren Immunschwäche. Zink hat auch antivirale Eigenschaften und kann die Dauer von Erkältungen verkürzen.
+            <div class="study-snippet"><strong>Meta-Analyse (BMJ Open 2021):</strong> Zink Supplementierung (15–30 mg/Tag) reduziert die Dauer von Erkältungen um durchschnittlich 33% und die Inzidenz um 15–30%.<a href="https://pubmed.ncbi.nlm.nih.gov/33722861/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Wundheilung beschleunigen</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Zink ist ein Kofaktor für die Kollagensynthese und die Zellteilung. Es spielt eine zentrale Rolle in allen Phasen der Wundheilung: Entzündungsphase, Proliferationsphase und Remodeling-Phase. Ein Zinkmangel verzögert die Wundheilung deutlich.
+            <div class="study-snippet"><strong>Systematischer Review (Wound Repair Regen 2018):</strong> Zink Supplementierung beschleunigt die Heilung von chronischen Wunden und Dekubitus um bis zu 40%.<a href="https://pubmed.ncbi.nlm.nih.gov/29473249/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Testosteronproduktion unterstützen</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Zink ist essentiell für die Testosteronsynthese in den Leydig-Zellen der Hoden. Ein Zinkmangel führt zu einem signifikanten Abfall des Testosteronspiegels. Zink hemmt auch die Aromatase-Aktivität, die Testosteron in Östrogen umwandelt.
+            <div class="study-snippet"><strong>Studie (Nutrition 1996):</strong> Zink Supplementierung (30 mg/Tag) erhöhte den Testosteronspiegel bei Zinkmangel-Patienten von 8,3 auf 16,0 nmol/l innerhalb von 6 Monaten.<a href="https://pubmed.ncbi.nlm.nih.gov/8875519/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Antioxidative Wirkung</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Zink ist ein wichtiger Bestandteil der Superoxid-Dismutase (SOD), eines der wichtigsten antioxidativen Enzyme des Körpers. Es schützt Zellen vor oxidativem Stress und DNA-Schäden. Zink hat auch entzündungshemmende Eigenschaften.
+            <div class="study-snippet"><strong>Studie (J Trace Elem Med Biol 2014):</strong> Zink Supplementierung reduziert oxidative DNA-Schäden und Entzündungsmarker (CRP, IL-6) signifikant.<a href="https://pubmed.ncbi.nlm.nih.gov/24491991/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Kognitive Funktion & Stimmung</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Zink ist in hohen Konzentrationen im Gehirn vorhanden, insbesondere im Hippocampus. Es spielt eine Rolle bei der Neurotransmission (Glutamat, GABA) und der synaptischen Plastizität. Ein Zinkmangel kann zu kognitiven Beeinträchtigungen, Depressionen und ADHS-Symptomen führen.
+            <div class="study-snippet"><strong>Meta-Analyse (Nutrients 2019):</strong> Zink Supplementierung zeigt moderate Effekte bei der Verbesserung der kognitiven Funktion und Reduktion von Depressionssymptomen.<a href="https://pubmed.ncbi.nlm.nih.gov/31547422/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-hint">Klick auf jeden Punkt für Studiendetails · Punkte = Stärke der Evidenz</div>
+      </div>
+
+      <span class="section-label">Was wichtig ist</span>
+      <div class="supplement-card info-section">
+        <h2 class="info-title">Bioverfügbarkeit & Formen</h2>
+        <p class="info-text">Nicht alle Zinkverbindungen sind gleich bioverfügbar. <strong>Zinkbisglycinat</strong> und <strong>Zinkcitrat</strong> haben die beste Bioverfügbarkeit (ca. 40–60%). <strong>Zinkpicolinat</strong> ist ebenfalls gut bioverfügbar. <strong>Zinkoxid</strong> und <strong>Zinksulfat</strong> sind günstiger, aber nur zu ca. 15–25% bioverfügbar.</p>
+        
+        <h2 class="info-title">Dosierung & Timing</h2>
+        <p class="info-text">Für die meisten Anwendungen: <strong>15–30 mg elementares Zink täglich</strong>. Für Immunsupport: <strong>30–50 mg/Tag</strong> (kurzfristig). Für Sportler: <strong>25–40 mg/Tag</strong>. Die tolerierbare Obergrenze liegt bei 40 mg/Tag (EFSA). <strong>Nicht dauerhaft über 50 mg/Tag</strong>, da dies zu einem Kupfermangel führen kann.</p>
+        
+        <h2 class="info-title">Wechselwirkungen & Timing</h2>
+        <p class="info-text">Zink konkurriert mit Kupfer, Eisen und Calcium um die Aufnahme im Darm. Daher sollte Zink <strong>mindestens 2 Stunden vor oder nach</strong> Eisen- oder Calciumsupplementen eingenommen werden. Bei langfristiger hoher Zinkzufuhr (>50 mg/Tag) sollte <strong>Kupfer supplementiert werden</strong> (1–2 mg/Tag).</p>
+      </div>
+
+      <hr class="divider">
+
+      <span class="section-label">Meine Preis-Leistungs-Empfehlungen</span>
+      <div class="products-section">
+        <div id="supp-products"></div>
+      </div>
+
+      <span class="section-label">Wie und wann</span>
+      <div class="how-to-box">
+        <div class="how-to-title"><span>⏱️</span> Einnahme-Details</div>
+        <p class="how-to-text">Zink kann zu oder zwischen den Mahlzeiten eingenommen werden. Für bessere Bioverfügbarkeit: <strong>Abends oder morgens nüchtern</strong> mit Wasser. Nicht mit Milchprodukten oder calciumreichen Lebensmitteln kombinieren. Bei empfindlichem Magen: Zu einer Mahlzeit einnehmen.</p>
+      </div>
+
+      <span class="section-label">Nerd-Tiefe</span>
+      <div class="nerd-box">
+        Zink ist ein essentielles Spurenelement, das als Kofaktor für über 300 Enzyme fungiert. Es ist in allen Organen und Geweben vorhanden, mit den höchsten Konzentrationen in der Prostata, den Hoden, der Leber, den Haaren und der Haut. Zink ist an fast allen Stoffwechselprozessen beteiligt: DNA-Synthese, RNA-Synthese, Proteinsynthese, Zellteilung, Immunfunktion, Wundheilung, Geruchs- und Geschmackswahrnehmung. Zink wird über den Darm aufgenommen (hauptsächlich im Duodenum und Jejunum) und über den Urin, Stuhl und Schweiß ausgeschieden. Der Körper enthält etwa 2–3 g Zink, wovon etwa 0,1% im Blutplasma zirkuliert. Daher ist ein Serum-Zink-Test nicht aussagekräftig für den Zinkstatus.
+      </div>
+
+      <span class="section-label">Studiengrundlage</span>
+      <div class="supplement-card studies-list">
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Zink & Immunfunktion Meta-Analyse (BMJ Open 2021)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/33722861/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Zink & Wundheilung (Wound Repair Regen 2018)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/29473249/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Zink & Testosteron (Nutrition 1996)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/8875519/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Zink & antioxidative Wirkung (J Trace Elem Med Biol 2014)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/24491991/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Zink & kognitive Funktion (Nutrients 2019)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/31547422/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Product data for Zink
+    const zinkProducts = [
+      {
+        name: "Bulk Zinkbisglycinat",
+        zink: 25, form: "Bisglycinat", caps: 1, price: 12.99, servings: 120,
+        type: "Kapseln",
+        rec: "best",
+        recLabel: "Beste Preis-Leistung",
+        comment: "Hochwertiges Zinkbisglycinat-Chelat. 25 mg elementares Zink pro Kapsel. Beste Bioverfügbarkeit.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_BULK_ZINK?tag=evidenced-21"
+      },
+      {
+        name: "Zink + Kupfer Komplex",
+        zink: 30, form: "Citrat", copper: 2, caps: 1, price: 18.99, servings: 60,
+        type: "Kapseln",
+        rec: "mid",
+        recLabel: "Mit Kupfer",
+        comment: "Zinkcitrat + Kupfer für langfristige Einnahme. 30 mg Zink + 2 mg Kupfer pro Kapsel. Verhindert Kupfermangel.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_ZINK_KUPFER?tag=evidenced-21"
+      },
+      {
+        name: "Zink Lutschtabletten",
+        zink: 15, form: "Gluconat", caps: 1, price: 9.99, servings: 100,
+        type: "Lutschtabletten",
+        rec: "vegan",
+        recLabel: "Für Immunsupport",
+        comment: "Zinkgluconat-Lutschtabletten für lokale Wirkung im Rachenraum. Ideal bei ersten Erkältungsanzeichen.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_ZINK_LUTSCH?tag=evidenced-21"
+      }
+    ];
+
+    let activeProduct = 0;
+
+    function renderProducts() {
+      const p = zinkProducts[activeProduct];
+      const pricePerNum = (p.price / p.servings);
+      const pricePer = pricePerNum.toFixed(2).replace('.', ',') + " €";
+      const recClass = p.rec === 'best' ? 'rec-best' : p.rec === 'vegan' ? 'rec-vegan' : 'rec-mid';
+      
+      let nav = '<div class="product-nav">';
+      zinkProducts.forEach((_, i) => {
+        nav += `<button class="product-nav-button ${i===activeProduct?'active':''}" onclick="setProduct(${i})">${i+1}</button>`;
+      });
+      nav += '</div>';
+      
+      let copperInfo = '';
+      if (p.copper) {
+        copperInfo = ` + ${p.copper} mg Kupfer`;
+      }
+      
+      document.getElementById('supp-products').innerHTML = nav + `
+      <div class="product-card">
+        <div class="product-header">
+          <div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-badges">
+              <span class="product-type">${p.type} (${p.form})</span>
+              <span class="recommendation-badge ${recClass}">${p.recLabel}</span>
+            </div>
+          </div>
+        </div>
+        <p class="product-comment">${p.comment}</p>
+        <div class="product-specs">
+          <div class="spec-box">
+            <div class="spec-label">Zink / Portion</div>
+            <div class="spec-value">${p.zink} mg${copperInfo}</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Form</div>
+            <div class="spec-value">${p.form}</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Kosten / Portion</div>
+            <div class="spec-value">${pricePer}</div>
+          </div>
+        </div>
+        <div class="product-details">${p.servings} Portionen gesamt · ${p.caps} Kapsel(n)/Tablette(n) pro Portion</div>
+        
+        <div class="action-buttons">
+          <button onclick="addToPillboxFromPage('${p.name}', ${pricePerNum}, '${p.link}')" class="btn-pillbox">+ In die Pillenbox</button>
+          <a href="${p.link}" target="_blank" rel="sponsored" class="btn-amazon">Amazon →</a>
+        </div>
+      </div>`;
+    }
+
+    function setProduct(i) {
+      activeProduct = i;
+      renderProducts();
+    }
+
+    function addToPillboxFromPage(name, dailyPrice, link) {
+      // Check if already in pillbox
+      const existingIndex = pillbox.findIndex(item => item.name === name);
+      
+      if (existingIndex >= 0) {
+        pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+      } else {
+        pillbox.push({
+          id: name.toLowerCase().replace(/\s+/g, '-'),
+          name: name,
+          price: (dailyPrice).toFixed(2).replace('.', ',') + ' €',
+          dailyPrice: dailyPrice,
+          icon: 'assets/icons/zink.svg',
+          quantity: 1,
+          link: link
+        });
+      }
+      
+      savePillbox();
+      updatePillboxUI();
+      showNotification(`${name} zur Pillenbox hinzugefügt`);
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>

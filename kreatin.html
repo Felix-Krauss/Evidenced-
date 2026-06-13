@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kreatin – Was die Studien wirklich sagen | Evidenced</title>
+  <meta name="description" content="Kreatin: Wissenschaftlich belegte Wirkung auf Kraft, Muskelaufbau und kognitive Funktion. Preis-Leistungs-Vergleich und Empfehlungen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/supplement.css">
+</head>
+<body class="supplement-page">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
+    <div class="pillbox-footer">
+      <div class="total-row">
+        <span>Tageskosten:</span>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="supplement-page">
+    <div class="supplement-container">
+      <div class="supplement-header">
+        <h1 class="supplement-title">Kreatin – Was die Studien wirklich sagen</h1>
+        
+        <div class="badge-row">
+          <span class="badge badge-basics">Basics</span>
+          <span class="badge badge-strong">Starke Evidenz</span>
+          <span class="badge badge-category">Kraft & Muskelaufbau</span>
+          <span class="badge badge-category">Ausdauer</span>
+          <span class="badge badge-category">Gehirn</span>
+        </div>
+      </div>
+
+      <span class="section-label">Preis-Leistung</span>
+      <div class="supplement-card price-performance">
+        <div class="traffic-light-row">
+          <div class="traffic-light traffic-light-green"></div>
+          <span class="traffic-light-label">Sehr gut</span>
+          <span class="traffic-light-description">— extrem günstig & extrem wirksam</span>
+        </div>
+        <p class="info-text" style="font-size: var(--font-size-sm); margin-top: var(--space-sm);">Kreatin ist eines der günstigsten und am besten erforschten Supplements überhaupt. Kreatin-Monohydrat kostet 0,10–0,30 € pro Tag. Es gibt keine bessere oder schlechtere Form – Kreatin-Monohydrat ist der Goldstandard.</p>
+        <div class="price-grid">
+          <div class="price-box">
+            <div class="price-label">Günstigste Option</div>
+            <div class="price-value">~0,10 €/Tag</div>
+          </div>
+          <div class="price-box">
+            <div class="price-label">Premium Qualität</div>
+            <div class="price-value">~0,25 €/Tag</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">Was wir wissen</span>
+      <div class="supplement-card">
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Kraftsteigerung & Muskelaufbau</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Kreatin erhöht die intramuskulären Kreatinphosphat-Speicher, was die ATP-Resynthese während intensiver Belastung beschleunigt. Dies ermöglicht mehr Wiederholungen, höhere Gewichte und damit einen stärkeren Muskelaufbau-Reiz. Die Kraftsteigerung beträgt durchschnittlich 5–15%.
+            <div class="study-snippet"><strong>Meta-Analyse (JISSN 2012):</strong> Kreatin Supplementierung erhöht die Maximalkraft um 8%, die Wiederholungsleistung um 14% und die fettfreie Körpermasse um 1,4 kg in 4–12 Wochen.<a href="https://pubmed.ncbi.nlm.nih.gov/22270852/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Schnellkraft & Sprintleistung</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Kreatin verbessert die Leistung bei hochintensiven, kurzen Belastungen (Sprints, Sprünge, Wurfdisziplinen) durch die schnellere Regeneration des ATP-Speichers. Besonders wirksam bei wiederholten Sprints mit kurzen Pausen.
+            <div class="study-snippet"><strong>Meta-Analyse (Sports Med 2017):</strong> Kreatin verbessert die Sprintleistung (10–40 m) um 1–5% und die Sprungleistung um 5–15%.<a href="https://pubmed.ncbi.nlm.nih.gov/28168850/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Muskelmasse erhöhen</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Kreatin führt zu einer erhöhten Wassereinlagerung in den Muskelzellen (intrazelluläre Hydration), was das Muskelvolumen kurzfristig erhöht. Langfristig fördert Kreatin den Muskelaufbau durch erhöhte Trainingsleistung und Stimulation der Muskelproteinsynthese.
+            <div class="study-snippet"><strong>Meta-Analyse (JISSN 2012):</strong> Kreatin Supplementierung führt zu einem durchschnittlichen Muskelmassezuwachs von 1,0–2,0 kg in 4–12 Wochen (bei gleichzeitigem Krafttraining).<a href="https://pubmed.ncbi.nlm.nih.gov/22270852/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Kognitive Funktion verbessern</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Kreatin ist nicht nur für die Muskeln, sondern auch für das Gehirn wichtig. Es verbessert die kognitive Funktion, das Gedächtnis und die mentale Ermüdungsresistenz. Besonders wirksam bei Schlafmangel, Stress oder vegetarischer/veganer Ernährung.
+            <div class="study-snippet"><strong>Studie (Psychopharmacology 2003):</strong> Kreatin Supplementierung (5 g/Tag) verbesserte das Arbeitsgedächtnis und die Intelligenzleistung bei gesunden Erwachsenen signifikant.<a href="https://pubmed.ncbi.nlm.nih.gov/12774264/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Neuroprotektion & Langlebigkeit</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Kreatin hat neuroprotektive Eigenschaften und kann das Risiko für neurodegenerative Erkrankungen (Parkinson, Alzheimer, ALS) reduzieren. Es wirkt antioxidativ, stabilisiert die mitochondriale Funktion und reduziert oxidativen Stress im Gehirn.
+            <div class="study-snippet"><strong>Tierstudie (J Neurosci 2006):</strong> Kreatin Supplementierung schützte vor neurodegenerativen Schäden in Tiermodellen für Parkinson und Huntington.<a href="https://pubmed.ncbi.nlm.nih.gov/16540578/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-hint">Klick auf jeden Punkt für Studiendetails · Punkte = Stärke der Evidenz</div>
+      </div>
+
+      <span class="section-label">Was wichtig ist</span>
+      <div class="supplement-card info-section">
+        <h2 class="info-title">Kreatin-Monohydrat ist der Goldstandard</h2>
+        <p class="info-text">Es gibt zahlreiche Kreatin-Formen auf dem Markt (Kreatin-Ethyl-Ester, Kreatin-HCl, gepuffertes Kreatin, flüssiges Kreatin). <strong>Keine davon ist besser wirksam als Kreatin-Monohydrat</strong>. Kreatin-Monohydrat ist am besten erforscht, am günstigsten und am wirksamsten. Alle anderen Formen sind Marketing-Hype.</p>
+        
+        <h2 class="info-title">Ladephase – ja oder nein?</h2>
+        <p class="info-text">Die klassische Ladephase (20 g/Tag für 5–7 Tage) beschleunigt die Sättigung der Muskel-speicher. <strong>Aber: Ohne Ladephase dauert es einfach 3–4 Wochen länger, bis die Speicher voll sind.</strong> Langfristig macht es keinen Unterschied. Für die meisten Menschen reicht: <strong>3–5 g/Tag</strong> dauerhaft.</p>
+        
+        <h2 class="info-title">Wann einnehmen?</h2>
+        <p class="info-text">Der beste Zeitpunkt für die Kreatin-Einnahme ist... <strong>egal</strong>. Die wichtigste Regel: <strong>Täglich und konsequent</strong>. Studien zeigen, dass es keinen Unterschied macht, ob man Kreatin morgens, abends, vor oder nach dem Training einnimmt. Hauptsache, man nimmt es regelmäßig.</p>
+      </div>
+
+      <hr class="divider">
+
+      <span class="section-label">Meine Preis-Leistungs-Empfehlungen</span>
+      <div class="products-section">
+        <div id="supp-products"></div>
+      </div>
+
+      <span class="section-label">Wie und wann</span>
+      <div class="how-to-box">
+        <div class="how-to-title"><span>⏱️</span> Einnahme-Details</div>
+        <p class="how-to-text">Kreatin-Monohydrat löst sich am besten in warmer Flüssigkeit. Einfach <strong>3–5 g in Wasser oder Saft auflösen und trinken</strong>. Kein Timing nötig – Hauptsache täglich. Bei Ladephase: 20 g/Tag (aufgeteilt auf 4 × 5 g) für 5–7 Tage, dann 3–5 g/Tag zur Erhaltung.</p>
+      </div>
+
+      <span class="section-label">Nerd-Tiefe</span>
+      <div class="nerd-box">
+        Kreatin ist eine natürlich vorkommende Substanz, die hauptsächlich in der Leber, den Nieren und der Bauchspeicheldrüse aus den Aminosäuren Arginin, Glycin und Methionin synthetisiert wird. Etwa 95% des Kreatins im Körper befindet sich in der Skelettmuskulatur, wo es als Kreatinphosphat gespeichert wird. Kreatinphosphat dient als schneller Energielieferant für die ATP-Resynthese während der ersten 5–10 Sekunden maximaler Belastung. Der Körper produziert täglich etwa 1–2 g Kreatin endogen und nimmt zusätzlich 1–2 g über die Nahrung (Fleisch, Fisch) auf. Vegetarier und Veganer haben daher niedrigere Kreatinspeicher. Die maximale Speicherkapazität der Muskeln beträgt etwa 120–160 mmol/kg Trockenmasse. Eine Supplementierung mit 3–5 g/Tag sättigt diese Speicher innerhalb von 4 Wochen.
+      </div>
+
+      <span class="section-label">Studiengrundlage</span>
+      <div class="supplement-card studies-list">
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Kreatin & Kraft/Muskelaufbau Meta-Analyse (JISSN 2012)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/22270852/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Kreatin & Sprintleistung Meta-Analyse (Sports Med 2017)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/28168850/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Kreatin & kognitive Funktion (Psychopharmacology 2003)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/12774264/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Kreatin & Neuroprotektion (J Neurosci 2006)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/16540578/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Kreatin-Monohydrat vs. andere Formen (JISSN 2021)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/33406452/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Product data for Kreatin
+    const kreatinProducts = [
+      {
+        name: "Bulk Kreatin Monohydrat",
+        amount: 5000, form: "Monohydrat", servings: 100, price: 19.99,
+        type: "Pulver",
+        rec: "best",
+        recLabel: "Beste Preis-Leistung",
+        comment: "Reines Kreatin-Monohydrat-Pulver. 5 g pro Portion. Keine Zusätze, beste Qualität.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_BULK_KREATIN?tag=evidenced-21"
+      },
+      {
+        name: "MyProtein Kreatin Monohydrat",
+        amount: 5000, form: "Monohydrat", servings: 100, price: 22.99, servings: 100,
+        type: "Pulver",
+        rec: "mid",
+        recLabel: "Markenqualität",
+        comment: "Kreatin-Monohydrat von MyProtein. 5 g pro Portion. Gute Alternative mit Markenqualität.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_MYPROTEIN_KREATIN?tag=evidenced-21"
+      },
+      {
+        name: "Kreatin Kapseln",
+        amount: 5000, form: "Monohydrat", caps: 5, price: 24.99, servings: 50,
+        type: "Kapseln",
+        rec: "vegan",
+        recLabel: "Für unterwegs",
+        comment: "Kreatin-Monohydrat in Kapselform. 5 g pro Tagesdosis (5 Kapseln). Praktisch für unterwegs.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_KREATIN_KAPSELN?tag=evidenced-21"
+      }
+    ];
+
+    let activeProduct = 0;
+
+    function renderProducts() {
+      const p = kreatinProducts[activeProduct];
+      const pricePerNum = (p.price / p.servings);
+      const pricePer = pricePerNum.toFixed(2).replace('.', ',') + " €";
+      const recClass = p.rec === 'best' ? 'rec-best' : p.rec === 'vegan' ? 'rec-vegan' : 'rec-mid';
+      
+      let nav = '<div class="product-nav">';
+      kreatinProducts.forEach((_, i) => {
+        nav += `<button class="product-nav-button ${i===activeProduct?'active':''}" onclick="setProduct(${i})">${i+1}</button>`;
+      });
+      nav += '</div>';
+      
+      document.getElementById('supp-products').innerHTML = nav + `
+      <div class="product-card">
+        <div class="product-header">
+          <div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-badges">
+              <span class="product-type">${p.type} (${p.form})</span>
+              <span class="recommendation-badge ${recClass}">${p.recLabel}</span>
+            </div>
+          </div>
+        </div>
+        <p class="product-comment">${p.comment}</p>
+        <div class="product-specs">
+          <div class="spec-box">
+            <div class="spec-label">Kreatin / Portion</div>
+            <div class="spec-value">${p.amount} mg</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Form</div>
+            <div class="spec-value">${p.form}</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Kosten / Portion</div>
+            <div class="spec-value">${pricePer}</div>
+          </div>
+        </div>
+        <div class="product-details">${p.servings} Portionen gesamt · ${p.caps || 1} Portion(en) pro Tag</div>
+        
+        <div class="action-buttons">
+          <button onclick="addToPillboxFromPage('${p.name}', ${pricePerNum}, '${p.link}')" class="btn-pillbox">+ In die Pillenbox</button>
+          <a href="${p.link}" target="_blank" rel="sponsored" class="btn-amazon">Amazon →</a>
+        </div>
+      </div>`;
+    }
+
+    function setProduct(i) {
+      activeProduct = i;
+      renderProducts();
+    }
+
+    function addToPillboxFromPage(name, dailyPrice, link) {
+      // Check if already in pillbox
+      const existingIndex = pillbox.findIndex(item => item.name === name);
+      
+      if (existingIndex >= 0) {
+        pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+      } else {
+        pillbox.push({
+          id: name.toLowerCase().replace(/\s+/g, '-'),
+          name: name,
+          price: (dailyPrice).toFixed(2).replace('.', ',') + ' €',
+          dailyPrice: dailyPrice,
+          icon: 'assets/icons/kreatin.svg',
+          quantity: 1,
+          link: link
+        });
+      }
+      
+      savePillbox();
+      updatePillboxUI();
+      showNotification(`${name} zur Pillenbox hinzugefügt`);
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multivitamin – Was die Studien wirklich sagen | Evidenced</title>
+  <meta name="description" content="Multivitamin: Wissenschaftlich belegte Wirkung auf Mikronährstoffversorgung und Gesundheit. Preis-Leistungs-Vergleich und Empfehlungen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/supplement.css">
+</head>
+<body class="supplement-page">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
+    <div class="pillbox-footer">
+      <div class="total-row">
+        <span>Tageskosten:</span>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="supplement-page">
+    <div class="supplement-container">
+      <div class="supplement-header">
+        <h1 class="supplement-title">Multivitamin – Was die Studien wirklich sagen</h1>
+        
+        <div class="badge-row">
+          <span class="badge badge-basics">Basics</span>
+          <span class="badge badge-medium">Mittlere Evidenz</span>
+          <span class="badge badge-category">Mikronährstoffe</span>
+          <span class="badge badge-category">Prävention</span>
+          <span class="badge badge-category">Allgemeingesundheit</span>
+        </div>
+      </div>
+
+      <span class="section-label">Preis-Leistung</span>
+      <div class="supplement-card price-performance">
+        <div class="traffic-light-row">
+          <div class="traffic-light traffic-light-yellow"></div>
+          <span class="traffic-light-label">Solide</span>
+          <span class="traffic-light-description">— sinnvoll für Risikogruppen</span>
+        </div>
+        <p class="info-text" style="font-size: var(--font-size-sm); margin-top: var(--space-sm);">Multivitamine sind relativ günstig (0,10–0,40 €/Tag), aber nicht für jeden gleich sinnvoll. Für Menschen mit unausgewogener Ernährung, älteren Erwachsenen, Veganern oder Menschen mit erhöhtem Nährstoffbedarf können sie eine sinnvolle Investition sein. Für gesunde Menschen mit ausgewogener Ernährung ist der Nutzen begrenzt.</p>
+        <div class="price-grid">
+          <div class="price-box">
+            <div class="price-label">Günstigste Option</div>
+            <div class="price-value">~0,10 €/Tag</div>
+          </div>
+          <div class="price-box">
+            <div class="price-label">Premium Qualität</div>
+            <div class="price-value">~0,30 €/Tag</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">Was wir wissen</span>
+      <div class="supplement-card">
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Deckung von Mikronährstofflücken</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Multivitamine können helfen, Mikronährstoffmängel zu vermeiden, die durch unausgewogene Ernährung, erhöhten Bedarf oder Malabsorption entstehen. Besonders relevant für Vitamin D, Vitamin B12, Eisen, Jod und Selen, die in vielen Populationen häufig suboptimal versorgt sind.
+            <div class="study-snippet"><strong>NHANES-Analyse (2011):</strong> In den USA haben über 90% der Bevölkerung einen Mangel oder eine suboptimale Versorgung mit mindestens einem Mikronährstoff. In Deutschland sieht die Situation ähnlich aus.<a href="https://pubmed.ncbi.nlm.nih.gov/21411615/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Immunfunktion unterstützen</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Viele Vitamine und Mineralstoffe spielen eine wichtige Rolle für das Immunsystem. Vitamin C, Vitamin D, Zink, Selen und Eisen sind besonders wichtig für die Immunfunktion. Ein Mangel an diesen Nährstoffen kann die Immunabwehr schwächen.
+            <div class="study-snippet"><strong>Meta-Analyse (Nutrients 2019):</strong> Multivitamin-Supplementierung kann die Immunfunktion bei älteren Erwachsenen und Menschen mit Mikronährstoffmangel verbessern.<a href="https://pubmed.ncbi.nlm.nih.gov/31284615/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Kognitive Funktion bei älteren Erwachsenen</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Bei älteren Erwachsenen kann ein Mikronährstoffmangel zu kognitiven Beeinträchtigungen führen. Besonders Vitamin B12, Folsäure und Vitamin D sind wichtig für die kognitive Funktion. Multivitamine können helfen, diese Mängel auszugleichen.
+            <div class="study-snippet"><strong>Studie (Am J Clin Nutr 2012):</strong> Multivitamin-Supplementierung verbesserte die kognitive Funktion bei älteren Erwachsenen mit Mikronährstoffmangel signifikant.<a href="https://pubmed.ncbi.nlm.nih.gov/22237054/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Schwangerschaft & Kinderwunsch</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            In der Schwangerschaft und Stillzeit ist der Bedarf an vielen Mikronährstoffen erhöht. Folsäure, Eisen, Jod, Vitamin D und Omega-3-Fettsäuren sind besonders wichtig. Pränatale Multivitamine können das Risiko für Neuralrohrdefekte und andere Komplikationen reduzieren.
+            <div class="study-snippet"><strong>Cochrane Review (2015):</strong> Pränatale Multivitamin-Supplementierung reduziert das Risiko für Neuralrohrdefekte um 70% und verbessert andere Schwangerschaftsoutcomes.<a href="https://pubmed.ncbi.nlm.nih.gov/26068959/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Begrenzter Nutzen für gesunde Menschen</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Für gesunde Menschen mit ausgewogener Ernährung ist der Nutzen von Multivitaminen begrenzt. Die meisten Studien zeigen keinen signifikanten Vorteil für die allgemeine Gesundheit, die Lebenserwartung oder das Risiko für chronische Krankheiten.
+            <div class="study-snippet"><strong>Meta-Analyse (Ann Intern Med 2013):</strong> Multivitamin-Supplementierung hatte keinen signifikanten Effekt auf die Mortalität oder das Risiko für Herz-Kreislauf-Erkrankungen oder Krebs bei gesunden Erwachsenen.<a href="https://pubmed.ncbi.nlm.nih.gov/24217406/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-hint">Klick auf jeden Punkt für Studiendetails · Punkte = Stärke der Evidenz</div>
+      </div>
+
+      <span class="section-label">Was wichtig ist</span>
+      <div class="supplement-card info-section">
+        <h2 class="info-title">Für wen sind Multivitamine sinnvoll?</h2>
+        <p class="info-text">Multivitamine sind nicht für jeden gleich sinnvoll. Sie können besonders nützlich sein für:
+        <ul style="margin-top: var(--space-sm); padding-left: var(--space-md);">
+        <li><strong>Ältere Erwachsene:</strong> Reduzierte Nährstoffaufnahme und erhöhter Bedarf</li>
+        <li><strong>Veganer & Vegetarier:</strong> Risiko für Vitamin B12-, Eisen-, Zink- und Omega-3-Mangel</li>
+        <li><strong>Schwangere & Stillende:</strong> Erhöhter Bedarf an vielen Mikronährstoffen</li>
+        <li><strong>Menschen mit unausgewogener Ernährung:</strong> Fast Food, einseitige Ernährung</li>
+        <li><strong>Menschen mit Malabsorption:</strong> Zöliakie, Morbus Crohn, Gastritis</li>
+        <li><strong>Raucher & Alkoholkonsumenten:</strong> Erhöhter Bedarf an Antioxidantien</li>
+        <li><strong>Sportler mit hohem Trainingsvolumen:</strong> Erhöhter Bedarf an vielen Mikronährstoffen</li>
+        </ul>
+        </p>
+        
+        <h2 class="info-title">Worauf du achten solltest</h2>
+        <p class="info-text">Nicht alle Multivitamine sind gleich. Achte auf:
+        <ul style="margin-top: var(--space-sm); padding-left: var(--space-md);">
+        <li><strong>Aktive Formen:</strong> Vitamin D3 (nicht D2), Vitamin K2 (nicht K1), Folsäure als 5-MTHF, Vitamin B12 als Methylcobalamin</li>
+        <li><strong>Dosierungen:</strong> 100–200% der Tagesreferenzmenge für die meisten Vitamine und Mineralstoffe</li>
+        <li><strong>Keine Megadosen:</strong> Vermeide Produkte mit extrem hohen Dosierungen (z.B. >1000% Vitamin A, Eisen)</li>
+        <li><strong>Bioverfügbarkeit:</strong> Chelatierte Mineralstoffe (z.B. Zinkbisglycinat, Magnesiumcitrat) sind besser bioverfügbar</li>
+        <li><strong>Zusatzstoffe:</strong> Vermeide unnötige Zusatzstoffe wie künstliche Farb- und Süßstoffe</li>
+        </ul>
+        </p>
+        
+        <h2 class="info-title">Multivitamin ≠ Ersatz für gesunde Ernährung</h2>
+        <p class="info-text"><strong>Multivitamine sind keine Wundermittel und kein Ersatz für eine gesunde, ausgewogene Ernährung.</strong> Sie können helfen, Mikronährstofflücken zu schließen, aber sie enthalten keine Ballaststoffe, sekundären Pflanzenstoffe oder andere gesundheitsfördernde Bestandteile von Lebensmitteln. Konzentriere dich zuerst auf eine nährstoffreiche Ernährung mit viel Gemüse, Obst, Vollkornprodukten, mageren Proteinen und gesunden Fetten.</p>
+      </div>
+
+      <hr class="divider">
+
+      <span class="section-label">Meine Preis-Leistungs-Empfehlungen</span>
+      <div class="products-section">
+        <div id="supp-products"></div>
+      </div>
+
+      <span class="section-label">Wie und wann</span>
+      <div class="how-to-box">
+        <div class="how-to-title"><span>⏱️</span> Einnahme-Details</div>
+        <p class="how-to-text">Multivitamine können zu jeder Tageszeit eingenommen werden. Für optimale Aufnahme:
+        <ul style="margin-top: var(--space-sm); padding-left: var(--space-md);">
+        <li><strong>Zu einer Mahlzeit:</strong> Fettlösliche Vitamine (A, D, E, K) werden besser aufgenommen</li>
+        <li><strong>Morgens oder mittags:</strong> Einige B-Vitamine können anregend wirken und den Schlaf stören</li>
+        <li><strong>Nicht mit Kaffee/Tee:</strong> Gerbstoffe können die Aufnahme von Mineralstoffen hemmen</li>
+        <li><strong>Konsequent täglich:</strong> Multivitamine wirken am besten bei regelmäßiger Einnahme</li>
+        </ul>
+        </p>
+      </div>
+
+      <span class="section-label">Nerd-Tiefe</span>
+      <div class="nerd-box">
+        Multivitamine enthalten eine Kombination aus Vitaminen und Mineralstoffen, die für verschiedene Stoffwechselprozesse essentiell sind. Vitamine sind organische Verbindungen, die der Körper (mit wenigen Ausnahmen) nicht selbst synthetisieren kann und die in kleinen Mengen für das Wachstum, die Reproduktion und den Erhalt der Gesundheit benötigt werden. Sie werden in fettlösliche Vitamine (A, D, E, K) und wasserlösliche Vitamine (B-Komplex, C) unterteilt. Mineralstoffe sind anorganische Elemente, die für die Aufrechterhaltung der Körperfunktionen notwendig sind. Sie werden in Mengenelemente (z.B. Calcium, Phosphor, Magnesium) und Spurenelemente (z.B. Eisen, Zink, Selen) unterteilt. Die Bioverfügbarkeit von Mikronährstoffen aus Supplementen kann durch verschiedene Faktoren beeinflusst werden, darunter die chemische Form, die Matrix, in der sie enthalten sind, und die gleichzeitige Einnahme anderer Nährstoffe oder Medikamente.
+      </div>
+
+      <span class="section-label">Studiengrundlage</span>
+      <div class="supplement-card studies-list">
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>NHANES Mikronährstoffstatus (2011)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/21411615/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Multivitamine & Immunfunktion Meta-Analyse (Nutrients 2019)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/31284615/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Multivitamine & kognitive Funktion (Am J Clin Nutr 2012)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/22237054/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Pränatale Multivitamine Cochrane Review (2015)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/26068959/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Multivitamine & Mortalität Meta-Analyse (Ann Intern Med 2013)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/24217406/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Product data for Multivitamin
+    const multivitaminProducts = [
+      {
+        name: "Bulk Multivitamin Komplex",
+        vitamins: "A, B-Komplex, C, D3, E, K2",
+        minerals: "Magnesium, Zink, Eisen, Selen, Jod",
+        type: "Kapseln",
+        price: 14.99, servings: 120,
+        rec: "best",
+        recLabel: "Beste Preis-Leistung",
+        comment: "Komplettes Multivitamin mit allen essentiellen Vitaminen und Mineralstoffen. Gute Dosierungen, keine Megadosen.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_BULK_MULTI?tag=evidenced-21"
+      },
+      {
+        name: "MyProtein Alpha Men",
+        vitamins: "A, B-Komplex, C, D3, E, K",
+        minerals: "Magnesium, Zink, Selen, Chrom",
+        type: "Kapseln (für Männer)",
+        price: 19.99, servings: 60,
+        rec: "mid",
+        recLabel: "Für Männer",
+        comment: "Multivitamin speziell für Männer formuliert. Mit zusätzlichem Zink und Selen für die Prostata-Gesundheit.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_MYPROTEIN_MEN?tag=evidenced-21"
+      },
+      {
+        name: "Vegan Multivitamin",
+        vitamins: "B12, D3 (vegan), K2, B-Komplex, C",
+        minerals: "Eisen, Zink, Jod, Selen",
+        type: "Kapseln (vegan)",
+        price: 22.99, servings: 60,
+        rec: "vegan",
+        recLabel: "Vegane Option",
+        comment: "Vollständiges Multivitamin für Veganer. Mit veganem Vitamin D3 aus Flechten und Vitamin B12.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_VEGAN_MULTI?tag=evidenced-21"
+      }
+    ];
+
+    let activeProduct = 0;
+
+    function renderProducts() {
+      const p = multivitaminProducts[activeProduct];
+      const pricePerNum = (p.price / p.servings);
+      const pricePer = pricePerNum.toFixed(2).replace('.', ',') + " €";
+      const recClass = p.rec === 'best' ? 'rec-best' : p.rec === 'vegan' ? 'rec-vegan' : 'rec-mid';
+      
+      let nav = '<div class="product-nav">';
+      multivitaminProducts.forEach((_, i) => {
+        nav += `<button class="product-nav-button ${i===activeProduct?'active':''}" onclick="setProduct(${i})">${i+1}</button>`;
+      });
+      nav += '</div>';
+      
+      document.getElementById('supp-products').innerHTML = nav + `
+      <div class="product-card">
+        <div class="product-header">
+          <div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-badges">
+              <span class="product-type">${p.type}</span>
+              <span class="recommendation-badge ${recClass}">${p.recLabel}</span>
+            </div>
+          </div>
+        </div>
+        <p class="product-comment">${p.comment}</p>
+        <div class="product-specs">
+          <div class="spec-box">
+            <div class="spec-label">Vitamine</div>
+            <div class="spec-value" style="font-size: var(--font-size-xs);">${p.vitamins}</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Mineralstoffe</div>
+            <div class="spec-value" style="font-size: var(--font-size-xs);">${p.minerals}</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Kosten / Portion</div>
+            <div class="spec-value">${pricePer}</div>
+          </div>
+        </div>
+        <div class="product-details">${p.servings} Portionen gesamt · 1 Kapsel pro Tag</div>
+        
+        <div class="action-buttons">
+          <button onclick="addToPillboxFromPage('${p.name}', ${pricePerNum}, '${p.link}')" class="btn-pillbox">+ In die Pillenbox</button>
+          <a href="${p.link}" target="_blank" rel="sponsored" class="btn-amazon">Amazon →</a>
+        </div>
+      </div>`;
+    }
+
+    function setProduct(i) {
+      activeProduct = i;
+      renderProducts();
+    }
+
+    function addToPillboxFromPage(name, dailyPrice, link) {
+      // Check if already in pillbox
+      const existingIndex = pillbox.findIndex(item => item.name === name);
+      
+      if (existingIndex >= 0) {
+        pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+      } else {
+        pillbox.push({
+          id: name.toLowerCase().replace(/\s+/g, '-'),
+          name: name,
+          price: (dailyPrice).toFixed(2).replace('.', ',') + ' €',
+          dailyPrice: dailyPrice,
+          icon: 'assets/icons/multivitamin.svg',
+          quantity: 1,
+          link: link
+        });
+      }
+      
+      savePillbox();
+      updatePillboxUI();
+      showNotification(`${name} zur Pillenbox hinzugefügt`);
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>

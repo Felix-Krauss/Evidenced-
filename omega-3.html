@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omega-3 (EPA & DHA) – Was die Studien wirklich sagen | Evidenced</title>
+  <meta name="description" content="Omega-3 Fettsäuren: Wissenschaftlich belegte Wirkung auf Herzgesundheit, Entzündungen und Gehirnfunktion. Preis-Leistungs-Vergleich und Empfehlungen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/supplement.css">
+</head>
+<body class="supplement-page">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
+    <div class="pillbox-footer">
+      <div class="total-row">
+        <span>Tageskosten:</span>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="supplement-page">
+    <div class="supplement-container">
+      <div class="supplement-header">
+        <h1 class="supplement-title">Omega-3 (EPA & DHA) – Was die Studien wirklich sagen</h1>
+        
+        <div class="badge-row">
+          <span class="badge badge-basics">Basics</span>
+          <span class="badge badge-strong">Starke Evidenz</span>
+          <span class="badge badge-category">Herzgesundheit</span>
+          <span class="badge badge-category">Entzündungshemmend</span>
+          <span class="badge badge-category">Gehirn</span>
+        </div>
+      </div>
+
+      <span class="section-label">Preis-Leistung</span>
+      <div class="supplement-card price-performance">
+        <div class="traffic-light-row">
+          <div class="traffic-light traffic-light-yellow"></div>
+          <span class="traffic-light-label">Solide</span>
+          <span class="traffic-light-description">— relevanter Posten, aber gerechtfertigt</span>
+        </div>
+        <p class="info-text" style="font-size: var(--font-size-sm); margin-top: var(--space-sm);">Hochwertige EPA/DHA-Präparate kosten 0,40–1,00 € pro Tag. Günstigste sinnvolle Option: Bulk Omega-3 (~0,20 €/Tag). Teurere Marken bieten oft bessere Reinheitszertifikate — relevant wegen möglicher Schwermetallbelastung bei Fischöl.</p>
+        <div class="price-grid">
+          <div class="price-box">
+            <div class="price-label">Günstigste wirksame Dosis</div>
+            <div class="price-value">~0,20 €/Tag</div>
+          </div>
+          <div class="price-box">
+            <div class="price-label">Durchschnitt gute Qualität</div>
+            <div class="price-value">~0,60 €/Tag</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">Was wir wissen</span>
+      <div class="supplement-card">
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Triglyzeride senken</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Hochdosiertes Omega-3 senkt Triglyzeride dosisabhängig — der unumstrittenste medizinische Effekt von EPA/DHA. Wirksam ab ca. 2 g/Tag, maximaler Effekt bei 3–4 g/Tag.
+            <div class="study-snippet"><strong>REDUCE-IT (NEJM 2019):</strong> EPA 4 g/Tag senkte bei Risikopatienten kardiovaskuläre Ereignisse um 25 %.<a href="https://pubmed.ncbi.nlm.nih.gov/30415628/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Herzrhythmusstörungen reduzieren</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Omega-3 stabilisiert Herzmuskelzellmembranen und reduziert das Risiko für tödliche Rhythmusstörungen. Vorhofflimmern wird jedoch nicht zuverlässig verhindert.
+            <div class="study-snippet"><strong>Meta-Review (Circulation 2020):</strong> Reduktion des plötzlichen Herztods durch Kammerflimmern bestätigt; Effekte auf Vorhofflimmern gemischt.<a href="https://pubmed.ncbi.nlm.nih.gov/32114706/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Entzündungsmarker (CRP) senken</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            EPA und DHA sind Vorstufen entzündungsauflösender Botenstoffe (Resolvine). Sie senken messbar chronische Entzündungsmarker im Blut.
+            <div class="study-snippet"><strong>Meta-Analyse (JAMA 2021):</strong> Marine Omega-3-Supplementierung senkt den systemischen Entzündungsmarker hs-CRP signifikant.<a href="https://pubmed.ncbi.nlm.nih.gov/33752040/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Depressive Symptome (adjuvant)</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Kein Ersatz für Therapie. EPA-reiche Präparate (EPA-Anteil über 60 %) zeigen unterstützende Effekte bei klinischer Depression. Reines DHA zeigt diesen Effekt nicht.
+            <div class="study-snippet"><strong>Meta-Analyse (Transl. Psychiatry 2019):</strong> EPA-dominante Präparate wirken unterstützend bei depressiven Verstimmungen; DHA allein nicht wirksam.<a href="https://pubmed.ncbi.nlm.nih.gov/30967196/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Kognitive Leistung (gesunde Erwachsene)</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Oft als "Gehirn-Booster" beworben — die Studienlage bei gesunden Menschen ist ernüchternd. Gesunde werden durch Omega-3 nicht messbar klüger oder konzentrierter.
+            <div class="study-snippet"><strong>Cochrane Review 2012:</strong> Keine signifikanten Belege für Verbesserung kognitiver Leistung bei gesunden Erwachsenen durch Omega-3.<a href="https://pubmed.ncbi.nlm.nih.gov/22786480/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-hint">Klick auf jeden Punkt für Studiendetails · Punkte = Stärke der Evidenz</div>
+      </div>
+
+      <span class="section-label">Was wichtig ist</span>
+      <div class="supplement-card info-section">
+        <h2 class="info-title">EPA und DHA — nicht ALA</h2>
+        <p class="info-text">Pflanzliche Omega-3-Quellen (Leinöl, Chiasamen) liefern ALA. Der Körper wandelt ALA nur zu 5–10 % in EPA um und kaum in DHA. Für messbare Effekte braucht es direkt EPA und DHA aus Fischöl oder Algenöl.</p>
+        
+        <h2 class="info-title">Wirksame Dosis</h2>
+        <p class="info-text">Für allgemeine Gesundheit: <strong>1–2 g EPA+DHA täglich.</strong> Für Triglyzeride: 3–4 g/Tag (nur unter ärztlicher Aufsicht). Immer auf die Summe von EPA+DHA achten — nicht auf die Gesamtfischölmenge auf der Verpackung.</p>
+      </div>
+
+      <hr class="divider">
+
+      <span class="section-label">Meine Preis-Leistungs-Empfehlungen</span>
+      <div class="products-section">
+        <div id="supp-products"></div>
+      </div>
+
+      <span class="section-label">Wie und wann</span>
+      <div class="how-to-box">
+        <div class="how-to-title"><span>⏱️</span> Einnahme-Details</div>
+        <p class="how-to-text">Zu einer fetthaltigen Mahlzeit einnehmen — Omega-3 ist fettlöslich, die Aufnahme steigt dadurch messbar. Die Tageszeit spielt dabei keine Rolle.</p>
+      </div>
+
+      <span class="section-label">Nerd-Tiefe</span>
+      <div class="nerd-box">
+        EPA und DHA sind Substrate für die Synthese von Eicosanoiden — EPA konkurriert dabei mit Arachidonsäure (AA) an der Cyclooxygenase. EPA-abgeleitete Prostaglandine (Reihe 3) sind weniger entzündungsfördernd als AA-abgeleitete (Reihe 2). DHA ist struktureller Bestandteil neuronaler Membranen und beeinflusst die Fluidität der Lipid-Doppelschicht, was Signaltransduktion und Synapsenplastizität betrifft.
+      </div>
+
+      <span class="section-label">Studiengrundlage</span>
+      <div class="supplement-card studies-list">
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>REDUCE-IT — Triglyzeride & kardiovaskuläre Ereignisse (NEJM 2019)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/30415628/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Meta-Analyse EPA/DHA & Entzündungsmarker (JAMA 2021)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/33752040/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>ALA → EPA Konversionsrate (AJCN 2006)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/16825676/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Omega-3 & Depression — Meta-Analyse (Transl. Psychiatry 2019)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/30967196/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Kognitive Leistung gesunde Erwachsene (Cochrane 2012)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/22786480/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Product data for Omega-3
+    const omega3Products = [
+      {
+        name: "Bulk Omega-3",
+        epa: 330, dha: 220, caps: 3, price: 18.99, servings: 90,
+        type: "Fischöl",
+        rec: "best",
+        recLabel: "Beste Preis-Leistung",
+        comment: "Günstigster Weg zu wirksamer Dosis. Kein Marketing-Aufpreis.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_BULK?tag=evidenced-21"
+      },
+      {
+        name: "Nordic Naturals Ultimate Omega",
+        epa: 650, dha: 450, caps: 2, price: 38.90, servings: 60,
+        type: "Fischöl",
+        rec: "mid",
+        recLabel: "Premium-Qualität",
+        comment: "IFOS-zertifiziert, hohe Reinheit. Sinnvoll wenn Schadstofffreiheit Priorität hat.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_NORDIC?tag=evidenced-21"
+      },
+      {
+        name: "Norsan Omega-3 Vegan",
+        epa: 400, dha: 200, caps: 2, price: 28.50, servings: 30,
+        type: "Algenöl",
+        rec: "vegan",
+        recLabel: "Vegane Option",
+        comment: "Algenöl = Ursprungsquelle von EPA/DHA. Gleiche Wirkung, kein Fisch.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_NORSAN?tag=evidenced-21"
+      }
+    ];
+
+    let activeProduct = 0;
+
+    function renderProducts() {
+      const p = omega3Products[activeProduct];
+      const pricePerNum = (p.price / p.servings);
+      const pricePer = pricePerNum.toFixed(2).replace('.', ',') + " €";
+      const total = p.epa + p.dha;
+      const recClass = p.rec === 'best' ? 'rec-best' : p.rec === 'vegan' ? 'rec-vegan' : 'rec-mid';
+      
+      let nav = '<div class="product-nav">';
+      omega3Products.forEach((_, i) => {
+        nav += `<button class="product-nav-button ${i===activeProduct?'active':''}" onclick="setProduct(${i})">${i+1}</button>`;
+      });
+      nav += '</div>';
+      
+      document.getElementById('supp-products').innerHTML = nav + `
+      <div class="product-card">
+        <div class="product-header">
+          <div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-badges">
+              <span class="product-type">${p.type}</span>
+              <span class="recommendation-badge ${recClass}">${p.recLabel}</span>
+            </div>
+          </div>
+        </div>
+        <p class="product-comment">${p.comment}</p>
+        <div class="product-specs">
+          <div class="spec-box">
+            <div class="spec-label">EPA+DHA / Portion</div>
+            <div class="spec-value">${total} mg</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Kapseln / Dosis</div>
+            <div class="spec-value">${p.caps} Kps.</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Kosten / Portion</div>
+            <div class="spec-value">${pricePer}</div>
+          </div>
+        </div>
+        <div class="product-details">EPA: ${p.epa} mg · DHA: ${p.dha} mg · ${p.servings} Portionen gesamt</div>
+        
+        <div class="action-buttons">
+          <button onclick="addToPillboxFromPage('${p.name}', ${pricePerNum}, '${p.link}')" class="btn-pillbox">+ In die Pillenbox</button>
+          <a href="${p.link}" target="_blank" rel="sponsored" class="btn-amazon">Amazon →</a>
+        </div>
+      </div>`;
+    }
+
+    function setProduct(i) {
+      activeProduct = i;
+      renderProducts();
+    }
+
+    function addToPillboxFromPage(name, dailyPrice, link) {
+      // Check if already in pillbox
+      const existingIndex = pillbox.findIndex(item => item.name === name);
+      
+      if (existingIndex >= 0) {
+        pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+      } else {
+        pillbox.push({
+          id: name.toLowerCase().replace(/\s+/g, '-'),
+          name: name,
+          price: (dailyPrice).toFixed(2).replace('.', ',') + ' €',
+          dailyPrice: dailyPrice,
+          icon: 'assets/icons/omega-3.svg',
+          quantity: 1,
+          link: link
+        });
+      }
+      
+      savePillbox();
+      updatePillboxUI();
+      showNotification(`${name} zur Pillenbox hinzugefügt`);
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>

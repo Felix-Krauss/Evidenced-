@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proteinpulver – Was die Studien wirklich sagen | Evidenced</title>
+  <meta name="description" content="Proteinpulver: Wissenschaftlich belegte Wirkung auf Muskelaufbau, Sättigung und Regeneration. Preis-Leistungs-Vergleich und Empfehlungen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/supplement.css">
+</head>
+<body class="supplement-page">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
+    <div class="pillbox-footer">
+      <div class="total-row">
+        <span>Tageskosten:</span>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="supplement-page">
+    <div class="supplement-container">
+      <div class="supplement-header">
+        <h1 class="supplement-title">Proteinpulver – Was die Studien wirklich sagen</h1>
+        
+        <div class="badge-row">
+          <span class="badge badge-basics">Basics</span>
+          <span class="badge badge-strong">Starke Evidenz</span>
+          <span class="badge badge-category">Muskelaufbau</span>
+          <span class="badge badge-category">Sättigung</span>
+          <span class="badge badge-category">Regeneration</span>
+        </div>
+      </div>
+
+      <span class="section-label">Preis-Leistung</span>
+      <div class="supplement-card price-performance">
+        <div class="traffic-light-row">
+          <div class="traffic-light traffic-light-green"></div>
+          <span class="traffic-light-label">Sehr gut</span>
+          <span class="traffic-light-description">— günstig & wirksam</span>
+        </div>
+        <p class="info-text" style="font-size: var(--font-size-sm); margin-top: var(--space-sm);">Proteinpulver ist eine praktische und günstige Möglichkeit, die Proteinzufuhr zu erhöhen. Whey Protein kostet 0,30–0,80 € pro Portion (20–30 g Protein). Vegane Optionen sind etwas teurer. Wichtig: Nicht das Pulver allein, sondern die <strong>gesamte Proteinzufuhr</strong> pro Tag zählt.</p>
+        <div class="price-grid">
+          <div class="price-box">
+            <div class="price-label">Günstigste Option</div>
+            <div class="price-value">~0,30 €/Portion</div>
+          </div>
+          <div class="price-box">
+            <div class="price-label">Premium Qualität</div>
+            <div class="price-value">~0,60 €/Portion</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">Was wir wissen</span>
+      <div class="supplement-card">
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Muskelaufbau & Muskelproteinsynthese</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Protein ist der wichtigste Nährstoff für den Muskelaufbau. Es liefert die essentiellen Aminosäuren, die für die Muskelproteinsynthese benötigt werden. Eine Proteinzufuhr von 1,6–2,2 g/kg Körpergewicht pro Tag maximiert die Muskelproteinsynthese nach dem Training.
+            <div class="study-snippet"><strong>Meta-Analyse (Br J Sports Med 2018):</strong> Eine Proteinzufuhr von >1,6 g/kg/Tag führt zu signifikant mehr Muskelaufbau und Kraftzuwachs im Vergleich zu <1,2 g/kg/Tag.<a href="https://pubmed.ncbi.nlm.nih.gov/29490136/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Sättigung & Gewichtsmanagement</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Protein hat von allen Makronährstoffen den höchsten thermischen Effekt (20–30% der Kalorien werden für die Verdauung verbraucht) und die höchste Sättigungswirkung. Eine proteinreiche Ernährung reduziert den Appetit und hilft, Kaloriendefizite besser durchzuhalten.
+            <div class="study-snippet"><strong>Meta-Analyse (Am J Clin Nutr 2015):</strong> Eine Proteinzufuhr von 1,2–1,6 g/kg/Tag führt zu signifikant mehr Gewichtsverlust und besserer Fettabnahme im Vergleich zu 0,8 g/kg/Tag.<a href="https://pubmed.ncbi.nlm.nih.gov/25527674/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Regeneration & Muskelreparatur</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Protein nach dem Training liefert die Bausteine für die Reparatur von Muskelgewebe und die Synthese neuer Proteine. Besonders wichtig sind die verzweigtkettigen Aminosäuren (BCAAs) Leucin, Isoleucin und Valin, die die Muskelproteinsynthese direkt stimulieren.
+            <div class="study-snippet"><strong>Studie (JISSN 2017):</strong> Die Einnahme von 20–40 g Protein nach dem Training beschleunigt die Muskelregeneration und reduziert Muskelkater signifikant.<a href="https://pubmed.ncbi.nlm.nih.gov/28646757/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Knochengesundheit</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Eine ausreichende Proteinzufuhr ist essentiell für die Knochengesundheit. Protein liefert die Bausteine für die Knochenmatrix und stimuliert die Knochenbildung. Eine proteinreiche Ernährung reduziert das Risiko für Osteoporose und Frakturen.
+            <div class="study-snippet"><strong>Meta-Analyse (Osteoporos Int 2017):</strong> Eine Proteinzufuhr von >1,0 g/kg/Tag führt zu einer höheren Knochendichte und einem reduzierten Frakturrisiko.<a href="https://pubmed.ncbi.nlm.nih.gov/28213825/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Whey vs. Casein vs. pflanzliche Proteine</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Whey Protein wird schnell verdaut und führt zu einem raschen Anstieg der Aminosäuren im Blut. Casein wird langsam verdaut und liefert über mehrere Stunden Aminosäuren. Pflanzliche Proteine (Erbsenprotein, Reisprotein, Hanfprotein) haben oft ein unvollständiges Aminosäureprofil, können aber durch Kombinationen (z.B. Erbsen + Reis) zu vollständigen Proteinen werden.
+            <div class="study-snippet"><strong>Studie (Am J Clin Nutr 2009):</strong> Whey Protein führt zu einer 25% höheren Muskelproteinsynthese im Vergleich zu Casein in den ersten Stunden nach der Einnahme.<a href="https://pubmed.ncbi.nlm.nih.gov/19158231/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-hint">Klick auf jeden Punkt für Studiendetails · Punkte = Stärke der Evidenz</div>
+      </div>
+
+      <span class="section-label">Was wichtig ist</span>
+      <div class="supplement-card info-section">
+        <h2 class="info-title">Wie viel Protein brauchst du?</h2>
+        <p class="info-text">Die optimale Proteinzufuhr hängt von deinem Ziel ab:
+        <ul style="margin-top: var(--space-sm); padding-left: var(--space-md);">
+        <li><strong>Sedentäre Personen:</strong> 0,8–1,0 g/kg Körpergewicht/Tag</li>
+        <li><strong>Leicht aktive Personen:</strong> 1,0–1,2 g/kg/Tag</li>
+        <li><strong>Kraftsportler:</strong> 1,6–2,2 g/kg/Tag</li>
+        <li><strong>Ausdauersportler:</strong> 1,2–1,6 g/kg/Tag</li>
+        <li><strong>Diät/Abnehmen:</strong> 1,8–2,5 g/kg/Tag (um Muskelabbau zu verhindern)</li>
+        </ul>
+        Für einen 80 kg schweren Kraftsportler: <strong>130–180 g Protein pro Tag</strong>.</p>
+        
+        <h2 class="info-title">Proteinqualität & biologische Wertigkeit</h2>
+        <p class="info-text">Nicht alle Proteine sind gleich. Die <strong>biologische Wertigkeit</strong> gibt an, wie gut ein Protein in körpereigenes Protein umgewandelt werden kann. <strong>Whey Protein</strong> hat eine biologische Wertigkeit von 104, <strong>Eiprotein</strong> von 100, <strong>Rindfleisch</strong> von 80, <strong>Erbsenprotein</strong> von 65. Durch Kombination verschiedener Proteinquellen kann die biologische Wertigkeit erhöht werden.</p>
+        
+        <h2 class="info-title">Proteinpulver – ja oder nein?</h2>
+        <p class="info-text">Proteinpulver ist <strong>kein Wundermittel</strong>, sondern eine <strong>praktische Ergänzung</strong>. Wenn du deine Proteinzufuhr durch normale Nahrung deckst (Fleisch, Fisch, Eier, Milchprodukte, Hülsenfrüchte), brauchst du kein Proteinpulver. Proteinpulver ist sinnvoll, wenn:
+        <ul style="margin-top: var(--space-sm); padding-left: var(--space-md);">
+        <li>Du Schwierigkeiten hast, genug Protein über die Nahrung zu bekommen</li>
+        <li>Du unterwegs bist und keine Zeit für eine proteinreiche Mahlzeit hast</li>
+        <li>Du vegan lebst und deine Proteinzufuhr optimieren willst</li>
+        <li>Du direkt nach dem Training schnell Protein zuführen willst</li>
+        </ul>
+        </p>
+      </div>
+
+      <hr class="divider">
+
+      <span class="section-label">Meine Preis-Leistungs-Empfehlungen</span>
+      <div class="products-section">
+        <div id="supp-products"></div>
+      </div>
+
+      <span class="section-label">Wie und wann</span>
+      <div class="how-to-box">
+        <div class="how-to-title"><span>⏱️</span> Einnahme-Details</div>
+        <p class="how-to-text">Proteinpulver kann zu jeder Tageszeit eingenommen werden. Für optimale Ergebnisse:
+        <ul style="margin-top: var(--space-sm); padding-left: var(--space-md);">
+        <li><strong>Post-Workout:</strong> 20–40 g Protein innerhalb von 30–60 Minuten nach dem Training</li>
+        <li><strong>Zwischen den Mahlzeiten:</strong> Als Snack, um die Proteinzufuhr zu erhöhen</li>
+        <li><strong>Morgens:</strong> Als schnelle Proteinquelle nach dem Aufstehen</li>
+        <li><strong>Abends:</strong> Casein vor dem Schlafengehen für eine langsame Proteinversorgung über Nacht</li>
+        </ul>
+        <strong>Wichtig:</strong> Verteile deine Proteinzufuhr gleichmäßig über den Tag (alle 3–4 Stunden 20–40 g Protein).</p>
+      </div>
+
+      <span class="section-label">Nerd-Tiefe</span>
+      <div class="nerd-box">
+        Protein besteht aus Aminosäuren, die durch Peptidbindungen verbunden sind. Es gibt 20 proteinogene Aminosäuren, wovon 9 essentiell sind (können nicht vom Körper synthetisiert werden und müssen über die Nahrung zugeführt werden): Histidin, Isoleucin, Leucin, Lysin, Methionin, Phenylalanin, Threonin, Tryptophan und Valin. Die Muskelproteinsynthese wird hauptsächlich durch die verzweigtkettigen Aminosäuren (BCAAs) stimuliert, wobei Leucin die wichtigste Rolle spielt. Leucin aktiviert den mTOR-Signalweg, der die Proteinsynthese reguliert. Die optimale Leucin-Dosis zur Stimulation der Muskelproteinsynthese beträgt etwa 2–3 g pro Mahlzeit. Whey Protein enthält etwa 10–12% Leucin, während Casein etwa 8–9% enthält.
+      </div>
+
+      <span class="section-label">Studiengrundlage</span>
+      <div class="supplement-card studies-list">
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Protein & Muskelaufbau Meta-Analyse (Br J Sports Med 2018)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/29490136/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Protein & Gewichtsmanagement Meta-Analyse (Am J Clin Nutr 2015)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/25527674/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Protein & Regeneration (JISSN 2017)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/28646757/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Protein & Knochengesundheit Meta-Analyse (Osteoporos Int 2017)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/28213825/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Whey vs. Casein (Am J Clin Nutr 2009)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/19158231/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Product data for Protein
+    const proteinProducts = [
+      {
+        name: "Bulk Whey Protein",
+        protein: 24, amount: 30, type: "Whey Concentrate", form: "Pulver", price: 24.99, servings: 80,
+        rec: "best",
+        recLabel: "Beste Preis-Leistung",
+        comment: "Hochwertiges Whey Protein Concentrate. 24 g Protein pro Portion (30 g Pulver). Gute Löslichkeit und Geschmacksvielfalt.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_BULK_WHEY?tag=evidenced-21"
+      },
+      {
+        name: "MyProtein Impact Whey",
+        protein: 21, amount: 25, type: "Whey Isolate", form: "Pulver", price: 29.99, servings: 100,
+        rec: "mid",
+        recLabel: "Premium Qualität",
+        comment: "Whey Protein Isolate mit höherem Proteingehalt und weniger Fett/Kohlenhydraten. 21 g Protein pro 25 g Portion.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_MYPROTEIN_WHEY?tag=evidenced-21"
+      },
+      {
+        name: "Vegan Protein Complex",
+        protein: 22, amount: 30, type: "Erbsen + Reis", form: "Pulver", price: 27.99, servings: 75,
+        rec: "vegan",
+        recLabel: "Vegane Option",
+        comment: "Pflanzliches Protein aus Erbsen- und Reisprotein. Vollständiges Aminosäureprofil. 22 g Protein pro Portion.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_VEGAN_PROTEIN?tag=evidenced-21"
+      }
+    ];
+
+    let activeProduct = 0;
+
+    function renderProducts() {
+      const p = proteinProducts[activeProduct];
+      const pricePerNum = (p.price / p.servings);
+      const pricePer = pricePerNum.toFixed(2).replace('.', ',') + " €";
+      const recClass = p.rec === 'best' ? 'rec-best' : p.rec === 'vegan' ? 'rec-vegan' : 'rec-mid';
+      
+      let nav = '<div class="product-nav">';
+      proteinProducts.forEach((_, i) => {
+        nav += `<button class="product-nav-button ${i===activeProduct?'active':''}" onclick="setProduct(${i})">${i+1}</button>`;
+      });
+      nav += '</div>';
+      
+      document.getElementById('supp-products').innerHTML = nav + `
+      <div class="product-card">
+        <div class="product-header">
+          <div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-badges">
+              <span class="product-type">${p.type} (${p.form})</span>
+              <span class="recommendation-badge ${recClass}">${p.recLabel}</span>
+            </div>
+          </div>
+        </div>
+        <p class="product-comment">${p.comment}</p>
+        <div class="product-specs">
+          <div class="spec-box">
+            <div class="spec-label">Protein / Portion</div>
+            <div class="spec-value">${p.protein} g</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Portionsgröße</div>
+            <div class="spec-value">${p.amount} g</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Kosten / Portion</div>
+            <div class="spec-value">${pricePer}</div>
+          </div>
+        </div>
+        <div class="product-details">${p.servings} Portionen gesamt · ${p.type}</div>
+        
+        <div class="action-buttons">
+          <button onclick="addToPillboxFromPage('${p.name}', ${pricePerNum}, '${p.link}')" class="btn-pillbox">+ In die Pillenbox</button>
+          <a href="${p.link}" target="_blank" rel="sponsored" class="btn-amazon">Amazon →</a>
+        </div>
+      </div>`;
+    }
+
+    function setProduct(i) {
+      activeProduct = i;
+      renderProducts();
+    }
+
+    function addToPillboxFromPage(name, dailyPrice, link) {
+      // Check if already in pillbox
+      const existingIndex = pillbox.findIndex(item => item.name === name);
+      
+      if (existingIndex >= 0) {
+        pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+      } else {
+        pillbox.push({
+          id: name.toLowerCase().replace(/\s+/g, '-'),
+          name: name,
+          price: (dailyPrice).toFixed(2).replace('.', ',') + ' €',
+          dailyPrice: dailyPrice,
+          icon: 'assets/icons/protein.svg',
+          quantity: 1,
+          link: link
+        });
+      }
+      
+      savePillbox();
+      updatePillboxUI();
+      showNotification(`${name} zur Pillenbox hinzugefügt`);
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>

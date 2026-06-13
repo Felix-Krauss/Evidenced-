@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnesium – Was die Studien wirklich sagen | Evidenced</title>
+  <meta name="description" content="Magnesium: Wissenschaftlich belegte Wirkung auf Muskelentspannung, Schlafqualität und Nervensystem. Preis-Leistungs-Vergleich und Empfehlungen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/supplement.css">
+</head>
+<body class="supplement-page">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
+    <div class="pillbox-footer">
+      <div class="total-row">
+        <span>Tageskosten:</span>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="supplement-page">
+    <div class="supplement-container">
+      <div class="supplement-header">
+        <h1 class="supplement-title">Magnesium – Was die Studien wirklich sagen</h1>
+        
+        <div class="badge-row">
+          <span class="badge badge-basics">Basics</span>
+          <span class="badge badge-strong">Starke Evidenz</span>
+          <span class="badge badge-category">Muskeln</span>
+          <span class="badge badge-category">Nervensystem</span>
+          <span class="badge badge-category">Schlaf</span>
+        </div>
+      </div>
+
+      <span class="section-label">Preis-Leistung</span>
+      <div class="supplement-card price-performance">
+        <div class="traffic-light-row">
+          <div class="traffic-light traffic-light-green"></div>
+          <span class="traffic-light-label">Sehr gut</span>
+          <span class="traffic-light-description">— extrem günstig & wirksam</span>
+        </div>
+        <p class="info-text" style="font-size: var(--font-size-sm); margin-top: var(--space-sm);">Magnesiumpräparate sind extrem preiswert. Hochwertiges Magnesiumcitrat oder -bisglycinat kostet 0,05–0,20 € pro Tag. Magnesiumoxid ist günstiger, aber deutlich schlechter bioverfügbar.</p>
+        <div class="price-grid">
+          <div class="price-box">
+            <div class="price-label">Günstigste Option</div>
+            <div class="price-value">~0,05 €/Tag</div>
+          </div>
+          <div class="price-box">
+            <div class="price-label">Premium Qualität</div>
+            <div class="price-value">~0,15 €/Tag</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">Was wir wissen</span>
+      <div class="supplement-card">
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Muskelentspannung & Krampfprophylaxe</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Magnesium ist ein natürlicher Calcium-Antagonist und wirkt muskelentspannend. Es hemmt die Freisetzung von Acetylcholin an der motorischen Endplatte und reduziert so die neuromuskuläre Erregbarkeit. Besonders wirksam bei nächtlichen Wadenkrämpfen und sportinduzierten Muskelkrämpfen.
+            <div class="study-snippet"><strong>Cochrane Review (2020):</strong> Magnesium Supplementierung reduziert die Häufigkeit und Intensität von Muskelkrämpfen bei Schwangeren und Sportlern signifikant.<a href="https://pubmed.ncbi.nlm.nih.gov/32043976/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Schlafqualität verbessern</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Magnesium reguliert das Nervensystem durch Modulation von GABA-Rezeptoren (hemmender Neurotransmitter). Es fördert die Entspannung und verbessert die Schlafqualität, insbesondere bei Menschen mit Einschlafstörungen oder unruhigem Schlaf.
+            <div class="study-snippet"><strong>Randomisierte Studie (JRSM 2012):</strong> 46% der Teilnehmer berichteten über signifikant verbesserten Schlaf nach 8 Wochen Magnesium-Supplementierung.<a href="https://pubmed.ncbi.nlm.nih.gov/22790559/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Stressreduktion & Angst</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Magnesium reguliert die Hypothalamus-Hypophysen-Nebennierenrinden-Achse (HPA-Achse) und reduziert die Ausschüttung von Cortisol. Chronischer Stress führt zu einem erhöhten Magnesiumverbrauch, was einen Teufelskreis aus Stress und Magnesiummangel erzeugen kann.
+            <div class="study-snippet"><strong>Meta-Analyse (Nutrients 2017):</strong> Magnesium Supplementierung zeigt moderate Effekte bei der Reduktion von Angst- und Stresssymptomen.<a href="https://pubmed.ncbi.nlm.nih.gov/28445498/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Migräneprophylaxe</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Magnesiummangel kann zu einer erhöhten neuronale Erregbarkeit führen, was Migräneanfälle begünstigt. Magnesium wirkt durch Blockade von NMDA-Rezeptoren und Stabilisierung der neuronalen Membranen. Die American Migraine Foundation empfiehlt Magnesium als Prophylaxe.
+            <div class="study-snippet"><strong>Meta-Analyse (Headache 2018):</strong> Magnesium (400–600 mg/Tag) reduziert die Häufigkeit von Migräneanfällen um 22–43%.<a href="https://pubmed.ncbi.nlm.nih.gov/29363692/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-row" onclick="this.parentElement.classList.toggle('open')">
+            <div class="evidence-title"><span>Herzrhythmus & Blutdruck</span></div>
+            <div class="evidence-dots">
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-on"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+              <div class="evidence-dot evidence-dot-off"></div>
+            </div>
+          </div>
+          <div class="evidence-description">
+            Magnesium ist essentiell für die Aufrechterhaltung des normalen Herzrhythmus. Es wirkt als natürlicher Calcium-Kanal-Blocker und kann bei Magnesiummangel bedingten Herzrhythmusstörungen (z.B. Extrasystolen) helfen. Zudem zeigt es leichte blutdrucksenkende Effekte.
+            <div class="study-snippet"><strong>Meta-Analyse (Hypertension 2016):</strong> Magnesium Supplementierung senkt den systolischen Blutdruck um durchschnittlich 2–4 mmHg.<a href="https://pubmed.ncbi.nlm.nih.gov/27247112/" target="_blank" rel="noopener">PubMed →</a></div>
+          </div>
+        </div>
+        <div class="evidence-hint">Klick auf jeden Punkt für Studiendetails · Punkte = Stärke der Evidenz</div>
+      </div>
+
+      <span class="section-label">Was wichtig ist</span>
+      <div class="supplement-card info-section">
+        <h2 class="info-title">Bioverfügbarkeit ist entscheidend</h2>
+        <p class="info-text">Nicht alle Magnesiumverbindungen sind gleich. <strong>Magnesiumcitrat</strong> und <strong>Magnesiumbisglycinat</strong> haben die beste Bioverfügbarkeit (ca. 40–60%). <strong>Magnesiumoxid</strong> ist zwar günstig, aber nur zu ca. 4% bioverfügbar – also praktisch wirkungslos für die meisten Anwendungen.</p>
+        
+        <h2 class="info-title">Dosierung & Timing</h2>
+        <p class="info-text">Für die meisten Anwendungen: <strong>300–400 mg elementares Magnesium täglich</strong>, aufgeteilt auf 2–3 Dosen (da Magnesium abführend wirken kann). Für Schlaf: <strong>200–300 mg abends</strong>. Für Sportler: <strong>400–600 mg</strong> (aufgeteilt). Die tolerierbare Obergrenze liegt bei 350 mg aus Supplementen (EFSA).</p>
+        
+        <h2 class="info-title">Mangel erkennen</h2>
+        <p class="info-text">Ein Magnesiummangel zeigt sich oft durch Muskelzucken (Faszikulationen), Wadenkrämpfe, Unruhe, Schlafstörungen, Kopfschmerzen oder Herzrhythmusstörungen. Ein Serum-Magnesium-Test ist nicht aussagekräftig, da nur 1% des Magnesiums im Blut zirkuliert. Besser: Erythrozyten-Magnesium oder 24-Stunden-Urin-Test.</p>
+      </div>
+
+      <hr class="divider">
+
+      <span class="section-label">Meine Preis-Leistungs-Empfehlungen</span>
+      <div class="products-section">
+        <div id="supp-products"></div>
+      </div>
+
+      <span class="section-label">Wie und wann</span>
+      <div class="how-to-box">
+        <div class="how-to-title"><span>⏱️</span> Einnahme-Details</div>
+        <p class="how-to-text">Magnesium kann zu oder zwischen den Mahlzeiten eingenommen werden. Für bessere Schlafqualität: Abends 1–2 Stunden vor dem Schlafengehen. Bei empfindlichem Magen: Zu den Mahlzeiten. Immer mit ausreichend Wasser einnehmen, um die abführende Wirkung zu minimieren.</p>
+      </div>
+
+      <span class="section-label">Nerd-Tiefe</span>
+      <div class="nerd-box">
+        Magnesium ist Kofaktor für über 300 enzymatische Reaktionen im Körper. Es spielt eine zentrale Rolle im Energiestoffwechsel (ATP-Synthese), der DNA/RNA-Synthese, der Proteinbiosynthese und der Signaltransduktion. Magnesium ist der vierthäufigste Kation im Körper und zu 50–60% in den Knochen, zu 20–30% in der Muskulatur und nur zu 1% im Extrazellulärraum (Blut) gebunden. Die renale Ausscheidung von Magnesium wird durch die Niere reguliert – bei hohem Magnesiumspiegel wird mehr ausgeschieden, bei niedrigem weniger. Allerdings kann dieser Mechanismus bei chronisch niedriger Zufuhr oder erhöhtem Bedarf (Stress, Sport, Alkohol) überfordert sein.
+      </div>
+
+      <span class="section-label">Studiengrundlage</span>
+      <div class="supplement-card studies-list">
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Magnesium & Muskelkrämpfe Cochrane Review (2020)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/32043976/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Magnesium & Schlafqualität (JRSM 2012)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/22790559/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Magnesium & Stress/Angst Meta-Analyse (Nutrients 2017)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/28445498/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Magnesium & Migräneprophylaxe Meta-Analyse (Headache 2018)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/29363692/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Magnesium & Blutdruck Meta-Analyse (Hypertension 2016)</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/27247112/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Product data for Magnesium
+    const magnesiumProducts = [
+      {
+        name: "Bulk Magnesiumcitrat",
+        magnesium: 300, form: "Citrat", caps: 3, price: 14.99, servings: 90,
+        type: "Kapseln",
+        rec: "best",
+        recLabel: "Beste Preis-Leistung",
+        comment: "Hochdosiert, beste Bioverfügbarkeit. 300 mg elementares Magnesium pro Tagesdosis (3 Kapseln).",
+        link: "https://www.amazon.de/dp/PLATZHALTER_BULK_MAG?tag=evidenced-21"
+      },
+      {
+        name: "Magnesium Bisglycinat",
+        magnesium: 200, form: "Bisglycinat", caps: 2, price: 24.99, servings: 60,
+        type: "Kapseln",
+        rec: "mid",
+        recLabel: "Beste Bioverfügbarkeit",
+        comment: "Magnesium-Bisglycinat-Chelat – besonders magenschonend und gut bioverfügbar. Ideal für empfindliche Mägen.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_BISGLYCINAT?tag=evidenced-21"
+      },
+      {
+        name: "Magnesiumöl Spray",
+        magnesium: 100, form: "Chlorid", caps: 10, price: 18.99, servings: 100,
+        type: "Transdermal",
+        rec: "vegan",
+        recLabel: "Für Sportler",
+        comment: "Transdermale Anwendung für schnelle Aufnahme. Ideal für Sportler nach dem Training oder bei Magenproblemen.",
+        link: "https://www.amazon.de/dp/PLATZHALTER_MAG_OEL?tag=evidenced-21"
+      }
+    ];
+
+    let activeProduct = 0;
+
+    function renderProducts() {
+      const p = magnesiumProducts[activeProduct];
+      const pricePerNum = (p.price / p.servings);
+      const pricePer = pricePerNum.toFixed(2).replace('.', ',') + " €";
+      const recClass = p.rec === 'best' ? 'rec-best' : p.rec === 'vegan' ? 'rec-vegan' : 'rec-mid';
+      
+      let nav = '<div class="product-nav">';
+      magnesiumProducts.forEach((_, i) => {
+        nav += `<button class="product-nav-button ${i===activeProduct?'active':''}" onclick="setProduct(${i})">${i+1}</button>`;
+      });
+      nav += '</div>';
+      
+      document.getElementById('supp-products').innerHTML = nav + `
+      <div class="product-card">
+        <div class="product-header">
+          <div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-badges">
+              <span class="product-type">${p.type} (${p.form})</span>
+              <span class="recommendation-badge ${recClass}">${p.recLabel}</span>
+            </div>
+          </div>
+        </div>
+        <p class="product-comment">${p.comment}</p>
+        <div class="product-specs">
+          <div class="spec-box">
+            <div class="spec-label">Magnesium / Portion</div>
+            <div class="spec-value">${p.magnesium} mg</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Form</div>
+            <div class="spec-value">${p.form}</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Kosten / Portion</div>
+            <div class="spec-value">${pricePer}</div>
+          </div>
+        </div>
+        <div class="product-details">${p.servings} Portionen gesamt · ${p.caps} Kapsel(n)/Sprühstöße pro Portion</div>
+        
+        <div class="action-buttons">
+          <button onclick="addToPillboxFromPage('${p.name}', ${pricePerNum}, '${p.link}')" class="btn-pillbox">+ In die Pillenbox</button>
+          <a href="${p.link}" target="_blank" rel="sponsored" class="btn-amazon">Amazon →</a>
+        </div>
+      </div>`;
+    }
+
+    function setProduct(i) {
+      activeProduct = i;
+      renderProducts();
+    }
+
+    function addToPillboxFromPage(name, dailyPrice, link) {
+      // Check if already in pillbox
+      const existingIndex = pillbox.findIndex(item => item.name === name);
+      
+      if (existingIndex >= 0) {
+        pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+      } else {
+        pillbox.push({
+          id: name.toLowerCase().replace(/\s+/g, '-'),
+          name: name,
+          price: (dailyPrice).toFixed(2).replace('.', ',') + ' €',
+          dailyPrice: dailyPrice,
+          icon: 'assets/icons/magnesium.svg',
+          quantity: 1,
+          link: link
+        });
+      }
+      
+      savePillbox();
+      updatePillboxUI();
+      showNotification(`${name} zur Pillenbox hinzugefügt`);
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
