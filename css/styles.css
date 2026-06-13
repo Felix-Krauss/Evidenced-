@@ -768,6 +768,19 @@ main {
   flex-shrink: 0;
 }
 
+/* Organic, hand-drawn style circles for each step */
+.step-1 .step-number {
+  border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+}
+
+.step-2 .step-number {
+  border-radius: 55% 45% 60% 40% / 60% 40% 45% 55%;
+}
+
+.step-3 .step-number {
+  border-radius: 45% 55% 40% 60% / 55% 60% 50% 50%;
+}
+
 .step-content {
   flex: 1;
 }
