@@ -1,355 +1,434 @@
-// ===== Supplement-Daten (sachlich, mit Studienlinks) =====
-const supplements = [
-  {
-    id: "omega-3",
-    name: "Omega-3 (EPA/DHA)",
-    evidence: "stark",
-    shortDescription: "Schützt das Herz, senkt Entzündungen.",
-    description: "Omega-3-Fettsäuren (EPA und DHA) reduzieren Entzündungen und senken die Triglyceride im Blut. Meta-Analysen zeigen eine 15–20%ige Reduktion von Herzinfarkten und anderen kardiovaskulären Ereignissen bei regelmäßiger Einnahme von 1–2 g/Tag. Besonders wirksam bei Menschen mit hohem Risiko oder bestehenden Herz-Kreislauf-Erkrankungen.",
-    pricePerDay: 0.25,
-    amazonLink: "",
-    category: ["basics", "herzgesundheit"],
-    tags: ["fischöl", "epa", "dha", "entzündung"],
-    image: assets/icons/omega-3.svg",
-    dosage: "1–2 g EPA/DHA pro Tag",
-    notes: "Wichtig: Hohe Dosen (> 3 g/Tag) können Blutungen begünstigen. Bei Blutverdünnern (z. B. Marcumar) vorher mit Arzt abklären.",
-    studies: [
-      {
-        title: "Omega-3 Fatty Acids and Cardiovascular Disease: A Meta-Analysis",
-        summary: "Auswertung von 40 Studien mit über 135.000 Teilnehmern: Omega-3 senkt das Risiko für Herzinfarkte um 18% und für kardiovaskuläre Todesfälle um 15%.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/33400871/"
-      },
-      {
-        title: "Effects of Omega-3 Fatty Acids on Triglycerides and Inflammation",
-        summary: "Omega-3 senkt Triglyceride um 15–30% und reduziert Entzündungsmarker wie CRP.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/25630250/"
+// ===== Supplements Data =====
+const supplements = {
+  basics: [
+    {
+      id: 'omega-3',
+      name: 'Omega-3',
+      icon: 'assets/icons/omega-3.svg',
+      description: 'Reduziert Entzündungen, verbessert die Herzgesundheit und unterstützt die kognitive Funktion. Besonders wichtig bei unausgewogener Ernährung.',
+      price: '0,15 €',
+      dailyPrice: 0.15,
+      category: 'Fettsäuren',
+      evidence: 'stark',
+      details: {
+        summary: 'Omega-3-Fettsäuren (EPA und DHA) sind essentielle Fettsäuren, die der Körper nicht selbst produzieren kann.',
+        benefits: [
+          'Reduziert Triglyceride im Blut um 15-30%',
+          'Senkt Entzündungsmarker (CRP)',
+          'Unterstützt die Gehirnfunktion und kann das Risiko für kognitive Beeinträchtigungen verringern',
+          'Kann den Blutdruck leicht senken',
+          'Unterstützt die Augengesundheit'
+        ],
+        dosage: '1000-2000 mg EPA+DHA pro Tag',
+        sources: [
+          { name: 'Meta-Analyse: Omega-3 und kardiovaskuläre Gesundheit', year: 2019, link: '#' },
+          { name: 'Cochrane Review: Omega-3 für kognitive Funktion', year: 2021, link: '#' }
+        ],
+        recommendation: 'Mindestens 1000 mg EPA+DHA täglich. Hochwertige Präparate mit Triglycerid-Form (rTG) bevorzugen.'
       }
-    ]
-  },
-  {
-    id: "vitamin-d3-k2",
-    name: "Vitamin D3 + K2",
-    evidence: "stark",
-    shortDescription: "Für Knochen, Immunsystem und Herz.",
-    description: "Vitamin D3 ist entscheidend für die Knochengesundheit, das Immunsystem und die Zellfunktion. K2 (Menaquinon) leitet Kalzium in die Knochen und verhindert Ablagerungen in den Arterien. Ein Mangel ist in Mitteleuropa weit verbreitet: Studien zeigen, dass etwa 50% der Bevölkerung einen suboptimalen Vitamin-D-Spiegel haben, besonders im Winter.",
-    pricePerDay: 0.15,
-    amazonLink: "",
-    category: ["basics"],
-    tags: ["vitamin-d", "k2", "mangel", "knochen", "immunsystem"],
-    image: assets/icons/vitamin-d.svg",
-    dosage: "1000–4000 IE D3 + 100–200 µg K2 pro Tag",
-    notes: "Bluttest empfohlen: Zielwert für Vitamin D3 ist 30–50 ng/ml (75–125 nmol/l). K2 in Form von MK-7 hat eine längere Halbwertszeit als MK-4.",
-    studies: [
-      {
-        title: "Vitamin D and the Immune System",
-        summary: "Vitamin D moduliert das Immunsystem und reduziert Entzündungen. Ein Mangel ist mit einem erhöhten Infektionsrisiko verbunden.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/32664641/"
-      },
-      {
-        title: "Vitamin K2 and Cardiovascular Health",
-        summary: "K2 aktiviert Proteine, die Kalzium aus den Arterien entfernen und in die Knochen einbauen. Reduziert das Risiko für Arterienverkalkung.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/29980560/"
+    },
+    {
+      id: 'vitamin-d3-k2',
+      name: 'Vitamin D3 + K2',
+      icon: 'assets/icons/vitamin-d.svg',
+      description: 'Vitamin D3 für Immunsystem und Knochen, K2 für die richtige Verteilung von Calcium. Besonders wichtig bei wenig Sonnenexposition.',
+      price: '0,10 €',
+      dailyPrice: 0.10,
+      category: 'Vitamine',
+      evidence: 'stark',
+      details: {
+        summary: 'Vitamin D3 (Cholecalciferol) wird durch Sonnenlicht in der Haut gebildet. Vitamin K2 aktiviert Proteine, die Calcium in Knochen und Zähne einbauen.',
+        benefits: [
+          'Stärkt das Immunsystem',
+          'Fördert die Knochengesundheit',
+          'Verbessert die Stimmung und kann Depressionen vorbeugen',
+          'Unterstützt die Muskelkraft',
+          'K2 verhindert Calciumablagerungen in den Arterien'
+        ],
+        dosage: '1000-4000 IE Vitamin D3 + 100-200 µg K2 pro Tag',
+        sources: [
+          { name: 'Meta-Analyse: Vitamin D und Immunfunktion', year: 2020, link: '#' },
+          { name: 'Studie: Vitamin K2 und kardiovaskuläre Gesundheit', year: 2015, link: '#' }
+        ],
+        recommendation: 'Bluttest machen! Optimaler Spiegel: 40-60 ng/ml. Bei Mangel: 4000 IE täglich für 8 Wochen, dann 1000-2000 IE Erhaltung.'
       }
-    ]
-  },
-  {
-    id: "magnesium",
-    name: "Magnesium",
-    evidence: "stark",
-    shortDescription: "Für Muskeln, Nerven und Schlaf.",
-    description: "Magnesium ist an über 300 enzymatischen Reaktionen beteiligt, darunter Muskelentspannung, Nervenfunktion und Energieproduktion. Ein Mangel kann zu Muskelkrämpfen, Schlafstörungen, Müdigkeit und Herzrhythmusstörungen führen. Besonders Sportler und Menschen mit Stress haben einen erhöhten Bedarf.",
-    pricePerDay: 0.10,
-    amazonLink: "",
-    category: ["basics"],
-    tags: ["magnesium", "muskeln", "schlaf", "nerven", "stress"],
-    image: assets/icons/magnesium.svg",
-    dosage: "300–400 mg pro Tag (abends einnehmen)",
-    notes: "Magnesiumcitrat oder -bisglycinat haben die beste Bioverfügbarkeit. Magnesiumoxid wird schlecht aufgenommen und kann abführend wirken.",
-    studies: [
-      {
-        title: "The Role of Magnesium in Sleep Health",
-        summary: "Magnesium verbessert die Schlafqualität, besonders bei Menschen mit Schlafstörungen. Wirkt über die Regulation von Melatonin und GABA.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/28729342/"
-      },
-      {
-        title: "Magnesium and Exercise Performance",
-        summary: "Magnesium reduziert Muskelkrämpfe und verbessert die Erholung nach dem Training.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/26180745/"
+    },
+    {
+      id: 'magnesium',
+      name: 'Magnesium',
+      icon: 'assets/icons/magnesium.svg',
+      description: 'Unterstützt über 300 enzymatische Prozesse, reduziert Muskelkrämpfe und verbessert den Schlaf. Wichtig bei Stress und Sport.',
+      price: '0,08 €',
+      dailyPrice: 0.08,
+      category: 'Mineralstoffe',
+      evidence: 'stark',
+      details: {
+        summary: 'Magnesium ist an über 300 enzymatischen Reaktionen beteiligt und wird für Muskel- und Nervenfunktion benötigt.',
+        benefits: [
+          'Reduziert Muskelkrämpfe und Verspannungen',
+          'Verbessert die Schlafqualität',
+          'Unterstützt die Stressresistenz',
+          'Fördert die Knochengesundheit',
+          'Kann Migräne vorbeugen'
+        ],
+        dosage: '300-400 mg pro Tag (vorzugsweise abends)',
+        sources: [
+          { name: 'Meta-Analyse: Magnesium und Schlafqualität', year: 2018, link: '#' },
+          { name: 'Studie: Magnesium bei Muskelkrämpfen', year: 2020, link: '#' }
+        ],
+        recommendation: 'Magnesiumcitrat oder -bisglycinat bevorzugen. Nicht mit Calcium zusammen einnehmen (Konkurrenz bei der Aufnahme).'
       }
-    ]
-  },
-  {
-    id: "zink",
-    name: "Zink",
-    evidence: "stark",
-    shortDescription: "Für Immunsystem und Wundheilung.",
-    description: "Zink unterstützt das Immunsystem, die Wundheilung, die DNA-Synthese und die Geschmacks- und Geruchswahrnehmung. Ein Mangel kann zu Infektanfälligkeit, Haarausfall, Geschmacksstörungen und verzögerter Wundheilung führen. Besonders Vegetarier und Veganer haben ein erhöhtes Risiko für einen Zinkmangel.",
-    pricePerDay: 0.12,
-    amazonLink: "",
-    category: ["basics"],
-    tags: ["zink", "immunsystem", "wundheilung", "vegan"],
-    image: assets/icons/zink.svg",
-    dosage: "15–30 mg pro Tag",
-    notes: "Nicht dauerhaft hochdosiert einnehmen (max. 40 mg/Tag). Hohe Dosen können zu Übelkeit und Erbrechen führen. Bei langfristiger Einnahme Kupfer supplementieren (1–2 mg/Tag).",
-    studies: [
-      {
-        title: "Zinc and Immune Function",
-        summary: "Zink verkürzt die Dauer von Erkältungen um ~33% und reduziert die Schwere der Symptome. Wirkt am besten, wenn es innerhalb von 24 Stunden nach den ersten Symptomen eingenommen wird.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/31027822/"
-      },
-      {
-        title: "Zinc Deficiency and Its Implications",
-        summary: "Ein Zinkmangel betrifft etwa 17% der Weltbevölkerung und ist besonders bei älteren Menschen und Vegetariern verbreitet.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/30665862/"
+    },
+    {
+      id: 'zink',
+      name: 'Zink',
+      icon: 'assets/icons/zink.svg',
+      description: 'Stärkt das Immunsystem, fördert die Wundheilung und unterstützt die Testosteronproduktion. Wichtig bei häufigen Infekten.',
+      price: '0,05 €',
+      dailyPrice: 0.05,
+      category: 'Mineralstoffe',
+      evidence: 'stark',
+      details: {
+        summary: 'Zink ist ein essentielles Spurenelement, das für Immunfunktion, DNA-Synthese und Zellteilung wichtig ist.',
+        benefits: [
+          'Stärkt das Immunsystem und verkürzt Erkältungen',
+          'Fördert die Wundheilung',
+          'Unterstützt die Testosteronproduktion',
+          'Verbessert Haut, Haare und Nägel',
+          'Wirkt antioxidativ'
+        ],
+        dosage: '15-30 mg pro Tag',
+        sources: [
+          { name: 'Meta-Analyse: Zink und Immunfunktion', year: 2021, link: '#' },
+          { name: 'Studie: Zink bei Erkältungen', year: 2015, link: '#' }
+        ],
+        recommendation: 'Zinkcitrat oder -bisglycinat bevorzugen. Nicht dauerhaft hochdosiert einnehmen (Kupfermangel-Risiko).'
       }
-    ]
-  },
-  {
-    id: "kreatin",
-    name: "Kreatin",
-    evidence: "stark",
-    shortDescription: "Für mehr Kraft und Muskelmasse.",
-    description: "Kreatin erhöht die ATP-Regeneration in den Muskeln, was zu mehr Kraft, Ausdauer und Muskelmasse führt. Es ist eines der am besten untersuchten Supplements mit nachgewiesener Wirkung. Studien zeigen, dass Kreatin die Kraft um 5–15% und die Muskelmasse um 1–2 kg in 4–12 Wochen steigern kann.",
-    pricePerDay: 0.30,
-    amazonLink: "",
-    category: ["basics", "leistung"],
-    tags: ["kreatin", "kraft", "muskelaufbau", "ausdauer"],
-    image: assets/icons/kreatin.svg",
-    dosage: "3–5 g pro Tag (Ladephase nicht nötig)",
-    notes: "Wirkung tritt nach 2–4 Wochen ein. Keine Nebenwirkungen bekannt. Kreatin-Monohydrat ist die beste und günstigste Form. Kreatin erhöht das Körpergewicht um 1–2 kg durch Wassereinlagerung in den Muskeln.",
-    studies: [
-      {
-        title: "Creatine Supplementation and Exercise Performance",
-        summary: "Kreatin steigert die Kraft um 5–15% und die Muskelmasse um 1–2 kg in 4–12 Wochen. Wirkt besonders gut bei hochintensivem Training.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/33406487/"
-      },
-      {
-        title: "Creatine and Cognitive Function",
-        summary: "Kreatin verbessert auch die kognitive Leistung, besonders bei Schlafmangel oder Stress.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/29490136/"
+    },
+    {
+      id: 'kreatin',
+      name: 'Kreatin',
+      icon: 'assets/icons/kreatin.svg',
+      description: 'Erhöht Kraft, Muskelmasse und Ausdauer. Eines der am besten erforschten Supplements für Sportler. Auch für das Gehirn vorteilhaft.',
+      price: '0,20 €',
+      dailyPrice: 0.20,
+      category: 'Leistung',
+      evidence: 'stark',
+      details: {
+        summary: 'Kreatin ist eine natürliche Substanz, die in Muskelzellen Energie bereitstellt. Es wird auch im Gehirn benötigt.',
+        benefits: [
+          'Erhöht die Kraft um 5-15%',
+          'Fördert den Muskelaufbau',
+          'Verbessert die Ausdauerleistung',
+          'Unterstützt die kognitive Funktion',
+          'Kann die Erholung beschleunigen'
+        ],
+        dosage: '3-5 g pro Tag',
+        sources: [
+          { name: 'Meta-Analyse: Kreatin und Kraftleistung', year: 2012, link: '#' },
+          { name: 'Studie: Kreatin und kognitive Funktion', year: 2018, link: '#' }
+        ],
+        recommendation: 'Kreatin-Monohydrat ist die beste Form. Ladephase (20 g/Tag für 5-7 Tage) optional. Wirkung tritt auch ohne Ladephase ein.'
       }
-    ]
-  },
-  {
-    id: "high-protein",
-    name: "High Protein (Whey/Vegan)",
-    evidence: "stark",
-    shortDescription: "Für Muskelaufbau und Sättigung.",
-    description: "Protein ist essenziell für Muskelaufbau, -erhalt und viele andere Körperfunktionen. Studien zeigen, dass eine Proteinzufuhr von 1,6–2,2 g/kg Körpergewicht optimal für Sportler und Menschen ist, die Muskeln aufbauen möchten. Whey-Protein hat die beste Bioverfügbarkeit und wird schnell aufgenommen, während Casein oder Vegan-Protein (z. B. Erbsenprotein) langsamer verdaut werden und länger sättigen.",
-    pricePerDay: 1.20,
-    amazonLink: "",
-    category: ["basics"],
-    tags: ["whey", "vegan", "protein", "muskelaufbau", "sättigung"],
-    image: assets/icons/protein.svg",
-    dosage: "20–40 g pro Portion (nach dem Training oder als Mahlzeitenersatz)",
-    notes: "Whey für schnelle Aufnahme (z. B. nach dem Training), Casein oder Vegan-Protein für langanhaltende Sättigung (z. B. vor dem Schlafengehen). Achte auf ein Produkt mit hohem Proteingehalt (> 80%) und wenig Zusatzstoffen.",
-    studies: [
-      {
-        title: "Protein Supplementation Increases Muscle Mass Gains During Resistance Training",
-        summary: "Eine Proteinzufuhr von 1,6–2,2 g/kg Körpergewicht maximiert den Muskelaufbau bei Krafttraining.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/29490136/"
-      },
-      {
-        title: "Whey Protein vs. Casein: Effects on Muscle Protein Synthesis",
-        summary: "Whey-Protein führt zu einem schnelleren Anstieg der Muskelproteinsynthese als Casein, während Casein eine längere Sättigung bewirkt.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/19927027/"
+    },
+    {
+      id: 'protein',
+      name: 'Proteinpulver',
+      icon: 'assets/icons/protein.svg',
+      description: 'Praktische Proteinquelle für Muskelaufbau und Sättigung. Besonders nützlich nach dem Training oder als Mahlzeitenersatz.',
+      price: '0,50 €',
+      dailyPrice: 0.50,
+      category: 'Ernährung',
+      evidence: 'stark',
+      details: {
+        summary: 'Proteinpulver ist eine konzentrierte Proteinquelle, die hilft, den täglichen Proteinbedarf zu decken.',
+        benefits: [
+          'Fördert den Muskelaufbau und die Regeneration',
+          'Erhöht die Sättigung und kann beim Abnehmen helfen',
+          'Praktisch für unterwegs oder nach dem Training',
+          'Unterstützt die Immunfunktion'
+        ],
+        dosage: '20-40 g pro Portion (je nach Bedarf)',
+        sources: [
+          { name: 'Meta-Analyse: Protein und Muskelaufbau', year: 2018, link: '#' },
+          { name: 'Studie: Protein und Sättigung', year: 2020, link: '#' }
+        ],
+        recommendation: 'Whey Protein für schnelle Aufnahme, Casein für langsame Aufnahme (z.B. vor dem Schlaf). Pflanzenbasierte Optionen: Erbsenprotein oder Reis-Hanf-Mix.'
       }
-    ]
-  },
-  {
-    id: "multivitamin",
-    name: "Multivitamin",
-    evidence: "mittel",
-    shortDescription: "Nährstofflücken schließen.",
-    description: "Ein hochwertiges Multivitamin kann Nährstofflücken schließen, insbesondere bei unausgewogener Ernährung, Stress oder erhöhtem Bedarf (z. B. bei Sportlern oder Schwangeren). Die Evidenz für gesunde Menschen mit ausgewogener Ernährung ist jedoch begrenzt. Studien zeigen, dass Multivitamine bei gesunden Menschen keine signifikanten Vorteile bringen, aber auch keine Nachteile haben.",
-    pricePerDay: 0.20,
-    amazonLink: "",
-    category: ["basics"],
-    tags: ["multivitamin", "nährstoffe", "mangel"],
-    image: assets/icons/multivitamin.svg",
-    dosage: "1 Tablette pro Tag (zu einer Mahlzeit)",
-    notes: "Achte auf ein Produkt mit aktiven Formen der Vitamine (z. B. B12 als Methylcobalamin, Folsäure als 5-MTHF). Vermeide Produkte mit extrem hohen Dosen (z. B. > 1000% des Tagesbedarfs).",
-    studies: [
-      {
-        title: "Multivitamin/Mineral Supplements and Chronic Disease Prevention",
-        summary: "Multivitamine haben bei gesunden Menschen keinen signifikanten Einfluss auf die Prävention chronischer Krankheiten. Können aber bei Nährstoffmangel sinnvoll sein.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/29949886/"
+    },
+    {
+      id: 'multivitamin',
+      name: 'Multivitamin',
+      icon: 'assets/icons/multivitamin.svg',
+      description: 'Deckung von Mikronährstofflücken für optimale Gesundheit. Besonders sinnvoll bei unausgewogener Ernährung oder erhöhtem Bedarf.',
+      price: '0,25 €',
+      dailyPrice: 0.25,
+      category: 'Vitamine',
+      evidence: 'mittel',
+      details: {
+        summary: 'Ein Multivitaminpräparat kann helfen, Mikronährstofflücken zu schließen, besonders bei unausgewogener Ernährung.',
+        benefits: [
+          'Füllt Mikronährstofflücken',
+          'Unterstützt das Immunsystem',
+          'Fördert die allgemeine Gesundheit',
+          'Kann die Energielevel verbessern'
+        ],
+        dosage: '1 Tablette/Kapsel pro Tag',
+        sources: [
+          { name: 'Studie: Multivitamine und allgemeine Gesundheit', year: 2020, link: '#' }
+        ],
+        recommendation: 'Qualitativ hochwertige Präparate mit aktiven Formen (z.B. Methylcobalamin für B12, P-5-P für B6) bevorzugen.'
       }
-    ]
-  },
-  {
-    id: "ashwagandha",
-    name: "Ashwagandha",
-    evidence: "schwach",
-    shortDescription: "Stressreduktion? Evidenz schwach.",
-    description: "Ashwagandha (Withania somnifera) wird in der Ayurveda-Medizin seit Jahrhunderten als Adaptogen verwendet, um Stress zu reduzieren und die Widerstandsfähigkeit des Körpers zu erhöhen. Einige Studien deuten auf eine leichte stressreduzierende Wirkung hin, aber die Evidenz ist begrenzt und oft von niedriger Qualität. Die meisten Studien wurden mit kleinen Stichproben durchgeführt und sind nicht placebokontrolliert.",
-    pricePerDay: 0.50,
-    amazonLink: "",
-    category: ["hype-check"],
-    tags: ["adaptogen", "stress", "ayurveda"],
-    image: assets/icons/ashwagandha.svg",
-    dosage: "300–600 mg Extrakt (standardisiert auf 5% Withanolide) pro Tag",
-    notes: "Kein Ersatz für bewiesene Therapien bei Angststörungen oder Depressionen. Kann bei manchen Menschen zu Müdigkeit oder Magenbeschwerden führen.",
-    studies: [
-      {
-        title: "Efficacy of Ashwagandha for Stress and Anxiety: A Systematic Review",
-        summary: "Kleine Studie (n=60): Leichte Reduktion von Stress, aber keine Placebo-Kontrolle. Größere, hochwertige Studien fehlen.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/23439798/"
-      },
-      {
-        title: "Ashwagandha and Cognitive Function",
-        summary: "Einige Studien deuten auf eine Verbesserung der kognitiven Funktion hin, aber die Ergebnisse sind inkonsistent.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/28892018/"
+    }
+  ],
+  hypeCheck: [
+    {
+      id: 'ashwagandha',
+      name: 'Ashwagandha',
+      icon: 'assets/icons/ashwagandha.svg',
+      description: 'Adaptogen, das angeblich Stress reduziert und Testosteron erhöht. Die wissenschaftliche Evidenz ist jedoch begrenzt und widersprüchlich.',
+      price: '0,30 €',
+      dailyPrice: 0.30,
+      category: 'Adaptogene',
+      evidence: 'schwach',
+      details: {
+        summary: 'Ashwagandha (Withania somnifera) ist ein Adaptogen aus der ayurvedischen Medizin, das angeblich Stress reduziert und die Testosteronproduktion erhöht.',
+        claimedBenefits: [
+          'Reduziert Stress und Angst',
+          'Erhöht Testosteron',
+          'Verbessert die Schlafqualität',
+          'Fördert die kognitive Funktion'
+        ],
+        actualEvidence: [
+          'Einige kleine Studien zeigen leichte Effekte auf Stressreduktion',
+          'Keine überzeugenden Belege für Testosteron-Erhöhung bei gesunden Männern',
+          'Wirkmechanismus nicht vollständig verstanden',
+          'Qualität der Studien oft niedrig'
+        ],
+        dosage: '300-600 mg Extrakt (5% Withanolide) pro Tag',
+        sources: [
+          { name: 'Systematic Review: Ashwagandha für Angst und Stress', year: 2022, link: '#' },
+          { name: 'Meta-Analyse: Ashwagandha und Testosteron', year: 2021, link: '#' }
+        ],
+        recommendation: 'Keine Empfehlung aufgrund unzureichender Evidenz. Bei Stress: Magnesium und Schlafhygiene bevorzugen.'
       }
-    ]
-  },
-  {
-    id: "bcaa",
-    name: "BCAAs / EAAs",
-    evidence: "schwach",
-    shortDescription: "Unnötig bei ausreichender Proteinzufuhr.",
-    description: "Verzweigtkettige Aminosäuren (BCAAs: Leucin, Isoleucin, Valin) werden oft als Muskelaufbau-Supplement beworben. Allerdings zeigen Studien, dass sie für die meisten Menschen keinen zusätzlichen Nutzen gegenüber einer proteinreichen Ernährung bieten. EAAs (essenzielle Aminosäuren) können sinnvoll sein, wenn die Proteinzufuhr insgesamt zu niedrig ist, aber auch hier ist ein hochwertiges Proteinpulver meist die bessere Wahl.",
-    pricePerDay: 0.40,
-    amazonLink: "",
-    category: ["hype-check"],
-    tags: ["bcaa", "eaa", "aminosäuren", "muskelaufbau"],
-    image: assets/icons/bcaa.svg",
-    dosage: "5–10 g pro Portion",
-    notes: "Besser: Hochwertiges Proteinpulver (Whey/Vegan) mit allen essenziellen Aminosäuren. BCAAs sind in jedem Protein enthalten – eine separate Supplementation ist meist unnötig.",
-    studies: [
-      {
-        title: "BCAA Supplementation and Muscle Growth: A Meta-Analysis",
-        summary: "Kein zusätzlicher Nutzen von BCAAs bei ausreichender Proteinzufuhr. Studien zeigen, dass BCAAs allein die Muskelproteinsynthese nicht stimulieren, wenn keine anderen essenziellen Aminosäuren vorhanden sind.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/28698222/"
+    },
+    {
+      id: 'bcaa',
+      name: 'BCAAs / EAAs',
+      icon: 'assets/icons/bcaa.svg',
+      description: 'Verzweigtkettige Aminosäuren, die angeblich die Muskelproteinsynthese fördern und Muskelabbau verhindern. Für die meisten Menschen unnötig.',
+      price: '0,40 €',
+      dailyPrice: 0.40,
+      category: 'Aminosäuren',
+      evidence: 'schwach',
+      details: {
+        summary: 'BCAAs (Leucin, Isoleucin, Valin) sind essentielle Aminosäuren, die in vielen Proteinquellen enthalten sind.',
+        claimedBenefits: [
+          'Fördert die Muskelproteinsynthese',
+          'Verhindert Muskelabbau während des Trainings',
+          'Reduziert Muskelkater',
+          'Verbessert die Ausdauerleistung'
+        ],
+        actualEvidence: [
+          'Kein zusätzlicher Nutzen gegenüber normaler Proteinzufuhr',
+          'Leucin ist der wichtigste Faktor, aber in ausreichender Menge in normaler Ernährung enthalten',
+          'Kann sogar die Proteinsynthese hemmen, wenn isoliert eingenommen',
+          'Keine Studien zeigen langfristige Vorteile'
+        ],
+        dosage: '5-10 g pro Portion',
+        sources: [
+          { name: 'Meta-Analyse: BCAAs und Muskelaufbau', year: 2017, link: '#' },
+          { name: 'Studie: BCAAs vs. Placebo bei Krafttraining', year: 2018, link: '#' }
+        ],
+        recommendation: 'Nicht empfehlenswert. Besser: Ausreichend Protein aus der Ernährung oder Proteinpulver.'
       }
-    ]
-  },
-  {
-    id: "fatburner",
-    name: "Fatburner & L-Carnitin",
-    evidence: "schwach",
-    shortDescription: "Minimale Wirkung, wenn überhaupt.",
-    description: "Fatburner werden oft als Wundermittel zum Abnehmen beworben. Die meisten Studien zeigen jedoch keine signifikante Wirkung auf den Fettabbau. L-Carnitin kann in hohen Dosen (2–3 g/Tag) die Fettoxidation leicht erhöhen, aber der Effekt ist minimal und für die meisten Menschen nicht spürbar. Koffein kann den Stoffwechsel kurzfristig um ~3–11% steigern, aber der Effekt lässt schnell nach.",
-    pricePerDay: 0.60,
-    amazonLink: "",
-    category: ["hype-check"],
-    tags: ["fatburner", "carnitin", "abnehmen", "stoffwechsel"],
-    image: assets/icons/fatburner.svg",
-    dosage: "2–3 g L-Carnitin pro Tag (falls überhaupt)",
-    notes: "Kein Ersatz für eine kalorienkontrollierte Ernährung und Bewegung. Die meisten Fatburner enthalten Koffein – Vorsicht bei Empfindlichkeit oder Schlafstörungen.",
-    studies: [
-      {
-        title: "The Myth of Fat Burners: A Review of the Evidence",
-        summary: "Die meisten Fatburner haben keine nachgewiesene Wirkung auf den Fettabbau. Einige können sogar gesundheitsschädlich sein.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/25880962/"
-      },
-      {
-        title: "L-Carnitine and Fat Oxidation",
-        summary: "L-Carnitin erhöht die Fettoxidation um ~10–15%, aber der Effekt auf den Gewichtsverlust ist minimal.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/20478222/"
+    },
+    {
+      id: 'fatburner',
+      name: 'Fatburner',
+      icon: 'assets/icons/fatburner.svg',
+      description: 'Kombinationen aus Stimulanzien und anderen Substanzen, die angeblich die Fettverbrennung erhöhen. Meist unwirksam oder sogar gefährlich.',
+      price: '0,60 €',
+      dailyPrice: 0.60,
+      category: 'Gewichtsverlust',
+      evidence: 'schwach',
+      details: {
+        summary: 'Fatburner sind Supplement-Kombinationen, die angeblich die Fettverbrennung erhöhen, den Stoffwechsel anregen oder den Appetit unterdrücken.',
+        claimedBenefits: [
+          'Erhöht die Fettverbrennung',
+          'Unterdrückt den Appetit',
+          'Erhöht die Energielevel',
+          'Verbessert die Ausdauerleistung'
+        ],
+        actualEvidence: [
+          'Koffein kann leicht den Stoffwechsel erhöhen (3-11%)',
+          'Grüner Tee Extrakt kann minimal die Fettoxidation erhöhen',
+          'Die meisten Inhaltsstoffe haben keine nachgewiesene Wirkung',
+          'Können gefährliche Nebenwirkungen haben (Herzrasen, Bluthochdruck)'
+        ],
+        dosage: 'Variiert je nach Produkt',
+        sources: [
+          { name: 'Meta-Analyse: Fatburner und Gewichtsverlust', year: 2019, link: '#' },
+          { name: 'Studie: Sicherheit von Fatburnern', year: 2020, link: '#' }
+        ],
+        recommendation: 'Nicht empfehlenswert. Besser: Kaloriendefizit, Krafttraining und ausreichend Protein.'
       }
-    ]
-  },
-  {
-    id: "testo-booster",
-    name: "Testo-Booster (Maca, Tribulus)",
-    evidence: "schwach",
-    shortDescription: "Kein nachgewiesener Effekt auf Testosteron.",
-    description: "Testosteron-Booster wie Maca, Tribulus terrestris oder Zink-Magnesium-Kombinationen werden oft als natürliche Alternative zu Steroiden beworben. Die meisten Studien zeigen jedoch keine signifikante Erhöhung des Testosteronspiegels bei gesunden Männern. Bei Männern mit einem nachgewiesenen Testosteronmangel können einige Inhaltsstoffe (z. B. Zink) helfen, aber die Wirkung ist meist gering.",
-    pricePerDay: 0.45,
-    amazonLink: "",
-    category: ["hype-check"],
-    tags: ["testosteron", "maca", "tribulus", "libido"],
-    image: assets/icons/testo-booster.svg",
-    dosage: "Nach Herstellerangaben (meist 1–2 Kapseln pro Tag)",
-    notes: "Kein Ersatz für eine medizinische Behandlung bei Testosteronmangel. Bei Verdacht auf Testosteronmangel: Bluttest beim Arzt machen.",
-    studies: [
-      {
-        title: "The Effects of Tribulus terrestris on Testosterone Levels",
-        summary: "Kein signifikanter Anstieg des Testosteronspiegels bei gesunden Männern. Einige Studien zeigen eine leichte Verbesserung der Libido, aber keine hormonellen Veränderungen.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/22805761/"
-      },
-      {
-        title: "Maca and Male Fertility: A Systematic Review",
-        summary: "Einige Studien deuten auf eine leichte Verbesserung der Spermienqualität hin, aber kein Effekt auf den Testosteronspiegel.",
-        link: "https://pubmed.ncbi.nlm.nih.gov/28945065/"
+    },
+    {
+      id: 'testo-booster',
+      name: 'Testo-Booster',
+      icon: 'assets/icons/testo-booster.svg',
+      description: 'Natürliche oder synthetische Substanzen, die angeblich den Testosteronspiegel erhöhen. Die meisten haben keine nachgewiesene Wirkung.',
+      price: '0,50 €',
+      dailyPrice: 0.50,
+      category: 'Hormone',
+      evidence: 'schwach',
+      details: {
+        summary: 'Testosteron-Booster sind Supplements, die angeblich den natürlichen Testosteronspiegel erhöhen.',
+        claimedBenefits: [
+          'Erhöht den Testosteronspiegel',
+          'Fördert den Muskelaufbau',
+          'Verbessert die Libido',
+          'Erhöht die Energielevel'
+        ],
+        actualEvidence: [
+          'Zink und Vitamin D können bei Mangel den Testosteronspiegel normalisieren',
+          'D-Aspartinsäure zeigt in einigen Studien leichte Effekte',
+          'Die meisten pflanzlichen Inhaltsstoffe (Tribulus, Fenugreek) haben keine nachgewiesene Wirkung',
+          'Keine langfristigen Studien zeigen signifikante Effekte'
+        ],
+        dosage: 'Variiert je nach Produkt',
+        sources: [
+          { name: 'Meta-Analyse: Natürliche Testosteron-Booster', year: 2021, link: '#' },
+          { name: 'Studie: Zink und Testosteron', year: 2015, link: '#' }
+        ],
+        recommendation: 'Nicht empfehlenswert. Besser: Ausreichend Schlaf, Stressmanagement, Krafttraining und ausgewogene Ernährung.'
       }
-    ]
-  }
-];
+    }
+  ]
+};
 
-// ===== Stack-Daten =====
+// ===== Stacks Data =====
 const stacks = [
   {
-    id: "stack-diaet",
-    name: "Diät & Abnehmen",
-    description: "Kombination aus Supplements, die den Fettabbau unterstützen, den Stoffwechsel anregen und Heißhunger reduzieren.",
-    supplements: ["high-protein", "omega-3", "magnesium"],
-    pricePerDay: 1.55,
-    category: "abnehmen",
-    image: assets/icons/stack-diaet.svg",
-    tools: ["bmi-rechner", "kcal-rechner"],
-    notes: "Wichtig: Ein Kaloriendefizit ist der entscheidende Faktor für Fettabbau. Supplements können unterstützen, ersetzen aber keine gesunde Ernährung. Protein hilft, die Muskelmasse zu erhalten und sättigt. Omega-3 reduziert Entzündungen, die durch ein Kaloriendefizit entstehen können. Magnesium unterstützt die Muskelentspannung und den Schlaf."
+    id: 'diet',
+    name: 'Diät & Abnehmen',
+    icon: 'assets/icons/diet.svg',
+    description: 'Kombination aus Supplements, die beim Abnehmen unterstützen, ohne die Gesundheit zu gefährden.',
+    price: '0,85 €',
+    dailyPrice: 0.85,
+    category: 'Gewichtsmanagement',
+    supplements: ['protein', 'omega-3', 'magnesium', 'vitamin-d3-k2'],
+    details: {
+      summary: 'Diese Kombination unterstützt den Fettabbau, erhält Muskelmasse und verbessert die allgemeine Gesundheit während einer Diät.',
+      benefits: [
+        'Proteinpulver: Erhält Muskelmasse und erhöht die Sättigung',
+        'Omega-3: Reduziert Entzündungen und unterstützt die Herzgesundheit',
+        'Magnesium: Reduziert Muskelkrämpfe und verbessert den Schlaf',
+        'Vitamin D3+K2: Unterstützt Immunsystem und Knochengesundheit'
+      ],
+      recommendation: 'Kombiniere mit einem moderaten Kaloriendefizit (300-500 kcal/Tag) und Krafttraining 3-4x pro Woche.'
+    }
   },
   {
-    id: "stack-schlaf",
-    name: "Schlaf & Erholung",
-    description: "Supplements, die die Schlafqualität verbessern und die Regeneration fördern.",
-    supplements: ["magnesium", "zink", "vitamin-d3-k2"],
-    pricePerDay: 0.37,
-    category: "schlaf",
-    image: assets/icons/stack-schlaf.svg",
-    tools: [],
-    notes: "Magnesium und Zink am Abend einnehmen, um die Schlafqualität zu verbessern. Vitamin D3+K2 morgens einnehmen, da es den Cortisolspiegel erhöhen kann. Achte auf eine regelmäßige Schlafenszeit und eine dunkle, kühle Umgebung."
+    id: 'sleep',
+    name: 'Schlaf & Erholung',
+    icon: 'assets/icons/sleep.svg',
+    description: 'Supplements, die die Schlafqualität verbessern und die Regeneration fördern.',
+    price: '0,63 €',
+    dailyPrice: 0.63,
+    category: 'Erholung',
+    supplements: ['magnesium', 'zink', 'omega-3'],
+    details: {
+      summary: 'Diese Kombination unterstützt die Schlafqualität, reduziert Stress und fördert die nächtliche Regeneration.',
+      benefits: [
+        'Magnesium: Beruhigt das Nervensystem und verbessert die Schlafqualität',
+        'Zink: Unterstützt die Melatoninproduktion',
+        'Omega-3: Reduziert Entzündungen und kann die Schlafqualität verbessern'
+      ],
+      recommendation: 'Magnesium 30-60 Minuten vor dem Schlafengehen einnehmen. Konsistente Schlafenszeiten einhalten.'
+    }
   },
   {
-    id: "stack-vegan",
-    name: "Veganer & Vegetarier",
-    description: "Wichtige Nährstoffe, die bei veganer Ernährung oft fehlen.",
-    supplements: ["high-protein", "omega-3", "vitamin-d3-k2", "zink"],
-    pricePerDay: 1.52,
-    category: "vegan",
-    image: assets/icons/stack-vegan.svg",
-    tools: [],
-    notes: "Besonders wichtig: Vitamin B12 (nicht in dieser Liste, da separat zu supplementieren!), Eisen und Jod. Veganer sollten zusätzlich auf eine ausreichende Zufuhr von Vitamin B12 (Cyanocobalamin oder Methylcobalamin), Eisen (am besten mit Vitamin C kombinieren) und Jod (z. B. durch Algen oder jodiertes Salz) achten."
+    id: 'vegan',
+    name: 'Veganer & Vegetarier',
+    icon: 'assets/icons/vegan.svg',
+    description: 'Essentielle Nährstoffe, die bei veganer oder vegetarischer Ernährung oft fehlen.',
+    price: '0,58 €',
+    dailyPrice: 0.58,
+    category: 'Ernährung',
+    supplements: ['vitamin-d3-k2', 'omega-3', 'zink', 'multivitamin'],
+    details: {
+      summary: 'Diese Kombination deckt die häufigsten Nährstofflücken bei veganer oder vegetarischer Ernährung ab.',
+      benefits: [
+        'Vitamin D3+K2: Wichtig für Knochen und Immunsystem (veganes D3 aus Flechten)',
+        'Omega-3: Algenöl als vegane Quelle für EPA und DHA',
+        'Zink: Wichtig für Immunsystem und Stoffwechsel',
+        'Multivitamin: Deckung von Mikronährstofflücken (besonders B12, Eisen, Jod)'
+      ],
+      recommendation: 'Regelmäßige Bluttests machen, um Nährstoffstatus zu überprüfen. Besonders wichtig: B12, Eisen, Ferritin, Vitamin D.'
+    }
   },
   {
-    id: "stack-aging",
-    name: "50+ / Healthy Aging",
-    description: "Supplements, die den Alterungsprozess verlangsamen und die Gesundheit im Alter fördern.",
-    supplements: ["omega-3", "vitamin-d3-k2", "magnesium", "kreatin"],
-    pricePerDay: 0.80,
-    category: "aging",
-    image: assets/icons/stack-aging.svg",
-    tools: [],
-    notes: "Kreatin unterstützt die Muskelmasse und kognitive Funktion im Alter. Omega-3 schützt vor Entzündungen und Herz-Kreislauf-Erkrankungen. Vitamin D3+K2 beugt Osteoporose vor. Magnesium unterstützt die Muskel- und Nervenfunktion."
+    id: 'aging',
+    name: '50+ / Healthy Aging',
+    icon: 'assets/icons/aging.svg',
+    description: 'Supplements, die den Alterungsprozess verlangsamen und die Gesundheit im Alter unterstützen.',
+    price: '0,78 €',
+    dailyPrice: 0.78,
+    category: 'Langlebigkeit',
+    supplements: ['omega-3', 'vitamin-d3-k2', 'magnesium', 'kreatin'],
+    details: {
+      summary: 'Diese Kombination unterstützt die kognitive Funktion, Knochengesundheit, Muskelmasse und allgemeine Vitalität im Alter.',
+      benefits: [
+        'Omega-3: Unterstützt Gehirnfunktion und Herzgesundheit',
+        'Vitamin D3+K2: Beugt Osteoporose vor und unterstützt das Immunsystem',
+        'Magnesium: Fördert Muskelentspannung und Schlafqualität',
+        'Kreatin: Erhält Muskelmasse und unterstützt die kognitive Funktion'
+      ],
+      recommendation: 'Kombiniere mit regelmäßiger Bewegung (Krafttraining + Ausdauer) und ausgewogener Ernährung.'
+    }
   }
 ];
 
-// ===== News-Daten (für KI-Updates) =====
+// ===== News Data =====
 const news = [
   {
-    date: "15. Juni 2025",
-    title: "Neue Meta-Analyse zu Omega-3: 18% weniger Herzinfarkte",
-    summary: "Eine aktuelle Auswertung von 40 Studien mit über 135.000 Teilnehmern bestätigt: Omega-3-Fettsäuren senken das Risiko für Herzinfarkte um 18% und für kardiovaskuläre Todesfälle um 15%. Die Wirkung war besonders stark bei Menschen mit hohem Risiko oder bestehenden Herz-Kreislauf-Erkrankungen.",
-    link: "https://pubmed.ncbi.nlm.nih.gov/33400871/"
+    id: 'news-1',
+    date: '15. Juni 2024',
+    title: 'Neue Meta-Analyse bestätigt: Omega-3 senkt Herzinfarkt-Risiko',
+    summary: 'Eine aktuelle Meta-Analyse mit über 130.000 Teilnehmern zeigt, dass die Einnahme von Omega-3-Fettsäuren das Risiko für Herzinfarkte um 8% senken kann.',
+    link: '#',
+    category: 'Herzgesundheit'
   },
   {
-    date: "10. Juni 2025",
-    title: "Vitamin D: Kein Nutzen für gesunde Menschen?",
-    summary: "Eine neue Studie im New England Journal of Medicine zeigt, dass Vitamin D bei Menschen mit normalem Spiegel keine Vorteile für die Knochengesundheit oder die Prävention von Herz-Kreislauf-Erkrankungen bringt. Nur bei einem nachgewiesenen Mangel ist die Supplementation sinnvoll.",
-    link: "https://pubmed.ncbi.nlm.nih.gov/87654321/"
+    id: 'news-2',
+    date: '10. Juni 2024',
+    title: 'Vitamin D und COVID-19: Neue Erkenntnisse',
+    summary: 'Eine aktuelle Studie untersucht den Zusammenhang zwischen Vitamin D-Spiegel und dem Schweregrad von COVID-19-Infektionen.',
+    link: '#',
+    category: 'Immunsystem'
   },
   {
-    date: "5. Juni 2025",
-    title: "Kreatin auch für Frauen effektiv",
-    summary: "Eine aktuelle Studie im Journal of the International Society of Sports Nutrition widerlegt den Mythos, dass Kreatin nur für Männer funktioniert. Frauen profitieren genauso von der Kraft- und Muskelzunahme. Die Studie zeigte eine signifikante Steigerung der Kraft um 10–15% und der Muskelmasse um 1–2 kg in 8 Wochen.",
-    link: "https://pubmed.ncbi.nlm.nih.gov/98765432/"
+    id: 'news-3',
+    date: '5. Juni 2024',
+    title: 'Kreatin: Nicht nur für Sportler',
+    summary: 'Neue Forschung zeigt, dass Kreatin auch für ältere Erwachsene Vorteile bietet, insbesondere für die kognitive Funktion und Knochengesundheit.',
+    link: '#',
+    category: 'Kognitive Gesundheit'
   },
   {
-    date: "1. Juni 2025",
-    title: "Magnesium und Schlaf: Neue Erkenntnisse",
-    summary: "Eine aktuelle Meta-Analyse zeigt, dass Magnesium die Schlafqualität signifikant verbessert, besonders bei Menschen mit Schlafstörungen. Magnesium wirkt über die Regulation von Melatonin und GABA, zwei Neurotransmittern, die für den Schlaf wichtig sind.",
-    link: "https://pubmed.ncbi.nlm.nih.gov/12345678/"
+    id: 'news-4',
+    date: '1. Juni 2024',
+    title: 'Magnesium und Schlaf: Was sagt die Wissenschaft?',
+    summary: 'Ein systematischer Review analysiert die aktuellen Erkenntnisse über die Wirkung von Magnesium auf die Schlafqualität.',
+    link: '#',
+    category: 'Schlaf'
   }
 ];
+
+// ===== Export =====
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { supplements, stacks, news };
+}

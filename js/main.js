@@ -1,401 +1,906 @@
-// ===== Pillenbox (localStorage) =====
-let pillBox = JSON.parse(localStorage.getItem('evidencedPillBox')) || [];
+// ===== DOM Elements =====
+const navbar = document.getElementById('navbar');
+const menuToggle = document.getElementById('menuToggle');
+const pillboxToggle = document.getElementById('pillboxToggle');
+const pillboxCount = document.getElementById('pillboxCount');
+const sidebar = document.getElementById('sidebar');
+const pillboxPanel = document.getElementById('pillboxPanel');
+const overlay = document.getElementById('overlay');
+const closeSidebar = document.getElementById('closeSidebar');
+const closePillbox = document.getElementById('closePillbox');
+const pillboxContent = document.getElementById('pillboxContent');
+const pillboxTotal = document.getElementById('pillboxTotal');
+const basicsGrid = document.getElementById('basicsGrid');
+const stacksGrid = document.getElementById('stacksGrid');
+const hypeCheckGrid = document.getElementById('hypeCheckGrid');
+const newsGrid = document.getElementById('newsGrid');
 
-// DOM-Elemente
-const pillboxDrawer = document.getElementById('pillbox-drawer');
-const pillboxItems = document.getElementById('pillbox-items');
-const pillboxTotalPrice = document.getElementById('pillbox-total-price');
-const pillboxCount = document.getElementById('pillbox-count');
+// ===== State =====
+let pillbox = JSON.parse(localStorage.getItem('pillbox')) || [];
 
-// Pillenbox anzeigen/verstecken
-function togglePillBox() {
-  if (pillboxDrawer) {
-    pillboxDrawer.classList.toggle('open');
-  }
+// ===== Initialize =====
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initSidebar();
+  initPillbox();
+  renderContent();
+  updatePillboxUI();
+});
+
+// ===== Navbar =====
+function initNavbar() {
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      navbar.classList.remove('shrunk');
+      return;
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      // Scrolling down
+      navbar.classList.add('shrunk');
+    } else {
+      // Scrolling up
+      navbar.classList.remove('shrunk');
+    }
+    
+    lastScroll = currentScroll;
+  });
 }
 
-// Supplement zur Pillenbox hinzufügen
-function addToPillBox(supplementId) {
-  const supplement = supplements.find(s => s.id === supplementId);
-  if (!supplement) return;
-
-  if (pillBox.some(item => item.id === supplementId)) {
-    alert('Dieses Supplement ist bereits in deiner Pillenbox.');
-    return;
-  }
-
-  pillBox.push({
-    id: supplement.id,
-    name: supplement.name,
-    pricePerDay: supplement.pricePerDay,
-    amazonLink: supplement.amazonLink || ""
+// ===== Sidebar =====
+function initSidebar() {
+  // Open sidebar
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
   });
 
-  savePillBox();
-  renderPillBox();
-  togglePillBox();
-}
+  // Close sidebar
+  closeSidebar.addEventListener('click', closeSidebarPanel);
+  
+  // Close on overlay click
+  overlay.addEventListener('click', closeSidebarPanel);
 
-// Supplement aus der Pillenbox entfernen
-function removeFromPillBox(index) {
-  pillBox.splice(index, 1);
-  savePillBox();
-  renderPillBox();
-}
-
-// Pillenbox speichern (localStorage)
-function savePillBox() {
-  localStorage.setItem('evidencedPillBox', JSON.stringify(pillBox));
-}
-
-// Pillenbox rendern
-function renderPillBox() {
-  if (!pillboxItems || !pillboxTotalPrice || !pillboxCount) return;
-
-  if (pillBox.length === 0) {
-    pillboxItems.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Deine Pillenbox ist leer.</p>';
-    pillboxTotalPrice.textContent = '0,00 €';
-    pillboxCount.textContent = '0';
-    return;
-  }
-
-  let html = '';
-  let totalPrice = 0;
-
-  pillBox.forEach((item, index) => {
-    totalPrice += item.pricePerDay;
-    html += `
-      <div class="pillbox-item">
-        <div class="pillbox-item-info">
-          <h4>${item.name}</h4>
-          <span class="price">${item.pricePerDay.toFixed(2).replace('.', ',')} € / Tag</span>
-        </div>
-        <div class="pillbox-item-actions">
-          ${item.amazonLink ? `<a href="${item.amazonLink}" target="_blank" rel="sponsored" class="btn btn-small btn-secondary">Kaufen</a>` : ''}
-          <button onclick="removeFromPillBox(${index})" class="btn btn-small" style="background: var(--bg);">×</button>
-        </div>
-      </div>
-    `;
-  });
-
-  pillboxItems.innerHTML = html;
-  pillboxTotalPrice.textContent = `${totalPrice.toFixed(2).replace('.', ',')} €`;
-  pillboxCount.textContent = pillBox.length;
-}
-
-// ===== Supplement-Karten rendern =====
-function renderSupplementCards(containerId, supplementIds) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  const itemsToRender = supplementIds
-    ? supplements.filter(s => supplementIds.includes(s.id))
-    : supplements;
-
-  container.innerHTML = itemsToRender.map(supplement => `
-    <div class="supplement-card" data-id="${supplement.id}">
-      <img src="${supplement.image}" alt="${supplement.name}" class="supplement-image">
-      <div class="evidence-badge evidence-${getEvidenceClass(supplement.evidence)}">
-        ${getEvidenceStars(supplement.evidence)} ${supplement.evidence}
-      </div>
-      <h3>${supplement.name}</h3>
-      <p>${supplement.shortDescription}</p>
-      <div class="supplement-meta">
-        <span class="price">${supplement.pricePerDay.toFixed(2).replace('.', ',')} € / Tag</span>
-        <span class="category">${supplement.category.join(', ')}</span>
-      </div>
-      <div class="supplement-actions">
-        <button onclick="addToPillBox('${supplement.id}')" class="btn btn-small btn-primary">Zur Box hinzufügen</button>
-        ${supplement.amazonLink ? `<a href="${supplement.amazonLink}" target="_blank" rel="sponsored" class="btn btn-small btn-secondary">Kaufen</a>` : ''}
-      </div>
-      <details class="supplement-details">
-        <summary>Mehr Infos</summary>
-        <div class="supplement-details-content">
-          <p><strong>Wirkung:</strong> ${supplement.description}</p>
-          ${supplement.dosage ? `<p><strong>Dosierung:</strong> ${supplement.dosage}</p>` : ''}
-          ${supplement.notes ? `<p><strong>Hinweise:</strong> ${supplement.notes}</p>` : ''}
-          ${supplement.studies?.length ? `
-            <p><strong>Studien:</strong></p>
-            <ul>
-              ${supplement.studies.map(study => `
-                <li>
-                  <a href="${study.link}" target="_blank" rel="noopener">${study.title}</a>
-                  <p>${study.summary}</p>
-                </li>
-              `).join('')}
-            </ul>
-          ` : ''}
-        </div>
-      </details>
-    </div>
-  `).join('');
-}
-
-// ===== Stack-Karten rendern =====
-function renderStackCards() {
-  const container = document.getElementById('stack-grid');
-  if (!container) return;
-
-  container.innerHTML = stacks.map(stack => {
-    const stackSupplements = stack.supplements.map(id => supplements.find(s => s.id === id));
-    const totalPrice = stackSupplements.reduce((sum, s) => sum + (s ? s.pricePerDay : 0), 0);
-
-    return `
-      <div class="stack-card" data-id="${stack.id}">
-        <img src="${stack.image}" alt="${stack.name}" class="stack-image">
-        <h3>${stack.name}</h3>
-        <p>${stack.description}</p>
-        <div class="stack-meta">
-          <span class="price">${totalPrice.toFixed(2).replace('.', ',')} € / Tag</span>
-          <span class="category">${stack.category}</span>
-        </div>
-        <div class="stack-actions">
-          <button onclick="addStackToPillBox('${stack.id}')" class="btn btn-small btn-primary">Stack zur Box hinzufügen</button>
-        </div>
-        ${stack.tools?.length ? `
-          <div class="stack-tools">
-            ${stack.tools.map(tool => `
-              ${tool === 'bmi-rechner' ? '<button onclick="showBMICalculator()" class="btn btn-small btn-secondary">BMI-Rechner</button>' : ''}
-              ${tool === 'kcal-rechner' ? '<button onclick="showKcalCalculator()" class="btn btn-small btn-secondary">kcal-Bedarf</button>' : ''}
-            `).join('')}
-          </div>
-        ` : ''}
-        <details class="stack-details">
-          <summary>Mehr Infos</summary>
-          <div class="stack-details-content">
-            <p><strong>Enthaltene Supplements:</strong></p>
-            <ul>
-              ${stackSupplements.map(s => s ? `<li>${s.name} (${s.pricePerDay.toFixed(2).replace('.', ',')} €/Tag)</li>` : '').join('')}
-            </ul>
-            ${stack.notes ? `<p><strong>Hinweise:</strong> ${stack.notes}</p>` : ''}
-          </div>
-        </details>
-      </div>
-    `;
-  }).join('');
-}
-
-// Stack zur Pillenbox hinzufügen
-function addStackToPillBox(stackId) {
-  const stack = stacks.find(s => s.id === stackId);
-  if (!stack) return;
-
-  const allInBox = stack.supplements.every(id => pillBox.some(item => item.id === id));
-  if (allInBox) {
-    alert('Alle Supplements dieses Stacks sind bereits in deiner Pillenbox.');
-    return;
-  }
-
-  stack.supplements.forEach(id => {
-    const supplement = supplements.find(s => s.id === id);
-    if (supplement && !pillBox.some(item => item.id === id)) {
-      pillBox.push({
-        id: supplement.id,
-        name: supplement.name,
-        pricePerDay: supplement.pricePerDay,
-        amazonLink: supplement.amazonLink || ""
-      });
+  // Close on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSidebarPanel();
+      closePillboxPanel();
     }
   });
 
-  savePillBox();
-  renderPillBox();
-  togglePillBox();
+  // Nav link clicks
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const section = link.getAttribute('data-section');
+      closeSidebarPanel();
+      
+      // Scroll to section after sidebar closes
+      setTimeout(() => {
+        const target = document.getElementById(section);
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }, 300);
+    });
+  });
 }
 
-// ===== News rendern =====
-function renderNews() {
-  const container = document.getElementById('news-grid');
-  if (!container) return;
+function closeSidebarPanel() {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-  container.innerHTML = news.map(item => `
-    <div class="news-card">
+// ===== Pillbox =====
+function initPillbox() {
+  // Open pillbox
+  pillboxToggle.addEventListener('click', () => {
+    pillboxPanel.classList.add('open');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Close pillbox
+  closePillbox.addEventListener('click', closePillboxPanel);
+  
+  // Close on overlay click
+  overlay.addEventListener('click', () => {
+    if (pillboxPanel.classList.contains('open')) {
+      closePillboxPanel();
+    }
+  });
+}
+
+function closePillboxPanel() {
+  pillboxPanel.classList.remove('open');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ===== Pillbox Management =====
+function addToPillbox(supplement) {
+  // Check if already in pillbox
+  const existingIndex = pillbox.findIndex(item => item.id === supplement.id);
+  
+  if (existingIndex >= 0) {
+    // Already in pillbox, just update quantity
+    pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+  } else {
+    // Add new item
+    pillbox.push({
+      id: supplement.id,
+      name: supplement.name,
+      price: supplement.price,
+      dailyPrice: supplement.dailyPrice,
+      icon: supplement.icon,
+      quantity: 1
+    });
+  }
+
+  savePillbox();
+  updatePillboxUI();
+  
+  // Show feedback
+  showNotification(`${supplement.name} zur Pillenbox hinzugefügt`);
+}
+
+function removeFromPillbox(id) {
+  pillbox = pillbox.filter(item => item.id !== id);
+  savePillbox();
+  updatePillboxUI();
+}
+
+function updateQuantity(id, change) {
+  const item = pillbox.find(item => item.id === id);
+  if (item) {
+    item.quantity = Math.max(1, (item.quantity || 1) + change);
+    savePillbox();
+    updatePillboxUI();
+  }
+}
+
+function savePillbox() {
+  localStorage.setItem('pillbox', JSON.stringify(pillbox));
+}
+
+function updatePillboxUI() {
+  // Update count
+  const totalCount = pillbox.reduce((sum, item) => sum + (item.quantity || 1), 0);
+  pillboxCount.textContent = totalCount;
+  
+  // Update panel content
+  if (pillbox.length === 0) {
+    pillboxContent.innerHTML = '<p class="empty-message">Deine Pillenbox ist leer.</p>';
+  } else {
+    pillboxContent.innerHTML = pillbox.map(item => `
+      <div class="pillbox-item" data-id="${item.id}">
+        <div class="pillbox-item-info">
+          <h4>${item.name}</h4>
+          <div class="pillbox-item-meta">
+            <span class="pillbox-item-price">${item.price} × ${item.quantity || 1}</span>
+          </div>
+        </div>
+        <div class="pillbox-item-actions">
+          <button class="pillbox-item-remove" aria-label="${item.name} entfernen" data-id="${item.id}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+  
+  // Update total
+  const totalPrice = pillbox.reduce((sum, item) => sum + ((item.dailyPrice || 0) * (item.quantity || 1)), 0);
+  pillboxTotal.textContent = `${totalPrice.toFixed(2).replace('.', ',')} €`;
+  
+  // Add event listeners to remove buttons
+  document.querySelectorAll('.pillbox-item-remove').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-id');
+      removeFromPillbox(id);
+    });
+  });
+}
+
+function showNotification(message) {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+  notification.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2D6A4F;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 1000;
+    animation: slideUp 300ms ease;
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Remove after 2 seconds
+  setTimeout(() => {
+    notification.style.animation = 'fadeOut 300ms ease forwards';
+    setTimeout(() => notification.remove(), 300);
+  }, 2000);
+}
+
+// ===== Content Rendering =====
+function renderContent() {
+  renderSupplementGrid(basicsGrid, supplements.basics, 'basics');
+  renderStackGrid();
+  renderSupplementGrid(hypeCheckGrid, supplements.hypeCheck, 'hype-check');
+  renderNewsGrid();
+}
+
+function renderSupplementGrid(container, items, section) {
+  container.innerHTML = items.map(item => `
+    <article class="supplement-card" data-id="${item.id}" data-section="${section}">
+      <div class="supplement-header">
+        <div class="supplement-icon">
+          <img src="${item.icon}" alt="${item.name}" onerror="this.style.display='none'">
+        </div>
+        <span class="supplement-badge ${item.evidence === 'schwach' ? 'weak' : ''}">
+          ${item.evidence === 'stark' ? '✓ Stark' : item.evidence === 'mittel' ? '○ Mittel' : '✗ Schwach'}
+        </span>
+      </div>
+      <h3 class="supplement-name">${item.name}</h3>
+      <p class="supplement-description">${item.description}</p>
+      <div class="supplement-meta">
+        <span class="supplement-price">${item.price}/Tag</span>
+        <span class="supplement-category">${item.category}</span>
+      </div>
+      <div class="supplement-actions">
+        <button class="btn btn-primary btn-add" data-id="${item.id}" data-section="${section}">
+          Zur Pillenbox
+        </button>
+        <button class="btn btn-secondary btn-details" data-id="${item.id}" data-section="${section}">
+          Details
+        </button>
+      </div>
+    </article>
+  `).join('');
+
+  // Add event listeners
+  container.querySelectorAll('.btn-add').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-id');
+      const section = btn.getAttribute('data-section');
+      const supplement = section === 'basics' 
+        ? supplements.basics.find(s => s.id === id)
+        : supplements.hypeCheck.find(s => s.id === id);
+      if (supplement) {
+        addToPillbox(supplement);
+      }
+    });
+  });
+
+  container.querySelectorAll('.btn-details').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-id');
+      const section = btn.getAttribute('data-section');
+      const supplement = section === 'basics' 
+        ? supplements.basics.find(s => s.id === id)
+        : supplements.hypeCheck.find(s => s.id === id);
+      if (supplement) {
+        showDetails(supplement, section);
+      }
+    });
+  });
+}
+
+function renderStackGrid() {
+  stacksGrid.innerHTML = stacks.map(stack => `
+    <article class="stack-card" data-id="${stack.id}">
+      <div class="stack-header">
+        <div class="stack-icon">
+          <img src="${stack.icon}" alt="${stack.name}" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <h3 class="stack-name">${stack.name}</h3>
+      <p class="stack-description">${stack.description}</p>
+      <div class="stack-meta">
+        <span class="stack-price">${stack.price}/Tag</span>
+        <span class="stack-category">${stack.category}</span>
+      </div>
+      <div class="stack-actions">
+        <button class="btn btn-primary btn-add-stack" data-id="${stack.id}">
+          Alle zur Pillenbox
+        </button>
+        <button class="btn btn-secondary btn-details-stack" data-id="${stack.id}">
+          Details
+        </button>
+      </div>
+    </article>
+  `).join('');
+
+  // Add event listeners
+  stacksGrid.querySelectorAll('.btn-add-stack').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-id');
+      const stack = stacks.find(s => s.id === id);
+      if (stack) {
+        // Add all supplements in the stack
+        stack.supplements.forEach(suppId => {
+          const supplement = supplements.basics.find(s => s.id === suppId);
+          if (supplement) {
+            addToPillbox(supplement);
+          }
+        });
+        showNotification(`Stack "${stack.name}" zur Pillenbox hinzugefügt`);
+      }
+    });
+  });
+
+  stacksGrid.querySelectorAll('.btn-details-stack').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-id');
+      const stack = stacks.find(s => s.id === id);
+      if (stack) {
+        showStackDetails(stack);
+      }
+    });
+  });
+}
+
+function renderNewsGrid() {
+  newsGrid.innerHTML = news.map(item => `
+    <article class="news-card">
       <div class="news-date">${item.date}</div>
-      <h3>${item.title}</h3>
-      <p>${item.summary}</p>
-      <a href="${item.link}" target="_blank" rel="noopener">Zur Quelle →</a>
-    </div>
+      <h3 class="news-title">${item.title}</h3>
+      <p class="news-summary">${item.summary}</p>
+      <a href="${item.link}" class="news-link">
+        Weiterlesen
+        <svg class="news-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </article>
   `).join('');
 }
 
-// ===== Tools (BMI-Rechner, kcal-Bedarf) =====
-function showBMICalculator() {
-  const toolsContainer = document.getElementById('tools-container');
-  if (!toolsContainer) return;
-  
-  toolsContainer.innerHTML = `
-    <div class="tool-card">
-      <h3>BMI-Rechner</h3>
-      <div class="tool-form">
-        <input type="number" id="bmi-weight" class="tool-input" placeholder="Gewicht (kg)" min="40" max="200">
-        <input type="number" id="bmi-height" class="tool-input" placeholder="Größe (cm)" min="140" max="220">
-        <button onclick="calculateBMI()" class="btn btn-primary">BMI berechnen</button>
+// ===== Details Modal =====
+function showDetails(supplement, section) {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML = `
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-icon">
+          <img src="${supplement.icon}" alt="${supplement.name}" onerror="this.style.display='none'">
+        </div>
+        <div class="modal-title-group">
+          <h2 class="modal-title">${supplement.name}</h2>
+          <span class="modal-badge ${supplement.evidence === 'schwach' ? 'weak' : ''}">
+            ${supplement.evidence === 'stark' ? '✓ Starke Evidenz' : supplement.evidence === 'mittel' ? '○ Mittlere Evidenz' : '✗ Schwache Evidenz'}
+          </span>
+        </div>
       </div>
-      <div id="bmi-result" class="tool-result" style="display: none;"></div>
+      <div class="modal-body">
+        <p class="modal-summary">${supplement.details.summary}</p>
+        
+        <div class="details-section">
+          <h3>Vorteile</h3>
+          <ul class="details-list">
+            ${supplement.details.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+          </ul>
+        </div>
+        
+        ${supplement.evidence === 'schwach' ? `
+        <div class="details-section">
+          <h3>Behauptete Vorteile vs. Aktuelle Evidenz</h3>
+          <div class="evidence-comparison">
+            <div class="claimed">
+              <h4>Behauptet:</h4>
+              <ul>${supplement.details.claimedBenefits.map(b => `<li>${b}</li>`).join('')}</ul>
+            </div>
+            <div class="actual">
+              <h4>Aktuelle Evidenz:</h4>
+              <ul>${supplement.details.actualEvidence.map(e => `<li>${e}</li>`).join('')}</ul>
+            </div>
+          </div>
+        </div>
+        ` : ''}
+        
+        <div class="details-section">
+          <h3>Dosierung</h3>
+          <p>${supplement.details.dosage}</p>
+        </div>
+        
+        <div class="details-section">
+          <h3>Empfehlung</h3>
+          <p>${supplement.details.recommendation}</p>
+        </div>
+        
+        <div class="details-section">
+          <h3>Wissenschaftliche Quellen</h3>
+          <ul class="details-list">
+            ${supplement.details.sources.map(source => `
+              <li class="details-link">
+                <a href="${source.link}" target="_blank">
+                  ${source.name} (${source.year})
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-add-modal" data-id="${supplement.id}" data-section="${section}">
+          Zur Pillenbox hinzufügen (${supplement.price}/Tag)
+        </button>
+      </div>
     </div>
   `;
-}
 
-function calculateBMI() {
-  const weight = parseFloat(document.getElementById('bmi-weight').value);
-  const height = parseFloat(document.getElementById('bmi-height').value) / 100; // cm → m
-  const resultEl = document.getElementById('bmi-result');
+  document.body.appendChild(modal);
+  document.body.style.overflow = 'hidden';
 
-  if (!weight || !height) {
-    resultEl.textContent = "Bitte gib Gewicht und Größe ein.";
-    resultEl.style.display = "block";
-    return;
-  }
-
-  const bmi = (weight / (height * height)).toFixed(1);
-  let category = "";
-
-  if (bmi < 18.5) category = "Untergewicht";
-  else if (bmi < 25) category = "Normalgewicht";
-  else if (bmi < 30) category = "Übergewicht";
-  else if (bmi < 35) category = "Adipositas Grad I";
-  else if (bmi < 40) category = "Adipositas Grad II";
-  else category = "Adipositas Grad III";
-
-  resultEl.innerHTML = `
-    <strong>Dein BMI: ${bmi}</strong><br>
-    <span>${category}</span>
-  `;
-  resultEl.style.display = "block";
-}
-
-function showKcalCalculator() {
-  const toolsContainer = document.getElementById('tools-container');
-  if (!toolsContainer) return;
-  
-  toolsContainer.innerHTML = `
-    <div class="tool-card">
-      <h3>kcal-Bedarfsrechner</h3>
-      <div class="tool-form">
-        <select id="kcal-gender" class="tool-input">
-          <option value="male">Männlich</option>
-          <option value="female">Weiblich</option>
-        </select>
-        <input type="number" id="kcal-age" class="tool-input" placeholder="Alter (Jahre)" min="18" max="120">
-        <input type="number" id="kcal-weight" class="tool-input" placeholder="Gewicht (kg)" min="40" max="200">
-        <input type="number" id="kcal-height" class="tool-input" placeholder="Größe (cm)" min="140" max="220">
-        <select id="kcal-activity" class="tool-input">
-          <option value="1.2">Kaum Bewegung (Bürojob)</option>
-          <option value="1.375">Leichte Aktivität (1–3x Sport/Woche)</option>
-          <option value="1.55" selected>Mäßige Aktivität (3–5x Sport/Woche)</option>
-          <option value="1.725">Sehr aktiv (6–7x Sport/Woche)</option>
-          <option value="1.9">Extrem aktiv (täglich Sport + körperliche Arbeit)</option>
-        </select>
-        <button onclick="calculateKcal()" class="btn btn-primary">kcal berechnen</button>
-      </div>
-      <div id="kcal-result" class="tool-result" style="display: none;"></div>
-    </div>
-  `;
-}
-
-function calculateKcal() {
-  const gender = document.getElementById('kcal-gender').value;
-  const age = parseInt(document.getElementById('kcal-age').value);
-  const weight = parseFloat(document.getElementById('kcal-weight').value);
-  const height = parseFloat(document.getElementById('kcal-height').value);
-  const activity = parseFloat(document.getElementById('kcal-activity').value);
-  const resultEl = document.getElementById('kcal-result');
-
-  if (!age || !weight || !height) {
-    resultEl.textContent = "Bitte fülle alle Felder aus.";
-    resultEl.style.display = "block";
-    return;
-  }
-
-  // Harris-Benedict-Formel
-  let bmr;
-  if (gender === 'male') {
-    bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
-  } else {
-    bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
-  }
-
-  const tdee = Math.round(bmr * activity);
-  const weightLoss = Math.round(tdee * 0.85); // 15% Defizit
-  const weightGain = Math.round(tdee * 1.15); // 15% Überschuss
-
-  resultEl.innerHTML = `
-    <strong>Dein Grundumsatz:</strong> ${Math.round(bmr)} kcal<br>
-    <strong>Dein Erhaltungsbedarf:</strong> ${tdee} kcal<br>
-    <strong>Zum Abnehmen (~0.5 kg/Woche):</strong> ${weightLoss} kcal<br>
-    <strong>Zum Zunehmen (~0.5 kg/Woche):</strong> ${weightGain} kcal
-  `;
-  resultEl.style.display = "block";
-}
-
-// ===== Filter-Funktionen =====
-function filterSupplements() {
-  const evidenceFilter = document.getElementById('evidence-filter')?.value || 'all';
-  const categoryFilter = document.getElementById('category-filter')?.value || 'all';
-  const searchFilter = (document.getElementById('search-filter')?.value || '').toLowerCase();
-
-  const filteredSupplements = supplements.filter(supplement => {
-    const matchesEvidence = evidenceFilter === 'all' || supplement.evidence === evidenceFilter;
-    const matchesCategory = categoryFilter === 'all' || supplement.category.includes(categoryFilter);
-    const matchesSearch = searchFilter === '' ||
-      supplement.name.toLowerCase().includes(searchFilter) ||
-      supplement.description.toLowerCase().includes(searchFilter) ||
-      supplement.tags.some(tag => tag.includes(searchFilter));
-
-    return matchesEvidence && matchesCategory && matchesSearch;
+  // Add event listeners
+  modal.querySelector('.modal-close').addEventListener('click', () => closeModal(modal));
+  modal.querySelector('.modal-overlay').addEventListener('click', () => closeModal(modal));
+  modal.querySelector('.btn-add-modal').addEventListener('click', () => {
+    addToPillbox(supplement);
+    closeModal(modal);
   });
-
-  renderSupplementCards('all-supplements-grid', filteredSupplements.map(s => s.id));
 }
 
-// ===== Hilfsfunktionen =====
-function getEvidenceClass(evidence) {
-  const classes = {
-    stark: 'strong',
-    mittel: 'medium',
-    schwach: 'weak'
-  };
-  return classes[evidence] || 'medium';
+function showStackDetails(stack) {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML = `
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-icon">
+          <img src="${stack.icon}" alt="${stack.name}" onerror="this.style.display='none'">
+        </div>
+        <div class="modal-title-group">
+          <h2 class="modal-title">${stack.name}</h2>
+          <span class="modal-badge">${stack.category}</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="modal-summary">${stack.details.summary}</p>
+        
+        <div class="details-section">
+          <h3>Enthaltene Supplements</h3>
+          <div class="stack-supplements">
+            ${stack.supplements.map(suppId => {
+              const supp = supplements.basics.find(s => s.id === suppId);
+              return supp ? `
+                <div class="stack-supplement">
+                  <img src="${supp.icon}" alt="${supp.name}" onerror="this.style.display='none'">
+                  <span>${supp.name}</span>
+                </div>
+              ` : '';
+            }).join('')}
+          </div>
+        </div>
+        
+        <div class="details-section">
+          <h3>Vorteile</h3>
+          <ul class="details-list">
+            ${stack.details.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+          </ul>
+        </div>
+        
+        <div class="details-section">
+          <h3>Empfehlung</h3>
+          <p>${stack.details.recommendation}</p>
+        </div>
+        
+        <div class="details-section">
+          <h3>Gesamtkosten</h3>
+          <p><strong>${stack.price}/Tag</strong></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-add-modal" data-id="${stack.id}">
+          Alle zur Pillenbox hinzufügen
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+  document.body.style.overflow = 'hidden';
+
+  // Add event listeners
+  modal.querySelector('.modal-close').addEventListener('click', () => closeModal(modal));
+  modal.querySelector('.modal-overlay').addEventListener('click', () => closeModal(modal));
+  modal.querySelector('.btn-add-modal').addEventListener('click', () => {
+    const stack = stacks.find(s => s.id === stack.id);
+    if (stack) {
+      stack.supplements.forEach(suppId => {
+        const supplement = supplements.basics.find(s => s.id === suppId);
+        if (supplement) {
+          addToPillbox(supplement);
+        }
+      });
+      showNotification(`Stack "${stack.name}" zur Pillenbox hinzugefügt`);
+    }
+    closeModal(modal);
+  });
 }
 
-function getEvidenceStars(evidence) {
-  const stars = {
-    stark: '⭐⭐⭐⭐⭐',
-    mittel: '⭐⭐⭐',
-    schwach: '⭐⭐'
-  };
-  return stars[evidence] || '⭐⭐⭐';
+function closeModal(modal) {
+  modal.remove();
+  document.body.style.overflow = '';
 }
 
-// ===== Initialisierung =====
-document.addEventListener('DOMContentLoaded', () => {
-  // Pillenbox rendern
-  renderPillBox();
-
-  // Supplement-Karten auf der Startseite rendern (Featured)
-  if (document.getElementById('featured-supplements')) {
-    const featuredIds = ['omega-3', 'vitamin-d3-k2', 'magnesium', 'kreatin', 'high-protein', 'zink'];
-    renderSupplementCards('featured-supplements', featuredIds);
-  }
-
-  // Supplement-Karten auf supplements.html rendern
-  if (document.getElementById('all-supplements-grid')) {
-    renderSupplementCards('all-supplements-grid');
-  }
-
-  // Stack-Karten rendern
-  if (document.getElementById('stack-grid')) {
-    renderStackCards();
-  }
-
-  // Weak Evidence-Karten rendern
-  if (document.getElementById('weak-evidence-grid')) {
-    const weakSupplements = supplements.filter(s => s.evidence === 'schwach');
-    renderSupplementCards('weak-evidence-grid', weakSupplements.map(s => s.id));
-  }
-
-  // News rendern
-  if (document.getElementById('news-grid')) {
-    renderNews();
-  }
+// ===== Card Click Handlers =====
+// Add click handlers for cards that open sidebar
+const cardElements = document.querySelectorAll('.card[data-section]');
+cardElements.forEach(card => {
+  card.addEventListener('click', () => {
+    const section = card.getAttribute('data-section');
+    
+    // Open sidebar and scroll to section
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Highlight the corresponding nav section
+    const navTitle = sidebar.querySelector(`.nav-title`);
+    
+    setTimeout(() => {
+      closeSidebarPanel();
+      const target = document.getElementById(section);
+      if (target) {
+        const offsetTop = target.offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }, 300);
+  });
 });
+
+// ===== Smooth Scroll for Anchor Links =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const target = document.querySelector(targetId);
+    if (target) {
+      const offsetTop = target.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// ===== CSS for Modal (injected dynamically) =====
+const modalStyles = document.createElement('style');
+modalStyles.textContent = `
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+  
+  .modal-content {
+    position: relative;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    animation: modalSlideIn 300ms ease;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-secondary);
+    z-index: 10;
+    transition: color var(--transition-fast);
+  }
+  
+  .modal-close:hover {
+    color: var(--text-primary);
+  }
+  
+  .modal-close svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .modal-header {
+    padding: var(--space-xl);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .modal-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+  
+  .modal-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .modal-title-group {
+    flex: 1;
+  }
+  
+  .modal-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .modal-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    background-color: rgba(45, 106, 79, 0.1);
+    color: var(--accent);
+  }
+  
+  .modal-badge.weak {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+  }
+  
+  .modal-body {
+    padding: var(--space-xl);
+  }
+  
+  .modal-summary {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+  }
+  
+  .modal-footer {
+    padding: var(--space-xl);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  
+  .details-section {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .details-section:last-child {
+    margin-bottom: 0;
+  }
+  
+  .details-section h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+  }
+  
+  .details-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .details-list li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  
+  .details-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .details-link {
+    display: block;
+    padding: var(--space-sm) 0;
+  }
+  
+  .details-link a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--accent);
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-fast);
+  }
+  
+  .details-link a:hover {
+    color: var(--accent-dark);
+  }
+  
+  .details-link svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .evidence-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+  }
+  
+  .claimed, .actual {
+    background: rgba(0, 0, 0, 0.02);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+  }
+  
+  .claimed h4, .actual h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .claimed ul, .actual ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .claimed li, .actual li {
+    padding: var(--space-xs) 0;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+  }
+  
+  .stack-supplements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+  
+  .stack-supplement {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+  }
+  
+  .stack-supplement img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+  
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--bg-secondary);
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+  }
+`;
+document.head.appendChild(modalStyles);
+
+// ===== Responsive Adjustments =====
+function handleResize() {
+  // Close panels on small screens when orientation changes
+  if (window.innerWidth <= 768) {
+    if (sidebar.classList.contains('open') || pillboxPanel.classList.contains('open')) {
+      closeSidebarPanel();
+      closePillboxPanel();
+    }
+  }
+}
+
+window.addEventListener('resize', handleResize);

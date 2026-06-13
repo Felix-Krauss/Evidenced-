@@ -7,99 +7,215 @@
   <meta name="description" content="Sachliche Aufklärung über Supplements. Kein Hype, nur Evidenz.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
     <div class="navbar-container">
-      <a href="index.html" class="navbar-brand">Evidenced</a>
-      <div class="navbar-links">
-        <a href="index.html">Start</a>
-        <a href="supplements.html">Supplements</a>
-        <a href="stacks.html">Stacks</a>
-        <a href="weak-evidence.html">Hype-Check</a>
-        <a href="news.html">News</a>
-      </div>
-      <button class="pillbox-toggle" onclick="togglePillBox()">
-        💊 <span id="pillbox-count">0</span>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="#" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <path d="M9 10c0-1.1.9-2 2-2s2 .9 2 2"></path>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
       </button>
     </div>
   </nav>
 
-  <!-- Hero-Section -->
-  <section class="hero">
-    <div class="hero-container">
-      <h1>Supplements, die wirklich wirken.</h1>
-      <p>
-        Kein Marketing. Kein Hype. Nur <strong>wissenschaftlich belegte Fakten</strong>.
-        Hier findest du, was wirklich funktioniert – und was du dir sparen kannst.
-      </p>
-      <div class="hero-actions">
-        <a href="supplements.html" class="btn btn-primary">Supplements entdecken</a>
-        <a href="#how-it-works" class="btn btn-secondary">Wie es funktioniert</a>
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="#" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="#basics" class="nav-link" data-section="basics">Omega-3</a></li>
+          <li><a href="#basics" class="nav-link" data-section="basics">Vitamin D3 + K2</a></li>
+          <li><a href="#basics" class="nav-link" data-section="basics">Magnesium</a></li>
+          <li><a href="#basics" class="nav-link" data-section="basics">Zink</a></li>
+          <li><a href="#basics" class="nav-link" data-section="basics">Kreatin</a></li>
+          <li><a href="#basics" class="nav-link" data-section="basics">Protein</a></li>
+          <li><a href="#basics" class="nav-link" data-section="basics">Multivitamin</a></li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- News-Bereich -->
-  <section class="news-section">
-    <div class="container">
-      <h2 class="section-title">Neues aus der Wissenschaft</h2>
-      <div id="news-grid" class="news-grid"></div>
-    </div>
-  </section>
-
-  <!-- Wie es funktioniert -->
-  <section id="how-it-works" class="section">
-    <div class="container">
-      <h2 class="section-title">Wie Evidenced funktioniert</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-icon">🔬</div>
-          <h3>Wissenschaft prüfen</h3>
-          <p>Wir durchforsten <strong>Meta-Analysen und systematische Reviews</strong> – keine Einzelstudien, kein Hersteller-Marketing.</p>
-        </div>
-        <div class="step">
-          <div class="step-icon">💊</div>
-          <h3>Pillenbox füllen</h3>
-          <p>Wähle die Supplements, die zu dir passen. Die <strong>Tageskosten</strong> werden automatisch berechnet.</p>
-        </div>
-        <div class="step">
-          <div class="step-icon">📊</div>
-          <h3>Informiert entscheiden</h3>
-          <p>Erfahre, was <strong>realistisch</strong> möglich ist – und was nicht.</p>
-        </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="#stacks" class="nav-link" data-section="stacks">Diät & Abnehmen</a></li>
+          <li><a href="#stacks" class="nav-link" data-section="stacks">Schlaf & Erholung</a></li>
+          <li><a href="#stacks" class="nav-link" data-section="stacks">Veganer & Vegetarier</a></li>
+          <li><a href="#stacks" class="nav-link" data-section="stacks">50+ / Healthy Aging</a></li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- Beliebte Supplements -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Beliebte Supplements</h2>
-      <div id="featured-supplements" class="supplement-grid"></div>
-      <div class="section-link">
-        <a href="supplements.html">Alle Supplements ansehen →</a>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="#hype-check" class="nav-link" data-section="hype-check">Ashwagandha</a></li>
+          <li><a href="#hype-check" class="nav-link" data-section="hype-check">BCAAs / EAAs</a></li>
+          <li><a href="#hype-check" class="nav-link" data-section="hype-check">Fatburner</a></li>
+          <li><a href="#hype-check" class="nav-link" data-section="hype-check">Testo-Booster</a></li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </nav>
+  </aside>
 
-  <!-- Pillenbox-Drawer -->
-  <div id="pillbox-drawer" class="pillbox-drawer">
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
     <div class="pillbox-header">
       <h3>Deine Pillenbox</h3>
-      <button onclick="togglePillBox()" class="pillbox-close">×</button>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
-    <div id="pillbox-items" class="pillbox-items"></div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
     <div class="pillbox-footer">
-      <div class="pillbox-total">
+      <div class="total-row">
         <span>Tageskosten:</span>
-        <strong id="pillbox-total-price">0,00 €</strong>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
       </div>
     </div>
-  </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Supplements, die wirklich wirken.</h1>
+        <p class="hero-subtitle">Kein Marketing. Kein Hype. Nur wissenschaftlich belegte Fakten.</p>
+        <a href="#how-it-works" class="btn btn-primary">Wie es funktioniert</a>
+      </div>
+    </section>
+
+    <!-- Wie es funktioniert -->
+    <section class="section how-it-works" id="how-it-works">
+      <div class="container">
+        <h2 class="section-title">Wie Evidenced funktioniert</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Wissenschaft checken</h3>
+              <p>Wir werten aktuelle Meta-Analysen aus. Keine Einzelstudien, kein Hersteller-Marketing. Nur Fakten.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Pillenbox füllen</h3>
+              <p>Wähle die Supplements, die zu dir passen. Die Tageskosten werden automatisch berechnet.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Günstig kaufen</h3>
+              <p>Wir empfehlen nur die Präparate mit der besten Bioverfügbarkeit zum fairsten Preis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wähle deinen Weg -->
+    <section class="section choose-path" id="choose-path">
+      <div class="container">
+        <h2 class="section-title">Wähle deinen Weg</h2>
+        <div class="cards">
+          <div class="card" data-section="basics">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3>Die Basics</h3>
+            <p>Die wichtigsten Supplements mit nachgewiesener Evidenz für deine Gesundheit.</p>
+          </div>
+          <div class="card" data-section="stacks">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </div>
+            <h3>Ziel-Stacks</h3>
+            <p>Kombinationen aus Supplements, die perfekt auf deine Ziele abgestimmt sind.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basics Section -->
+    <section class="section basics" id="basics">
+      <div class="container">
+        <h2 class="section-title">Die Basics</h2>
+        <div class="supplement-grid" id="basicsGrid">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Stacks Section -->
+    <section class="section stacks" id="stacks">
+      <div class="container">
+        <h2 class="section-title">Ziel-Stacks</h2>
+        <div class="stack-grid" id="stacksGrid">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Hype-Check Section -->
+    <section class="section hype-check" id="hype-check">
+      <div class="container">
+        <h2 class="section-title">⚠️ Hype-Check</h2>
+        <p class="section-subtitle">Diese Supplements werden oft beworben – aber die wissenschaftliche Evidenz ist schwach oder nicht vorhanden.</p>
+        <div class="supplement-grid" id="hypeCheckGrid">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section news" id="news">
+      <div class="container">
+        <h2 class="section-title">Neues aus der Wissenschaft</h2>
+        <div class="news-grid" id="newsGrid">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
