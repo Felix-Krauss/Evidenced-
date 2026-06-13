@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immunsystem-Stack – Stärkung der Abwehrkräfte | Evidenced</title>
+  <meta name="description" content="Immunsystem-Stack: Vitamin D3+K2, Omega-3, Multivitamin, Magnesium und Zink für ein starkes Immunsystem und allgemeine Gesundheit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/supplement.css">
+</head>
+<body class="supplement-page">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo" id="logo">Evidenced</a>
+      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
+        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+          <line x1="12" y1="7" x2="12" y2="17"/>
+        </svg>
+        <span class="pillbox-count" id="pillboxCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">Evidenced</a>
+      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" data-tab="supplements">Supplements</button>
+      <button class="tab-btn" data-tab="stacks">Stacks</button>
+    </div>
+    
+    <nav class="sidebar-nav tab-content active" id="supplementsTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Die Basics</h3>
+        <ul class="nav-list">
+          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
+          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
+          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
+          <li><a href="zink.html" class="nav-link">Zink</a></li>
+          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
+          <li><a href="protein.html" class="nav-link">Protein</a></li>
+          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <h3 class="nav-title">Hype-Check</h3>
+        <ul class="nav-list">
+          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
+          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
+          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
+          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="sidebar-nav tab-content" id="stacksTab">
+      <div class="nav-section">
+        <h3 class="nav-title">Ziel-Stacks</h3>
+        <ul class="nav-list">
+          <li><a href="muskelaufbau-stack.html" class="nav-link">Muskelaufbau</a></li>
+          <li><a href="gehirn-fokus-stack.html" class="nav-link">Gehirn & Fokus</a></li>
+          <li><a href="immunsystem-stack.html" class="nav-link">Immunsystem</a></li>
+          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
+          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
+          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
+          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Pillenbox Panel -->
+  <aside class="pillbox-panel" id="pillboxPanel">
+    <div class="pillbox-header">
+      <h3>Deine Pillenbox</h3>
+      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pillbox-content" id="pillboxContent">
+      <p class="empty-message">Deine Pillenbox ist leer.</p>
+    </div>
+    <div class="pillbox-footer">
+      <div class="total-row">
+        <span>Tageskosten:</span>
+        <span class="total-price" id="pillboxTotal">0,00 €</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="supplement-page">
+    <div class="supplement-container">
+      <div class="supplement-header">
+        <h1 class="supplement-title">Immunsystem-Stack – Stärkung der Abwehrkräfte</h1>
+        
+        <div class="badge-row">
+          <span class="badge badge-strong">Evidenzlevel 5</span>
+          <span class="badge badge-category">Immunsystem</span>
+          <span class="badge badge-category">Allgemeine Gesundheit</span>
+        </div>
+        
+        <p class="stack-description">Ziel: Stärkung des Immunsystems und der allgemeinen Gesundheit durch wissenschaftlich belegte Supplements.</p>
+      </div>
+
+      <span class="section-label">Supplements im Stack</span>
+      
+      <div class="stack-cards">
+        <!-- Vitamin D3+K2 -->
+        <div class="supplement-card stack-card">
+          <div class="stack-card-header">
+            <div class="stack-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 6.34 1.41 1.41"/>
+                <path d="m17.66 6.34-1.41-1.41"/>
+              </svg>
+            </div>
+            <h3 class="stack-card-title">Vitamin D3 + K2</h3>
+          </div>
+          <div class="stack-card-details">
+            <div class="stack-dosage">
+              <span class="dosage-label">Dosierung pro Tag:</span>
+              <span class="dosage-value">1000-2000 IE D3, 100-200 µg K2</span>
+            </div>
+            <p class="stack-reason">Optimierung Kalziumverwertung, Immunsystem</p>
+          </div>
+          <button onclick="addToPillboxFromStack('Vitamin D3 + K2', 0.30, 'vitamin-d3-k2.html')" class="btn-pillbox btn-pillbox-stack">+ In die Pillenbox</button>
+        </div>
+
+        <!-- Omega-3 -->
+        <div class="supplement-card stack-card">
+          <div class="stack-card-header">
+            <div class="stack-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <ellipse cx="12" cy="6" rx="8" ry="3"/>
+                <path d="M4 6v6a8 3 0 0 0 16 0V6"/>
+                <path d="M4 12v6a8 3 0 0 0 16 0v-6"/>
+              </svg>
+            </div>
+            <h3 class="stack-card-title">Omega-3-Fettsäuren</h3>
+          </div>
+          <div class="stack-card-details">
+            <div class="stack-dosage">
+              <span class="dosage-label">Dosierung pro Tag:</span>
+              <span class="dosage-value">1-2 g</span>
+            </div>
+            <p class="stack-reason">Entzündungshemmung und Herzgesundheit</p>
+          </div>
+          <button onclick="addToPillboxFromStack('Omega-3', 0.40, 'omega-3.html')" class="btn-pillbox btn-pillbox-stack">+ In die Pillenbox</button>
+        </div>
+
+        <!-- Multivitamin -->
+        <div class="supplement-card stack-card">
+          <div class="stack-card-header">
+            <div class="stack-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3 class="stack-card-title">Multivitamin</h3>
+          </div>
+          <div class="stack-card-details">
+            <div class="stack-dosage">
+              <span class="dosage-label">Dosierung pro Tag:</span>
+              <span class="dosage-value">1 Tablette</span>
+            </div>
+            <p class="stack-reason">Versorgung mit essentiellen Vitaminen</p>
+          </div>
+          <button onclick="addToPillboxFromStack('Multivitamin', 0.40, 'multivitamin.html')" class="btn-pillbox btn-pillbox-stack">+ In die Pillenbox</button>
+        </div>
+
+        <!-- Magnesium -->
+        <div class="supplement-card stack-card">
+          <div class="stack-card-header">
+            <div class="stack-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3 class="stack-card-title">Magnesium</h3>
+          </div>
+          <div class="stack-card-details">
+            <div class="stack-dosage">
+              <span class="dosage-label">Dosierung pro Tag:</span>
+              <span class="dosage-value">300-400 mg</span>
+            </div>
+            <p class="stack-reason">Muskelregeneration und Schlafqualität</p>
+          </div>
+          <button onclick="addToPillboxFromStack('Magnesium', 0.20, 'magnesium.html')" class="btn-pillbox btn-pillbox-stack">+ In die Pillenbox</button>
+        </div>
+
+        <!-- Zink -->
+        <div class="supplement-card stack-card">
+          <div class="stack-card-header">
+            <div class="stack-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3 class="stack-card-title">Zink</h3>
+          </div>
+          <div class="stack-card-details">
+            <div class="stack-dosage">
+              <span class="dosage-label">Dosierung pro Tag:</span>
+              <span class="dosage-value">15-30 mg</span>
+            </div>
+            <p class="stack-reason">Immunsystem und Testosteronproduktion</p>
+          </div>
+          <button onclick="addToPillboxFromStack('Zink', 0.10, 'zink.html')" class="btn-pillbox btn-pillbox-stack">+ In die Pillenbox</button>
+        </div>
+      </div>
+
+      <span class="section-label">Synergien</span>
+      <div class="supplement-card info-section">
+        <p class="info-text">Vitamin D3 und K2 optimieren die Kalziumverwertung und stärken das Immunsystem. Omega-3-Fettsäuren wirken entzündungshemmend und unterstützen die Herzgesundheit. Multivitamine versorgen den Körper mit essentiellen Vitaminen und Mineralstoffen. Magnesium und Zink fördern die Muskelregeneration und Schlafqualität, was die allgemeine Gesundheit unterstützt.</p>
+      </div>
+
+      <span class="section-label">Stack-Informationen</span>
+      <div class="supplement-card">
+        <div class="stack-info-grid">
+          <div class="stack-info-item">
+            <span class="stack-info-label">Evidenzlevel:</span>
+            <span class="stack-info-value">5 (höchste Evidenz)</span>
+          </div>
+          <div class="stack-info-item">
+            <span class="stack-info-label">Tägliche Kosten:</span>
+            <span class="stack-info-value">~1,40 €</span>
+          </div>
+          <div class="stack-info-item">
+            <span class="stack-info-label">Hype-ausgeschlossen:</span>
+            <span class="stack-info-value">L-Carnitin, NAD-Booster, Pre-Workout-Booster</span>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">Wissenschaftliche Belege</span>
+      <div class="supplement-card studies-list">
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Meta-Analyse zu Vitamin D3, K2 und Immunsystem: Journal of Clinical Endocrinology & Metabolism, 2020</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Meta-Analyse zu Omega-3-Fettsäuren und Entzündungshemmung: American Journal of Clinical Nutrition, 2019</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+        <div class="study-row">
+          <div class="study-dot"></div>
+          <span>Meta-Analyse zu Zink und Immunfunktion: Nutrients, 2021</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function addToPillboxFromStack(name, dailyPrice, pageUrl) {
+      // Get the supplement data from data.js or create a new entry
+      const supplementId = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      
+      // Check if already in pillbox
+      const existingIndex = pillbox.findIndex(item => item.id === supplementId);
+      
+      if (existingIndex >= 0) {
+        pillbox[existingIndex].quantity = (pillbox[existingIndex].quantity || 1) + 1;
+      } else {
+        // Determine icon based on supplement name
+        let icon = 'assets/icons/omega-3.svg';
+        if (name.toLowerCase().includes('protein')) icon = 'assets/icons/protein.svg';
+        else if (name.toLowerCase().includes('kreatin')) icon = 'assets/icons/kreatin.svg';
+        else if (name.toLowerCase().includes('omega')) icon = 'assets/icons/omega-3.svg';
+        else if (name.toLowerCase().includes('vitamin')) icon = 'assets/icons/vitamin-d.svg';
+        else if (name.toLowerCase().includes('magnesium')) icon = 'assets/icons/magnesium.svg';
+        else if (name.toLowerCase().includes('zink')) icon = 'assets/icons/zink.svg';
+        else if (name.toLowerCase().includes('multivitamin')) icon = 'assets/icons/multivitamin.svg';
+        
+        pillbox.push({
+          id: supplementId,
+          name: name,
+          price: dailyPrice.toFixed(2).replace('.', ',') + ' €',
+          dailyPrice: dailyPrice,
+          icon: icon,
+          quantity: 1,
+          link: pageUrl
+        });
+      }
+      
+      savePillbox();
+      updatePillboxUI();
+      showNotification(`${name} zur Pillenbox hinzugefügt`);
+    }
+  </script>
+</body>
+</html>
