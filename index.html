@@ -315,10 +315,8 @@
         });
       }, observerOptions);
       
-      // Observe all sections and elements
+      // Observe all sections and elements (animation is nice-to-have, not required)
       document.querySelectorAll('.section, .step, .card, .news-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
         observer.observe(el);
       });
     });

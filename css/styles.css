@@ -1,4 +1,31 @@
+   SECTIONS - Fade in on scroll
+   ============================================ */
+.section {
+  padding: var(--space-4xl) var(--space-xl);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+=======
 /* ============================================
+   SECTIONS - Fade in on scroll
+   ============================================ */
+.section {
+  padding: var(--space-4xl) var(--space-xl);
+  opacity: 1;
+  transform: none;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}============================================
    EVIDENCED - Complete Redesign
    Warm, sandy, dark tones with brutalist elegance
    ============================================ */
@@ -736,8 +763,8 @@ main {
   gap: var(--space-lg);
   align-items: flex-start;
   margin-bottom: var(--space-xl);
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -809,8 +836,8 @@ main {
   text-align: center;
   transition: all var(--transition-base);
   cursor: pointer;
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
   position: relative;
   overflow: hidden;
 }
@@ -889,8 +916,8 @@ main {
   border: 1px solid var(--border);
   padding: var(--space-lg);
   transition: all var(--transition-base);
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
   position: relative;
 }
 
