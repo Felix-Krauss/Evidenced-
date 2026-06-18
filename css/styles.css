@@ -131,3 +131,28 @@
   --navbar-bg-shrunk: rgba(17, 17, 17, 0.95);
   --navbar-blur: blur(12px);
 }
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 4rem;
+    --navbar-height-shrunk: 3.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .cards-glow {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar, .pillbox-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+}
