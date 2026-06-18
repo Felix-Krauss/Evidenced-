@@ -1,0 +1,93 @@
+/* ===== Background ===== */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.a{fill:%23007BFF;opacity:.1;}.b{fill:%230056CC;opacity:.15;}</style></defs><path class="a" d="M500 0c-276.1 0-500 223.9-500 500s223.9 500 500 500 500-223.9 500-500S776.1 0 500 0z"/><path class="b" d="M500 100c-220.9 0-400 179.1-400 400s179.1 400 400 400 400-179.1 400-400S720.9 100 500 100z"/><path class="a" d="M500 200c-193.6 0-350 156.4-350 350s156.4 350 350 350 350-156.4 350-350S693.6 200 500 200z"/><path class="b" d="M500 300c-166.4 0-300 133.6-300 300s133.6 300 300 300 300-133.6 300-300S666.4 300 500 300z"/><path class="a" d="M500 400c-138.1 0-250 111.9-250 250s111.9 250 250 250 250-111.9 250-250S638.1 400 500 400z"/><path class="b" d="M500 500c-109.4 0-200 89.6-200 200s89.6 200 200 200 200-89.6 200-200S609.4 500 500 500z"/><path class="a" d="M500 600c-79.4 0-144 64.6-144 144s64.6 144 144 144 144-64.6 144-144S579.4 600 500 600z"/><path class="b" d="M500 700c-48.6 0-88 39.4-88 88s39.4 88 88 88 88-39.4 88-88S548.6 700 500 700z"/><path class="a" d="M500 800c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32S517.7 800 500 800z"/></svg>') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ============================================
+   EVIDENCED - Complete Redesign
+   Modern, fresh, and unique design
+   ============================================ */
+
+/* ===== CSS Variables ===== */
+:root {
+  /* Colors - Modern, fresh tones */
+  --bg-primary: #000000;           /* Black */
+  --bg-secondary: #111111;        /* Dark gray */
+  --bg-tertiary: #1a1a1a;         /* Lighter dark gray */
+  --text-primary: #FFFFFF;        /* White */
+  --text-secondary: #CCCCCC;      /* Light gray */
+  --text-muted: #999999;          /* Muted gray */
+  --accent: #007BFF;             /* Blue */
+  --accent-light: #66B3FF;       /* Lighter blue */
+  --accent-dark: #0056CC;        /* Darker blue */
+  --border: #333333;             /* Dark border color */
+  --overlay: rgba(0, 0, 0, 0.7);  /* Overlay for panels */
+  --warning: #FF6B6B;             /* Red for warnings */
+  
+  /* Subtle texture gradient for depth */
+  --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  --card-gradient: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  
+  /* Typography */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-serif: 'Playfair Display', Georgia, serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.5rem;
+  --font-size-6xl: 4.5rem;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.6);
+  
+  /* Transitions */
+  --transition-fast: 200ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+  
+  /* Navbar */
+  --navbar-height: 5rem;
+  --navbar-height-shrunk: 4rem;
+  --navbar-bg: transparent;
+  --navbar-bg-shrunk: rgba(17, 17, 17, 0.95);
+  --navbar-blur: blur(12px);
+}
