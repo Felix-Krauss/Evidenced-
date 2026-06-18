@@ -312,6 +312,7 @@
       };
       
       const observer = new IntersectionObserver((entries) => {
+  if (!entries || entries.length === 0) return;
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
