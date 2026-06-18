@@ -1,158 +1,210 @@
-/* ===== Background ===== */
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.a{fill:%23007BFF;opacity:.1;}.b{fill:%230056CC;opacity:.15;}</style></defs><path class="a" d="M500 0c-276.1 0-500 223.9-500 500s223.9 500 500 500 500-223.9 500-500S776.1 0 500 0z"/><path class="b" d="M500 100c-220.9 0-400 179.1-400 400s179.1 400 400 400 400-179.1 400-400S720.9 100 500 100z"/><path class="a" d="M500 200c-193.6 0-350 156.4-350 350s156.4 350 350 350 350-156.4 350-350S693.6 200 500 200z"/><path class="b" d="M500 300c-166.4 0-300 133.6-300 300s133.6 300 300 300 300-133.6 300-300S666.4 300 500 300z"/><path class="a" d="M500 400c-138.1 0-250 111.9-250 250s111.9 250 250 250 250-111.9 250-250S638.1 400 500 400z"/><path class="b" d="M500 500c-109.4 0-200 89.6-200 200s89.6 200 200 200 200-89.6 200-200S609.4 500 500 500z"/><path class="a" d="M500 600c-79.4 0-144 64.6-144 144s64.6 144 144 144 144-64.6 144-144S579.4 600 500 600z"/><path class="b" d="M500 700c-48.6 0-88 39.4-88 88s39.4 88 88 88 88-39.4 88-88S548.6 700 500 700z"/><path class="a" d="M500 800c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32S517.7 800 500 800z"/></svg>') no-repeat center center fixed;
-  background-size: cover;
-  z-index: -1;
-  pointer-events: none;
+/* ============================================
+   EVIDENCED - COMPLETE REDESIGN
+   Modern, frech, einzigartig mit weird flair
+   ============================================ */
+
+/* ===== Base Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ============================================
-   EVIDENCED - Complete Redesign
-   Modern, fresh, and unique design
-   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
 
 /* ===== CSS Variables ===== */
 :root {
-  /* Colors - Modern, fresh tones */
-  --bg-primary: #000000;           /* Black */
-  --bg-secondary: #111111;        /* Dark gray */
-  --bg-tertiary: #1a1a1a;         /* Lighter dark gray */
-  --text-primary: #FFFFFF;        /* White */
-  --text-secondary: #CCCCCC;      /* Light gray */
-  --text-muted: #999999;          /* Muted gray */
-  --accent: #007BFF;             /* Blue */
-  --accent-light: #66B3FF;       /* Lighter blue */
-  --accent-dark: #0056CC;        /* Darker blue */
-  --border: #333333;             /* Dark border color */
-  --overlay: rgba(0, 0, 0, 0.7);  /* Overlay for panels */
-  --warning: #FF6B6B;             /* Red for warnings */
-  
-  /* Subtle texture gradient for depth */
-  --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  --card-gradient: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-  
-  /* Spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
-  --space-4xl: 6rem;
+  /* Modern Color Scheme */
+  --primary: #1a1a2e;
+  --secondary: #16213e;
+  --accent: #00ff88;
+  --accent-secondary: #00d4aa;
+  --text: #e6e6e6;
+  --text-secondary: #b8b8b8;
+  --bg: #0f0f1a;
+  --card-bg: rgba(26, 26, 46, 0.8);
+  --border: rgba(120, 120, 255, 0.2);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --glow: 0 0 20px rgba(0, 255, 136, 0.3);
   
   /* Typography */
-  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-serif: 'Playfair Display', Georgia, serif;
-
-/* Dark Mode Variables */
-[data-theme="dark"] {
-  --bg-primary: #0a0a1a;           /* Dark blue */
-  --bg-secondary: #11112a;        /* Lighter dark blue */
-  --bg-tertiary: #1a1a3a;         /* Even lighter dark blue */
-  --text-primary: #FFFFFF;        /* White */
-  --text-secondary: #CCCCCC;      /* Light gray */
-  --text-muted: #999999;          /* Muted gray */
-  --accent: #66B3FF;             /* Lighter blue */
-  --accent-light: #007BFF;       /* Blue */
-  --accent-dark: #0056CC;        /* Darker blue */
-  --border: #333355;             /* Dark border color */
-  --overlay: rgba(0, 0, 0, 0.7);  /* Overlay for panels */
-  --warning: #FF6B6B;             /* Red for warnings */
+  --font-main: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
   
-  /* Subtle texture gradient for depth */
-  --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  --card-gradient: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-}
-
-/* Light Mode Variables */
-[data-theme="light"] {
-  --bg-primary: #FFFFFF;           /* White */
-  --bg-secondary: #F5F5F5;        /* Light gray */
-  --bg-tertiary: #E0E0E0;         /* Even lighter gray */
-  --text-primary: #000000;        /* Black */
-  --text-secondary: #333333;      /* Dark gray */
-  --text-muted: #666666;          /* Muted gray */
-  --accent: #007BFF;             /* Blue */
-  --accent-light: #66B3FF;       /* Lighter blue */
-  --accent-dark: #0056CC;        /* Darker blue */
-  --border: #CCCCCC;             /* Light border color */
-  --overlay: rgba(0, 0, 0, 0.5);  /* Overlay for panels */
-  --warning: #FF6B6B;             /* Red for warnings */
-  
-  /* Subtle texture gradient for depth */
-  --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  --card-gradient: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-}
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 2rem;
-  --font-size-4xl: 2.5rem;
-  --font-size-5xl: 3.5rem;
-  --font-size-6xl: 4.5rem;
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-black: 900;
+  /* Spacing */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
   
   /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 500px;
+}
+
+/* Dark Mode (dunkelblau wie gewünscht) */
+[data-theme="dark"] {
+  --primary: #0a0a1a;
+  --secondary: #11112a;
+  --accent: #66b3ff;
+  --text: #e0e0ff;
+  --bg: #050510;
+  --card-bg: rgba(10, 10, 40, 0.9);
+}
+
+/* Light Mode */
+[data-theme="light"] {
+  --primary: #f5f5ff;
+  --secondary: #e8e8ff;
+  --accent: #0077ff;
+  --text: #1a1a2e;
+  --bg: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
   
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.6);
-  
-  /* Transitions */
-  --transition-fast: 200ms ease;
-  --transition-base: 300ms ease;
-  --transition-slow: 500ms ease;
-  
-  /* Navbar */
-  --navbar-height: 5rem;
-  --navbar-height-shrunk: 4rem;
-  --navbar-bg: transparent;
-  --navbar-bg-shrunk: rgba(17, 17, 17, 0.95);
-  --navbar-blur: blur(12px);
+  /* Weird flair Hintergrund - abstrakter Baum */
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(120, 120, 255, 0.03) 0%, transparent 30%),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"/><feColorMatrix values="0 0 0 0 0.1\n0 0 0 0 0.1\n0 0 0 0 0.2\n0 0 0 1 0"/></filter></defs><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>');
+}
+
+/* ===== Layout ===== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 26, 0.95);
+  backdrop-filter: blur(10px);
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.menu-toggle, .pillbox-toggle {
+  background: rgba(30, 30, 50, 0.5);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.menu-toggle:hover, .pillbox-toggle:hover {
+  background: var(--accent);
+  color: var(--primary);
+  box-shadow: var(--glow);
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem var(--space-md) 4rem;
+  position: relative;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: var(--space-lg);
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+  color: var(--text-secondary);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--accent);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: var(--glow);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
 }
 
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
-  :root {
-    --navbar-height: 4rem;
-    --navbar-height-shrunk: 3.5rem;
-  }
-  
   .hero-title {
     font-size: 2.5rem;
   }
   
-  .section-title {
-    font-size: 1.8rem;
+  .navbar {
+    padding: var(--space-sm);
   }
   
-  .cards-glow {
-    grid-template-columns: 1fr;
+  .container {
+    padding: 0 var(--space-sm);
   }
-  
-  .sidebar, .pillbox-panel {
-    width: 100%;
-    max-width: 100%;
+}
+
+/* Animationen */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  animation: fadeIn 0.6s ease-out forwards;
 }
