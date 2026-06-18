@@ -12,10 +12,10 @@
 </head>
 <body>
   <!-- Custom Cursor -->
-  <div class="custom-cursor" id="customCursor"></div>
+  <!-- Custom cursor removed -->
   
   <!-- Progress Bar -->
-  <div class="progress-bar" id="progressBar"></div>
+  <!-- Progress bar removed -->
 
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
@@ -278,23 +278,6 @@
         heroDivider.style.width = '100%';
       }, 80 * heroWords.length);
       
-      // Custom cursor
-      const cursor = document.getElementById('customCursor');
-      const clickableElements = document.querySelectorAll('a, button, .card, .step');
-      
-      document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-      });
-      
-      clickableElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          cursor.classList.add('cursor-hover');
-        });
-        el.addEventListener('mouseleave', () => {
-          cursor.classList.remove('cursor-hover');
-        });
-      });
       
       // Progress bar
       const progressBar = document.getElementById('progressBar');
