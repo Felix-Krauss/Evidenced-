@@ -125,6 +125,7 @@ body::before {
    CUSTOM CURSOR
    ============================================ */
 .custom-cursor {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -140,6 +141,7 @@ body::before {
 }
 
 .custom-cursor.cursor-hover {
+  display: none;
   width: 32px;
   height: 32px;
   background: var(--accent);
