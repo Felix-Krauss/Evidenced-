@@ -1,293 +1,407 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evidenced – Wissenschaftlich geprüfte Supplements</title>
-  <meta name="description" content="Sachliche Aufklärung über Supplements. Kein Hype, nur Evidenz.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1781810723">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidenced - Evidence-Based Supplements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --background: #ffffff;
+            --text: #111827;
+            --text-secondary: #6b7280;
+            --card-bg: #f9fafb;
+            --border: #e5e7eb;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Times New Roman', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Professional Header */
+        header {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Calculator Grid */
+        .calculators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .calculator-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.2s;
+        }
+
+        .calculator-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .calculator-card h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+
+        .calculate-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 0.375rem;
+            text-align: center;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        /* Supplement Stacks */
+        .stacks-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stacks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .stack-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .stack-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stack-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .calculators-grid, .stacks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-  <script>
-    // Set default theme
-    document.documentElement.setAttribute("data-theme", "dark");
-    
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    }
-  </script>
 <body>
-  <!-- Custom Cursor -->
-  <!-- Background -->
-  <div class="background"></div>
-  <!-- Custom cursor removed -->
-  
-  <!-- Progress Bar -->
-  <!-- Progress bar removed -->
+    <header>
+        <div class="logo">Evidenced</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#calculators">Calculators</a>
+            <a href="#stacks">Stacks</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
 
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="navbar-container">
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
-        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-      <a href="#" class="logo" id="logo">Evidenced</a>
-      <button class="pillbox-toggle" id="pillboxToggle" aria-label="Pillenbox öffnen">
-        <svg class="pillbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
-          <line x1="12" y1="7" x2="12" y2="17"/>
-        </svg>
-        <span class="pillbox-count" id="pillboxCount">0</span>
-      </button>
-    </div>
-  </nav>
+    <main>
+        <section class="hero">
+            <h1>Evidence-Based Supplement Optimization</h1>
+            <p>Scientifically validated tools and stacks for optimal health and performance</p>
+        </section>
 
-  <!-- Sidebar Menu -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <a href="#" class="logo">Evidenced</a>
-      <button class="close-btn" id="closeSidebar" aria-label="Menü schließen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-    
-    <div class="sidebar-tabs">
-      <button class="tab-btn active" data-tab="supplements">Supplements</button>
-      <button class="tab-btn" data-tab="stacks">Stacks</button>
-    </div>
-    
-    <nav class="sidebar-nav tab-content active" id="supplementsTab">
-      <div class="nav-section">
-        <h3 class="nav-title">Die Basics</h3>
-        <ul class="nav-list">
-          <li><a href="omega-3.html" class="nav-link">Omega-3</a></li>
-          <li><a href="vitamin-d3-k2.html" class="nav-link">Vitamin D3 + K2</a></li>
-          <li><a href="magnesium.html" class="nav-link">Magnesium</a></li>
-          <li><a href="zink.html" class="nav-link">Zink</a></li>
-          <li><a href="kreatin.html" class="nav-link">Kreatin</a></li>
-          <li><a href="protein.html" class="nav-link">Protein</a></li>
-          <li><a href="multivitamin.html" class="nav-link">Multivitamin</a></li>
-        </ul>
-      </div>
-      <div class="nav-section">
-        <h3 class="nav-title">Hype-Check</h3>
-        <ul class="nav-list">
-          <li><a href="ashwagandha.html" class="nav-link">Ashwagandha</a></li>
-          <li><a href="bcaa.html" class="nav-link">BCAAs / EAAs</a></li>
-          <li><a href="fatburner.html" class="nav-link">Fatburner</a></li>
-          <li><a href="testo-booster.html" class="nav-link">Testo-Booster</a></li>
-        </ul>
-      </div>
-    </nav>
-    
-    <nav class="sidebar-nav tab-content" id="stacksTab">
-      <div class="nav-section">
-        <h3 class="nav-title">Ziel-Stacks</h3>
-        <ul class="nav-list">
-          <li><a href="muskelaufbau-stack.html" class="nav-link">Muskelaufbau</a></li>
-          <li><a href="gehirn-fokus-stack.html" class="nav-link">Gehirn & Fokus</a></li>
-          <li><a href="immunsystem-stack.html" class="nav-link">Immunsystem</a></li>
-          <li><a href="#" class="nav-link">Diät & Abnehmen</a></li>
-          <li><a href="#" class="nav-link">Schlaf & Erholung</a></li>
-          <li><a href="#" class="nav-link">Veganer & Vegetarier</a></li>
-          <li><a href="#" class="nav-link">50+ / Healthy Aging</a></li>
-        </ul>
-      </div>
-    </nav>
-  </aside>
-
-  <!-- Pillenbox Panel -->
-  <aside class="pillbox-panel" id="pillboxPanel">
-    <div class="pillbox-header">
-      <h3>Deine Pillenbox</h3>
-      <button class="close-btn" id="closePillbox" aria-label="Pillenbox schließen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-    <div class="pillbox-content" id="pillboxContent">
-      <p class="empty-message">Deine Pillenbox ist leer.</p>
-    </div>
-    <div class="pillbox-footer">
-      <div class="total-row">
-        <span>Tageskosten:</span>
-        <span class="total-price" id="pillboxTotal">0,00 €</span>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Overlay -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- Main Content -->
-  <main>
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="hero-content">
-        <h1 class="hero-title" id="heroTitle">
-          <span class="hero-word">Supplements,</span>
-          <span class="hero-word">die</span>
-          <span class="hero-word">wirklich</span>
-          <span class="hero-word highlight">wirken.</span>
-        </h1>
-        <div class="hero-divider" id="heroDivider"></div>
-        <p class="hero-subtitle">
-          Kein <span class="highlight">Marketing.</span> Kein <span class="highlight">Hype.</span> 
-          Nur wissenschaftlich <span class="highlight">belegte</span> Fakten.
-        </p>
-        <a href="#how-it-works" class="btn btn-hero">
-          <span class="btn-text">Wie es funktioniert</span>
-          <span class="btn-arrow">→</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Wie es funktioniert -->
-    <section class="section how-it-works" id="how-it-works">
-      <div class="container">
-        <h2 class="section-title">Wie Evidenced funktioniert</h2>
-        <div class="steps-zigzag">
-          <div class="step step-1">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Wissenschaft checken</h3>
-              <p>Wir werten aktuelle Meta-Analysen aus. Keine Einzelstudien, kein Hersteller-Marketing. Nur Fakten.</p>
+        <section class="calculators-grid" id="calculators">
+            <!-- BMI Calculator -->
+            <div class="calculator-card">
+                <h2>BMI Calculator</h2>
+                <p>Calculate your Body Mass Index for health assessment</p>
+                <div class="input-group">
+                    <label for="bmi-weight">Weight (kg)</label>
+                    <input type="number" id="bmi-weight" placeholder="Enter weight">
+                </div>
+                <div class="input-group">
+                    <label for="bmi-height">Height (cm)</label>
+                    <input type="number" id="bmi-height" placeholder="Enter height">
+                </div>
+                <button class="calculate-btn" onclick="calculateBMI()">Calculate BMI</button>
+                <div class="result" id="bmi-result">Your BMI will appear here</div>
             </div>
-          </div>
-          <div class="step step-2">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Pillenbox füllen</h3>
-              <p>Wähle die Supplements, die zu dir passen. Die Tageskosten werden automatisch berechnet.</p>
-              <a class="pillbox-text-link" onclick="openPillboxFromText()">→ Zur Pillenbox</a>
-            </div>
-          </div>
-          <div class="step step-3">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Günstig kaufen</h3>
-              <p>Wir empfehlen nur die Präparate mit der besten Bioverfügbarkeit zum fairsten Preis.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Wähle deinen Weg -->
-    <section class="section choose-path" id="choose-path">
-      <div class="container">
-        <h2 class="section-title">Wähle deinen Weg</h2>
-        <div class="cards-glow">
-          <div class="card card-basics" data-tab="supplements">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
-              </svg>
+            <!-- Kcal Calculator -->
+            <div class="calculator-card">
+                <h2>Daily Kcal Needs</h2>
+                <p>Estimate your daily calorie requirements</p>
+                <div class="input-group">
+                    <label for="kcal-weight">Weight (kg)</label>
+                    <input type="number" id="kcal-weight" placeholder="Enter weight">
+                </div>
+                <div class="input-group">
+                    <label for="kcal-height">Height (cm)</label>
+                    <input type="number" id="kcal-height" placeholder="Enter height">
+                </div>
+                <div class="input-group">
+                    <label for="kcal-age">Age</label>
+                    <input type="number" id="kcal-age" placeholder="Enter age">
+                </div>
+                <div class="input-group">
+                    <label for="kcal-activity">Activity Level</label>
+                    <select id="kcal-activity">
+                        <option value="1.2">Sedentary</option>
+                        <option value="1.375">Lightly active</option>
+                        <option value="1.55">Moderately active</option>
+                        <option value="1.725" selected>Very active</option>
+                        <option value="1.9">Extra active</option>
+                    </select>
+                </div>
+                <button class="calculate-btn" onclick="calculateKcal()">Calculate Kcal</button>
+                <div class="result" id="kcal-result">Your daily kcal needs will appear here</div>
             </div>
-            <h3>Die Basics</h3>
-            <p>Die wichtigsten Supplements mit nachgewiesener Evidenz für deine Gesundheit.</p>
-          </div>
-          <div class="card card-stacks" data-tab="stacks">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="7" height="7"/>
-                <rect x="14" y="3" width="7" height="7"/>
-                <rect x="14" y="14" width="7" height="7"/>
-                <rect x="3" y="14" width="7" height="7"/>
-              </svg>
-            </div>
-            <h3>Ziel-Stacks</h3>
-            <p>Kombinationen aus Supplements, die perfekt auf deine Ziele abgestimmt sind.</p>
-          </div>
-          <div class="card card-hype" data-tab="supplements" data-section="hype-check">
-            <div class="card-icon warning">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                <line x1="12" y1="9" x2="12" y2="13"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
-            </div>
-            <h3>Hype-Check</h3>
-            <p>Diese Supplements werden oft beworben – aber die wissenschaftliche Evidenz ist schwach.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- News Section -->
-    <section class="section news" id="news">
-      <div class="container">
-        <h2 class="section-title">Neues aus der Wissenschaft</h2>
-        <div class="news-grid" id="newsGrid">
-          <article class="news-card news-card-1">
-            <div class="news-date">15. Juni 2024</div>
-            <h3 class="news-title">Neue Meta-Analyse bestätigt: Omega-3 senkt Herzinfarkt-Risiko</h3>
-            <p class="news-summary">Eine aktuelle Meta-Analyse mit über 130.000 Teilnehmern zeigt, dass die Einnahme von Omega-3-Fettsäuren das Risiko für Herzinfarkte um 8% senken kann.</p>
-          </article>
-          <article class="news-card news-card-2">
-            <div class="news-date">10. Juni 2024</div>
-            <h3 class="news-title">Vitamin D und COVID-19: Neue Erkenntnisse</h3>
-            <p class="news-summary">Eine aktuelle Studie untersucht den Zusammenhang zwischen Vitamin D-Spiegel und dem Schweregrad von COVID-19-Infektionen.</p>
-          </article>
-          <article class="news-card news-card-3">
-            <div class="news-date">5. Juni 2024</div>
-            <h3 class="news-title">Kreatin: Nicht nur für Sportler</h3>
-            <p class="news-summary">Neue Forschung zeigt, dass Kreatin auch für ältere Erwachsene Vorteile bietet, insbesondere für die kognitive Funktion.</p>
-          </article>
-          <article class="news-card news-card-4">
-            <div class="news-date">1. Juni 2024</div>
-            <h3 class="news-title">Magnesium und Schlaf: Was sagt die Wissenschaft?</h3>
-            <p class="news-summary">Ein systematischer Review analysiert die aktuellen Erkenntnisse über die Wirkung von Magnesium auf die Schlafqualität.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+            <!-- Protein Calculator -->
+            <div class="calculator-card">
+                <h2>Protein Calculator</h2>
+                <p>Determine your optimal protein intake</p>
+                <div class="input-group">
+                    <label for="protein-weight">Weight (kg)</label>
+                    <input type="number" id="protein-weight" placeholder="Enter weight">
+                </div>
+                <div class="input-group">
+                    <label for="protein-goal">Goal</label>
+                    <select id="protein-goal">
+                        <option value="1.2">Maintenance</option>
+                        <option value="1.6" selected>Muscle Gain</option>
+                        <option value="2.0">Aggressive Gain</option>
+                        <option value="0.8">Weight Loss</option>
+                    </select>
+                </div>
+                <button class="calculate-btn" onclick="calculateProtein()">Calculate Protein</button>
+                <div class="result" id="protein-result">Your protein needs will appear here</div>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <p class="footer-text">Evidenced. Keine Werbung. Keine Lügen.</p>
-      </div>
+        <section class="stacks-section" id="stacks">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 1.75rem;">Evidence-Based Supplement Stacks</h2>
+            <div class="stacks-grid">
+                <div class="stack-card">
+                    <h3>Muscle Growth Stack</h3>
+                    <p>Optimized for hypertrophy and strength gains</p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>• Creatine Monohydrate</li>
+                        <li>• Whey Protein Isolate</li>
+                        <li>• Beta-Alanine</li>
+                        <li>• Vitamin D3</li>
+                    </ul>
+                </div>
+
+                <div class="stack-card">
+                    <h3>Brain & Focus Stack</h3>
+                    <p>Enhanced cognitive performance and mental clarity</p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>• Omega-3 DHA/EPA</li>
+                        <li>• L-Theanine</li>
+                        <li>• Bacopa Monnieri</li>
+                        <li>• Rhodiola Rosea</li>
+                    </ul>
+                </div>
+
+                <div class="stack-card">
+                    <h3>Immune System Stack</h3>
+                    <p>Comprehensive immune system support</p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>• Vitamin C</li>
+                        <li>• Zinc</li>
+                        <li>• Elderberry Extract</li>
+                        <li>• Probiotics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Evidenced. All rights reserved. | Evidence-based supplement optimization</p>
     </footer>
-  </main>
 
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    // Hero Animation
-    document.addEventListener('DOMContentLoaded', () => {
-      const heroTitle = document.getElementById('heroTitle');
-      const heroWords = heroTitle.querySelectorAll('.hero-word');
-      const heroDivider = document.getElementById('heroDivider');
-      
-      // Animate hero words
-      heroWords.forEach((word, index) => {
-        setTimeout(() => {
-          word.style.opacity = '1';
-          word.style.transform = 'translateY(0)';
-        }, 80 * index);
-      });
-      
-      // Animate divider after words
-      setTimeout(() => {
-        heroDivider.style.width = '100%';
-      }, 80 * heroWords.length);
-      
-      
+    <script>
+        // BMI Calculator
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('bmi-weight').value);
+            const height = parseFloat(document.getElementById('bmi-height').value) / 100;
+            
+            if (isNaN(weight) || isNaN(height) || height === 0) {
+                document.getElementById('bmi-result').textContent = 'Please enter valid values';
+                return;
+            }
+            
+            const bmi = (weight / (height * height)).toFixed(1);
+            let category = '';
+            
+            if (bmi < 18.5) category = 'Underweight';
+            else if (bmi < 25) category = 'Normal weight';
+            else if (bmi < 30) category = 'Overweight';
+            else category = 'Obese';
+            
+            document.getElementById('bmi-result').textContent = `BMI: ${bmi} (${category})`;
+        }
+
+        // Kcal Calculator
+        function calculateKcal() {
+            const weight = parseFloat(document.getElementById('kcal-weight').value);
+            const height = parseFloat(document.getElementById('kcal-height').value);
+            const age = parseFloat(document.getElementById('kcal-age').value);
+            const activity = parseFloat(document.getElementById('kcal-activity').value);
+            
+            if (isNaN(weight) || isNaN(height) || isNaN(age)) {
+                document.getElementById('kcal-result').textContent = 'Please enter valid values';
+                return;
+            }
+            
+            const bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            const tdee = Math.round(bmr * activity);
+            
+            document.getElementById('kcal-result').textContent = `Daily Kcal Needs: ${tdee} kcal`;
+        }
+
+        // Protein Calculator
+        function calculateProtein() {
+            const weight = parseFloat(document.getElementById('protein-weight').value);
+            const goal = parseFloat(document.getElementById('protein-goal').value);
+            
+            if (isNaN(weight)) {
+                document.getElementById('protein-result').textContent = 'Please enter valid weight';
+                return;
+            }
+            
+            const protein = Math.round(weight * goal);
+            document.getElementById('protein-result').textContent = `Daily Protein: ${protein}g (${Math.round(protein * 4)} kcal)`;
+        }
+    </script>
+</body>
+</html>
