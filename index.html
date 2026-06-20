@@ -3,170 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evidenced - Evidence-Based Supplements</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+    <title>Evidenced - Dark Minimal Supplement Optimization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/design-system.css">
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --background: #ffffff;
-            --text: #111827;
-            --text-secondary: #6b7280;
-            --card-bg: #f9fafb;
-            --border: #e5e7eb;
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', 'Times New Roman', sans-serif;
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* Professional Header */
+        /* Additional component styles using the design system */
         header {
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border);
+            padding: var(--space-4) var(--space-6);
+            border-bottom: var(--border-width) solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
         }
 
         nav a {
-            color: var(--text);
+            color: var(--text-secondary);
             text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 500;
-            transition: color 0.2s;
+            margin-left: var(--space-4);
+            font-weight: var(--font-weight-medium);
+            transition: var(--transition-normal);
         }
 
         nav a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: var(--space-12) var(--space-6);
             max-width: 800px;
             margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text);
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-4);
+            color: var(--text-primary);
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: var(--font-size-lg);
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            max-width: 600px;
+            margin: 0 auto var(--space-8);
         }
 
-        /* Calculator Grid */
         .calculators-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
+            gap: var(--space-6);
+            padding: var(--space-6);
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .calculator-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: all 0.2s;
-        }
-
-        .calculator-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
+            background: var(--bg-surface);
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: var(--space-5);
         }
 
         .calculator-card h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-3);
+            color: var(--accent);
         }
 
         .input-group {
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-4);
         }
 
         .input-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 0.375rem;
-            font-size: 1rem;
-            transition: border-color 0.2s;
-        }
-
-        .input-group input:focus, .input-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            margin-bottom: var(--space-2);
+            font-weight: var(--font-weight-medium);
+            color: var(--text-primary);
         }
 
         .calculate-btn {
             width: 100%;
-            padding: 0.75rem;
-            background: var(--primary);
-            color: white;
+            padding: var(--space-3) var(--space-4);
+            background: var(--accent);
+            color: var(--bg-page);
             border: none;
-            border-radius: 0.375rem;
-            font-size: 1rem;
-            font-weight: 500;
+            border-radius: var(--border-radius-md);
+            font-weight: var(--font-weight-medium);
             cursor: pointer;
-            transition: all 0.2s;
-            margin-top: 1rem;
+            transition: var(--transition-normal);
+            margin-top: var(--space-4);
         }
 
         .calculate-btn:hover {
-            background: var(--primary-dark);
+            background: var(--accent-hover);
         }
 
         .result {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: rgba(37, 99, 235, 0.05);
-            border-radius: 0.375rem;
+            margin-top: var(--space-4);
+            padding: var(--space-3);
+            background: rgba(0, 212, 170, 0.05);
+            border: var(--border-width) solid rgba(0, 212, 170, 0.1);
+            border-radius: var(--border-radius-sm);
             text-align: center;
-            font-weight: 500;
-            color: var(--primary);
+            color: var(--accent);
         }
 
-        /* Supplement Stacks */
         .stacks-section {
-            padding: 4rem 2rem;
+            padding: var(--space-10) var(--space-6);
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -174,47 +125,37 @@
         .stacks-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: var(--space-5);
         }
 
         .stack-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            transition: all 0.2s;
-        }
-
-        .stack-card:hover {
-            box-shadow: var(--shadow-lg);
+            background: var(--bg-surface);
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: var(--space-4);
         }
 
         .stack-card h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-3);
+            color: var(--accent);
         }
 
-        /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
+            padding: var(--space-6);
+            border-top: var(--border-width) solid var(--border-color);
+            color: var(--text-muted);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: var(--font-size-3xl);
             }
 
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .calculators-grid, .stacks-grid {
+            .calculators-grid,
+            .stacks-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -224,14 +165,14 @@
     <header>
         <div class="logo">Evidenced</div>
         <nav>
-            <a href="#">Home</a>
+            <a href="#home">Home</a>
             <a href="#calculators">Calculators</a>
             <a href="#stacks">Stacks</a>
-            <a href="#">About</a>
+            <a href="#about">About</a>
         </nav>
     </header>
 
-    <main>
+    <main id="home">
         <section class="hero">
             <h1>Evidence-Based Supplement Optimization</h1>
             <p>Scientifically validated tools and stacks for optimal health and performance</p>
@@ -244,13 +185,13 @@
                 <p>Calculate your Body Mass Index for health assessment</p>
                 <div class="input-group">
                     <label for="bmi-weight">Weight (kg)</label>
-                    <input type="number" id="bmi-weight" placeholder="Enter weight">
+                    <input type="number" id="bmi-weight" class="input" placeholder="Enter weight" min="1" step="0.1">
                 </div>
                 <div class="input-group">
                     <label for="bmi-height">Height (cm)</label>
-                    <input type="number" id="bmi-height" placeholder="Enter height">
+                    <input type="number" id="bmi-height" class="input" placeholder="Enter height" min="1" step="0.1">
                 </div>
-                <button class="calculate-btn" onclick="calculateBMI()">Calculate BMI</button>
+                <button class="calculate-btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
                 <div class="result" id="bmi-result">Your BMI will appear here</div>
             </div>
 
@@ -260,19 +201,19 @@
                 <p>Estimate your daily calorie requirements</p>
                 <div class="input-group">
                     <label for="kcal-weight">Weight (kg)</label>
-                    <input type="number" id="kcal-weight" placeholder="Enter weight">
+                    <input type="number" id="kcal-weight" class="input" placeholder="Enter weight" min="1" step="0.1">
                 </div>
                 <div class="input-group">
                     <label for="kcal-height">Height (cm)</label>
-                    <input type="number" id="kcal-height" placeholder="Enter height">
+                    <input type="number" id="kcal-height" class="input" placeholder="Enter height" min="1" step="0.1">
                 </div>
                 <div class="input-group">
                     <label for="kcal-age">Age</label>
-                    <input type="number" id="kcal-age" placeholder="Enter age">
+                    <input type="number" id="kcal-age" class="input" placeholder="Enter age" min="1" max="120">
                 </div>
                 <div class="input-group">
                     <label for="kcal-activity">Activity Level</label>
-                    <select id="kcal-activity">
+                    <select id="kcal-activity" class="input">
                         <option value="1.2">Sedentary</option>
                         <option value="1.375">Lightly active</option>
                         <option value="1.55">Moderately active</option>
@@ -280,7 +221,7 @@
                         <option value="1.9">Extra active</option>
                     </select>
                 </div>
-                <button class="calculate-btn" onclick="calculateKcal()">Calculate Kcal</button>
+                <button class="calculate-btn btn-primary" onclick="calculateKcal()">Calculate Kcal</button>
                 <div class="result" id="kcal-result">Your daily kcal needs will appear here</div>
             </div>
 
@@ -290,55 +231,55 @@
                 <p>Determine your optimal protein intake</p>
                 <div class="input-group">
                     <label for="protein-weight">Weight (kg)</label>
-                    <input type="number" id="protein-weight" placeholder="Enter weight">
+                    <input type="number" id="protein-weight" class="input" placeholder="Enter weight" min="1" step="0.1">
                 </div>
                 <div class="input-group">
                     <label for="protein-goal">Goal</label>
-                    <select id="protein-goal">
+                    <select id="protein-goal" class="input">
                         <option value="1.2">Maintenance</option>
                         <option value="1.6" selected>Muscle Gain</option>
                         <option value="2.0">Aggressive Gain</option>
                         <option value="0.8">Weight Loss</option>
                     </select>
                 </div>
-                <button class="calculate-btn" onclick="calculateProtein()">Calculate Protein</button>
+                <button class="calculate-btn btn-primary" onclick="calculateProtein()">Calculate Protein</button>
                 <div class="result" id="protein-result">Your protein needs will appear here</div>
             </div>
         </section>
 
         <section class="stacks-section" id="stacks">
-            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 1.75rem;">Evidence-Based Supplement Stacks</h2>
+            <h2 class="text-accent" style="text-align: center; margin-bottom: var(--space-6);">Evidence-Based Supplement Stacks</h2>
             <div class="stacks-grid">
                 <div class="stack-card">
                     <h3>Muscle Growth Stack</h3>
                     <p>Optimized for hypertrophy and strength gains</p>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li>• Creatine Monohydrate</li>
-                        <li>• Whey Protein Isolate</li>
-                        <li>• Beta-Alanine</li>
-                        <li>• Vitamin D3</li>
+                    <ul class="m-0" style="list-style: none; padding-left: 0;">
+                        <li class="text-secondary m-2">• Creatine Monohydrate (5g/day)</li>
+                        <li class="text-secondary m-2">• Whey Protein Isolate</li>
+                        <li class="text-secondary m-2">• Beta-Alanine (3.2g/day)</li>
+                        <li class="text-secondary m-2">• Vitamin D3 (2000IU)</li>
                     </ul>
                 </div>
 
                 <div class="stack-card">
                     <h3>Brain & Focus Stack</h3>
                     <p>Enhanced cognitive performance and mental clarity</p>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li>• Omega-3 DHA/EPA</li>
-                        <li>• L-Theanine</li>
-                        <li>• Bacopa Monnieri</li>
-                        <li>• Rhodiola Rosea</li>
+                    <ul class="m-0" style="list-style: none; padding-left: 0;">
+                        <li class="text-secondary m-2">• Omega-3 DHA/EPA</li>
+                        <li class="text-secondary m-2">• L-Theanine (200mg)</li>
+                        <li class="text-secondary m-2">• Bacopa Monnieri</li>
+                        <li class="text-secondary m-2">• Rhodiola Rosea</li>
                     </ul>
                 </div>
 
                 <div class="stack-card">
                     <h3>Immune System Stack</h3>
                     <p>Comprehensive immune system support</p>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li>• Vitamin C</li>
-                        <li>• Zinc</li>
-                        <li>• Elderberry Extract</li>
-                        <li>• Probiotics</li>
+                    <ul class="m-0" style="list-style: none; padding-left: 0;">
+                        <li class="text-secondary m-2">• Vitamin C (1000mg)</li>
+                        <li class="text-secondary m-2">• Zinc (15mg)</li>
+                        <li class="text-secondary m-2">• Elderberry Extract</li>
+                        <li class="text-secondary m-2">• Probiotics (10B CFU)</li>
                     </ul>
                 </div>
             </div>
@@ -346,7 +287,7 @@
     </main>
 
     <footer>
-        <p>© 2026 Evidenced. All rights reserved. | Evidence-based supplement optimization</p>
+        <p class="text-muted">© 2026 Evidenced. All rights reserved. | Evidence-based supplement optimization</p>
     </footer>
 
     <script>
@@ -354,20 +295,20 @@
         function calculateBMI() {
             const weight = parseFloat(document.getElementById('bmi-weight').value);
             const height = parseFloat(document.getElementById('bmi-height').value) / 100;
-            
-            if (isNaN(weight) || isNaN(height) || height === 0) {
+
+            if (isNaN(weight) || isNaN(height) || height === 0 || weight <= 0) {
                 document.getElementById('bmi-result').textContent = 'Please enter valid values';
                 return;
             }
-            
+
             const bmi = (weight / (height * height)).toFixed(1);
             let category = '';
-            
+
             if (bmi < 18.5) category = 'Underweight';
             else if (bmi < 25) category = 'Normal weight';
             else if (bmi < 30) category = 'Overweight';
             else category = 'Obese';
-            
+
             document.getElementById('bmi-result').textContent = `BMI: ${bmi} (${category})`;
         }
 
@@ -377,15 +318,15 @@
             const height = parseFloat(document.getElementById('kcal-height').value);
             const age = parseFloat(document.getElementById('kcal-age').value);
             const activity = parseFloat(document.getElementById('kcal-activity').value);
-            
-            if (isNaN(weight) || isNaN(height) || isNaN(age)) {
+
+            if (isNaN(weight) || isNaN(height) || isNaN(age) || weight <= 0 || height <= 0 || age <= 0) {
                 document.getElementById('kcal-result').textContent = 'Please enter valid values';
                 return;
             }
-            
+
             const bmr = 10 * weight + 6.25 * height - 5 * age + 5;
             const tdee = Math.round(bmr * activity);
-            
+
             document.getElementById('kcal-result').textContent = `Daily Kcal Needs: ${tdee} kcal`;
         }
 
@@ -393,14 +334,16 @@
         function calculateProtein() {
             const weight = parseFloat(document.getElementById('protein-weight').value);
             const goal = parseFloat(document.getElementById('protein-goal').value);
-            
-            if (isNaN(weight)) {
+
+            if (isNaN(weight) || weight <= 0) {
                 document.getElementById('protein-result').textContent = 'Please enter valid weight';
                 return;
             }
-            
+
             const protein = Math.round(weight * goal);
-            document.getElementById('protein-result').textContent = `Daily Protein: ${protein}g (${Math.round(protein * 4)} kcal)`;
+            const kcal = Math.round(protein * 4);
+
+            document.getElementById('protein-result').textContent = `Daily Protein: ${protein}g (${kcal} kcal)`;
         }
     </script>
 </body>
