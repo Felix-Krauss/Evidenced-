@@ -1,0 +1,230 @@
+/* design-system.css - Dark Minimal Tech Aesthetic */
+:root {
+  /* ===== SPACING SYSTEM ===== */
+  /* 4px basis with consistent multipliers */
+  --space-0: 0;
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+
+  /* ===== BACKGROUND COLORS ===== */
+  /* 3 levels: page bg, surface, elevated surface */
+  --bg-page: #0a0a1a;        /* Deep dark blue - page background */
+  --bg-surface: #11112a;     /* Slightly lighter - cards/surfaces */
+  --bg-elevated: #1a1a3a;    /* Even lighter - elevated elements */
+
+  /* ===== TEXT COLORS ===== */
+  /* primary, secondary, muted */
+  --text-primary: #e0e0e0;   /* High contrast - main text */
+  --text-secondary: #a0a0b0;  /* Medium contrast - secondary text */
+  --text-muted: #606080;     /* Low contrast - muted text */
+
+  /* ===== ACCENT COLOR ===== */
+  /* Single subdued tone - no rainbow */
+  --accent: #00d4aa;         /* Subdued cyan - primary accent */
+  --accent-hover: #00e0b8;   /* Slightly brighter for hover states */
+
+  /* ===== BORDER STYLES ===== */
+  /* Hair-thin subtle lines - no shadow overkill */
+  --border-width: 1px;
+  --border-color: #2a2a4a;   /* Subtle border color */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+
+  /* ===== TYPOGRAPHY ===== */
+  /* Inter from Google Fonts */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* ===== SHADOWS ===== */
+  /* Minimal, subtle shadows - no overkill */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* ===== TRANSITIONS ===== */
+  --transition-fast: all 0.1s ease;
+  --transition-normal: all 0.2s ease;
+  --transition-slow: all 0.3s ease;
+}
+
+/* ===== TYPOGRAPHY SYSTEM ===== */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+}
+
+h1, .h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-4);
+}
+
+h2, .h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-3);
+}
+
+h3, .h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-2);
+}
+
+h4, .h4 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-2);
+}
+
+p {
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-relaxed);
+}
+
+small, .text-sm {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+/* ===== SPACING UTILITIES ===== */
+/* Margin utilities */
+.m-0 { margin: var(--space-0); }
+.m-1 { margin: var(--space-1); }
+.m-2 { margin: var(--space-2); }
+.m-3 { margin: var(--space-3); }
+.m-4 { margin: var(--space-4); }
+.m-5 { margin: var(--space-5); }
+.m-6 { margin: var(--space-6); }
+
+/* Padding utilities */
+.p-0 { padding: var(--space-0); }
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-3 { padding: var(--space-3); }
+.p-4 { padding: var(--space-4); }
+.p-5 { padding: var(--space-5); }
+.p-6 { padding: var(--space-6); }
+
+/* ===== BUTTON SYSTEM ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--border-radius-md);
+  border: var(--border-width) solid transparent;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--bg-page);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-elevated);
+  border-color: var(--text-secondary);
+}
+
+/* ===== CARD SYSTEM ===== */
+.card {
+  background-color: var(--bg-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== INPUT SYSTEM ===== */
+.input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+  background-color: rgba(0, 212, 170, 0.05);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--accent); }
+
+.bg-page { background-color: var(--bg-page); }
+.bg-surface { background-color: var(--bg-surface); }
+.bg-elevated { background-color: var(--bg-elevated); }
+
+.rounded-sm { border-radius: var(--border-radius-sm); }
+.rounded-md { border-radius: var(--border-radius-md); }
+.rounded-lg { border-radius: var(--border-radius-lg); }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
